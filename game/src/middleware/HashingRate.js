@@ -5,12 +5,12 @@ const defaultRate = 0.005
 const loadHashingRate = () =>
   Number(JSON.parse(window.localStorage.getItem('hashingRate') || defaultRate))
 
-const saveClick = click => {
+const saveClick = () => {
   window.localStorage.setItem('hashingRate', JSON.stringify(loadHashingRate() + defaultRate))
 }
 
 const save = ({action, next}) => {
-  saveClick(action.click)
+  saveClick()
   return next(extend({}, action, {hashingRate: loadHashingRate()}))
 }
 

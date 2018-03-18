@@ -4,6 +4,7 @@ import { Grid, Row, Col } from 'react-flexbox-grid';
 import Stats from './Stats'
 import ClickArea from './ClickArea'
 import FlyingClick from './FlyingClick'
+import SolveBlocks from './SolveBlocks'
 
 import './App.css';
 
@@ -19,6 +20,7 @@ export default class App extends Component {
             <FlyingClick />
             <ClickArea />
             <Stats />
+            <SolveBlocks />
           </Col>
           <Col md={3} lg={3}>
             Hello, world!

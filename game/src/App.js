@@ -1,21 +1,30 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { Grid, Row, Col } from 'react-flexbox-grid';
+
+import Stats from './Stats'
+import ClickArea from './ClickArea'
+import FlyingClick from './FlyingClick'
+
 import './App.css';
 
-class App extends Component {
+export default class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Grid fluid className="centered">
+        <Row>
+          <Col md={3} lg={3}>
+            Hello, world!
+          </Col>
+          <Col md={6} lg={6}>
+            <FlyingClick />
+            <ClickArea />
+            <Stats />
+          </Col>
+          <Col md={3} lg={3}>
+            Hello, world!
+          </Col>
+        </Row>
+      </Grid>
     );
   }
 }
-
-export default App;

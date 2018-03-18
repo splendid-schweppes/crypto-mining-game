@@ -47,3 +47,4 @@ Kauppa mistä voi päivittää konetta ja saada automaattisesti mainattua
 * Saavutukset
 * Tapahtumat (matala prioriteetti, esimerkiksi yhteisö klikit tms.)
 * Lompakkokuvake tms.
+* Klikkien replay

@@ -27,7 +27,7 @@ class FlyingClick extends Component {
   }
 
   renderFlying(click, i) {
-    const style = {top: click.y - clickSize, left: click.x - clickSize}
+    const style = {top: click.y - clickSize - 60, left: click.x - clickSize}
 
     return (
       <div

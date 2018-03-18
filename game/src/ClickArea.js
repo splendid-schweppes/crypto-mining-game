@@ -17,15 +17,16 @@ const shakes = [
 class ClickArea extends Component {
   render() {
     return (
-      <div className="click-area" onClick={this.props.click}>
-
-      </div>
+      <div
+        className="click-area"
+        onClick={this.props.click}
+      />
     )
   }
 }
 
 const mapDispatchToProps = (dispatch, props) => ({
-  click: event => {
+  click: event =>
     dispatch({
       type: 'CLICK',
       click: {
@@ -35,7 +36,6 @@ const mapDispatchToProps = (dispatch, props) => ({
         time: new Date()
       }
     })
-  }
 })
 
 export default connect(null, mapDispatchToProps)(ClickArea)

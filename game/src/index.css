@@ -10,6 +10,7 @@ body {
   -webkit-animation: background-animation 59s ease infinite;
   -moz-animation: background-animation 59s ease infinite;
   animation: background-animation 59s ease infinite;
+  color: white;
 }
 
 @-webkit-keyframes background-animation {

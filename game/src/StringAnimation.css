@@ -9,5 +9,12 @@
   margin: 10px;
   color: #ffffff;
   font-size: 12px;
-  opacity: 0.5;
+  /* opacity: 0.5; */
+  color: rgb(0, 187, 30);
+  padding: 40px;
+  background-image: url(/svg_assets/computer_screen.png);
+  background-size: cover;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position-y: 20px;
 }

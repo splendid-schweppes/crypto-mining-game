@@ -2,4 +2,19 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background: linear-gradient(198deg, #415ad4, #46b3dc, #00b8ff, #fd00ff);
+  background-size: 800% 800%;
+  animation: AnimationName 160s ease infinite;
+}
+
+@keyframes AnimationName {
+  0% {
+    background-position: 56% 0%;
+  }
+  50% {
+    background-position:45% 100%;
+  }
+  100% {
+    background-position:56% 0%;
+  }
 }

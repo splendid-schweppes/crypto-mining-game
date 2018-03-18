@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
+import {uniqueId} from 'lodash'
 
 import './ClickArea.css'
 import 'csshake/dist/csshake.css';
@@ -28,7 +29,12 @@ const mapDispatchToProps = (dispatch, props) => ({
     console.log('dddd', event.nativeEvent)
     dispatch({
       type: 'CLICK',
-      click: {x: event.nativeEvent.clientX, y: event.nativeEvent.clientY, time: new Date()}
+      click: {
+        id: uniqueId(),
+        x: event.nativeEvent.clientX,
+        y: event.nativeEvent.clientY,
+        time: new Date()
+      }
     })
   }
 })

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import {uniqueId} from 'lodash'
+import {reject} from 'lodash'
 
 import './FlyingClick.css'
 
@@ -12,22 +12,38 @@ class FlyingClick extends Component {
     this.state = {
       clicks: []
     }
+
+    this.handleRemove = this.handleRemove.bind(this)
+    this.renderFlying = this.renderFlying.bind(this)
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({clicks: [...this.state.clicks, nextProps.latestClick]})
   }
 
-  renderFlying(click) {
+  handleRemove(id) {
+    const newItems = reject(this.state.clicks, {id})
+    this.setState({items: newItems});
+  }
+
+  renderFlying(click, i) {
     const style = {top: click.y - clickSize, left: click.x - clickSize}
+
     return (
-      <div key={uniqueId()} className="flying-click" style={style}>
-      </div>
+      <div
+        key={click.id}
+        className="flying-click"
+        style={style}
+        onAnimationEnd={() => this.handleRemove(click.id)}
+      />
     )
   }
 
   render() {
-    console.log('this.props here', this.props.latestClick)
+    if (!this.props.latestClick.x) {
+      return null
+    }
+
     return (
       <div>
         {this.state.clicks.map(this.renderFlying)}

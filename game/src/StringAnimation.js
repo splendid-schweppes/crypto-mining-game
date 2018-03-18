@@ -3,7 +3,7 @@ import {times} from 'lodash'
 
 import './StringAnimation.css'
 
-const STRING_LENGTH = 16
+const STRING_LENGTH = 19
 
 export default class StringAnimation extends Component {
   constructor() {
@@ -26,7 +26,9 @@ export default class StringAnimation extends Component {
   render() {
     return (
       <div className="string-animation">
-        {this.state.text}
+        <div className="content">
+          {this.state.text}
+        </div>
       </div>
     )
   }

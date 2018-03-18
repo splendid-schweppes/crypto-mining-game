@@ -5,12 +5,13 @@ class BackgroundMusic extends Component {
     constructor() {
     super()
     this.state = {
-      playStateOnStorage: window.localStorage.getItem('bgmusic')
+      playStateOnStorage: window.localStorage.getItem('bgmusic') || 'play'
+
     }
   }
 
   componentDidMount() {
-    this._audio[this.state.playStateOnStorage || 'play']()
+    this._audio[this.state.playStateOnStorage]()
   }
 
   backGroundMusic = () => {

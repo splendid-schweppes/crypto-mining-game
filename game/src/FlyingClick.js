@@ -7,7 +7,7 @@ import './FlyingClick.css'
 const clickSize = 50 / 2
 
 class FlyingClick extends Component {
-    constructor() {
+  constructor() {
     super()
     this.state = {
       clicks: []

@@ -7,6 +7,7 @@ import ClickArea from './ClickArea'
 import FlyingClick from './FlyingClick'
 import SolveBlocks from './SolveBlocks'
 import BackgroundMusic from './BackgroundMusic'
+import StringAnimation from './StringAnimation'
 
 import './App.css';
 
@@ -26,6 +27,7 @@ export default class App extends Component {
           </Col>
           <Col md={3} lg={3}>
             <BackgroundMusic />
+            <StringAnimation />
           </Col>
         </Row>
       </Grid>

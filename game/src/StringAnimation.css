@@ -1,0 +1,17 @@
+.string-animation {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  word-wrap: break-word;
+  overflow: hidden;
+  height: 190px;
+  width: 300px;
+  margin: 10px;
+  color: #ffffff;
+  font-size: 12px;
+  opacity: 0.4;
+}
+
+.string-animation:hover {
+  opacity: 0.9;
+}

@@ -1,9 +1,6 @@
 import {extend} from 'lodash'
 
-const defaultBlocks = 0
-
-const loadBlocks = () =>
-  Number(JSON.parse(window.localStorage.getItem('blocks') || defaultBlocks))
+import {loadBlocks} from '../Util'
 
 const saveClick = count => {
   window.localStorage.setItem('blocks', JSON.stringify(loadBlocks() + count))

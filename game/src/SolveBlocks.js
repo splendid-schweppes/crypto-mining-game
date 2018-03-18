@@ -6,16 +6,11 @@ const assets = 0
 
 class SolveBlocks extends Component {
   componentDidMount() {
-    console.log('this.props.hashingRate', this.props.hashingRate)
-    console.log('this.props.blocks', this.props.blocks)
-
     setInterval(() => {
       this.props.solveBlock(this.props.hashingRate)
     }, 1000)
   }
-  componentDidUpdate() {
 
-  }
   render() {
     return null
   }
@@ -28,7 +23,6 @@ const mapDispatchToProps = (dispatch, props) => ({
       count
     })
 })
-
 
 const mapStateToProps = state => {
   return {

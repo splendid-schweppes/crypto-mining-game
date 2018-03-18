@@ -31,3 +31,19 @@ Kauppa mistä voi päivittää konetta ja saada automaattisesti mainattua
 * Click battle muita pelaajia vastaan, laitetaan esimerkiksi joku veto omista asseteista, kumpi kliksuttelee nopeammin esim 100 kertaa voittaa ja vie palkinnon.
 * Henkilökohtaiset daily tavoitteet, tai unlokit. Kun on saanut tietyn määrän valuuttaa kasaan aukeaa esimerkiksi mahdollisuus ostaa yritystason tietokoneita jotka hashaa nopeammin
 * PRO: valuutan myyminen ja ostaminen coinmarketcapin kurssien mukaan
+
+# Todo
+
+* Näkymätön pieni elementti, jos sitä onnistuu klikkaamaan saa kokonaisen lohkon (esim 30kpl) / 1 kolikon heti
+* Jos klikkaa pientä palloa, saa yhden lohkon
+* Lohkot pitää nollaantua kun 30 lohkoa on ratkottu ja siitä saa yhden kolikon
+* Hashing rate alkaa tippua jos ei klikkaile
+  * Kun on ostanut assetteja, hashing rate pysyy jossain vakiossa
+* Tärinäefekti jos klikkailee tarpeeksi nopeasti
+  * Tärinä kasvaa progressiivisesti
+* Kauppa
+  * Bittirahan myyminen dollareiksi ja dollareilla ostetaan assetteja
+  * Kauppias ottaa välistä 3%
+* Saavutukset
+* Tapahtumat (matala prioriteetti, esimerkiksi yhteisö klikit tms.)
+* Lompakkokuvake tms.

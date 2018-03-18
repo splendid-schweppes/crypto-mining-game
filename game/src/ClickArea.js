@@ -26,7 +26,6 @@ class ClickArea extends Component {
 
 const mapDispatchToProps = (dispatch, props) => ({
   click: event => {
-    console.log('dddd', event.nativeEvent)
     dispatch({
       type: 'CLICK',
       click: {

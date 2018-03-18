@@ -5,38 +5,29 @@ class BackgroundMusic extends Component {
     constructor() {
     super()
     this.state = {
-      playStateOnStorage: window.localStorage.getItem("bgmusic")
+      playStateOnStorage: window.localStorage.getItem('bgmusic')
     }
   }
 
   componentDidMount() {
-    if (this.state.playStateOnStorage === 'pause') {
-      this._audio.pause();
-    }
-    if (this.state.playStateOnStorage === 'play') {
-      this._audio.play();
-    }
+    this._audio[this.state.playStateOnStorage || 'play']()
   }
 
   backGroundMusic = () => {
-    if (this.state.playStateOnStorage === 'pause') {
-      this.setState({playStateOnStorage: 'play'});
-      this._audio.play();
-      window.localStorage.setItem("bgmusic", "play");
-    } else {
-      this.setState({playStateOnStorage: 'pause'});
-      this._audio.pause();
-      window.localStorage.setItem("bgmusic", "pause");
-    }
+    const status = this.state.playStateOnStorage === 'pause' ? 'play' : 'pause'
+
+    this._audio[status]()
+    this.setState({playStateOnStorage: status})
+    window.localStorage.setItem('bgmusic', status)
   }
 
   render() {
-    const buttonClasses = this.state.playStateOnStorage === 'play' ? 'fa fa-pause-circle' : 'fa fa-play-circle-o'
-    const classes = `${buttonClasses} music-button`;
+    const buttonClasses = this.state.playStateOnStorage === 'play' ? 'fa-pause-circle' : 'fa-play-circle-o'
+    const classes = `fa ${buttonClasses} music-button`
 
     return (
       <div className="audio-controls">
-        <audio ref={(a) => this._audio = a} preload="true" src="audio/game_music.mp3" autoPlay loop/>
+        <audio ref={(a) => this._audio = a} preload="true" src="audio/game_music.mp3" autoPlay loop />
         <div>
           <p>Background music</p>
         	<i className={classes} onClick={this.backGroundMusic}></i>

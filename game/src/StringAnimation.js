@@ -9,7 +9,7 @@ export default class StringAnimation extends Component {
   constructor() {
     super()
     this.state = {
-      text: '' // this.getText()
+      text: this.getText()
     }
   }
 

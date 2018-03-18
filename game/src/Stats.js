@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 
 const assets = 0
-const coins = 0
 
 class Stats extends Component {
   render() {
@@ -10,7 +9,7 @@ class Stats extends Component {
       <div>
         <p>Current hashing rate: {this.props.hashingRate.toFixed(3)}/s</p>
         <p>Blocks solved: {this.props.blocks.toFixed(3)}/30</p>
-        <p>Coins: {coins}</p>
+        <p>Coins: {this.props.coins}</p>
         <p>Assets: {assets}</p>
       </div>
     )
@@ -20,6 +19,7 @@ class Stats extends Component {
 const mapStateToProps = state => {
   return {
     blocks: state.blocks,
+    coins: state.coins,
     hashingRate: state.hashingRate
   }
 }

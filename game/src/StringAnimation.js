@@ -27,7 +27,7 @@ export default class StringAnimation extends Component {
   render() {
     return (
       <div className="string-animation">
-        <img src={laptopPng} className="string-animation-image" />
+        <img src={laptopPng} className="string-animation-image" alt="computer" />
         <div className="content">
           {this.state.text}
         </div>

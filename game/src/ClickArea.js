@@ -23,6 +23,7 @@ class ClickArea extends Component {
         src={coinSvg}
         className="click-area"
         onClick={this.props.click}
+        alt="click"
       />
     )
   }

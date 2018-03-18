@@ -34,6 +34,7 @@ class FlyingClick extends Component {
       <img
         src={coinSvg}
         key={click.id}
+        alt="coin"
         className="flying-click"
         style={style}
         onAnimationEnd={() => this.handleRemove(click.id)}

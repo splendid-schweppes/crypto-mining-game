@@ -8,6 +8,24 @@ class BackgroundMusic extends Component {
     }
   }
 
+  componentDidMount() {
+    const music = document.getElementById('music');
+    const bgMusic = window.localStorage.getItem("bgmusic");
+    const pButton = document.getElementById('pButton');
+    if (bgMusic === 'pause') {
+      music.pause();
+      pButton.className = "";
+      pButton.className = "fa fa-play-circle-o";
+      window.localStorage.setItem("bgmusic", "pause");
+    }
+    if (bgMusic === 'play') {
+      music.play();
+      pButton.className = "";
+      pButton.className = "fa fa-pause-circle";
+      window.localStorage.setItem("bgmusic", "play");
+    }
+  }
+
   backGroundMusic = () => {
     const music = document.getElementById('music');
     const pButton = document.getElementById('pButton');
@@ -15,10 +33,12 @@ class BackgroundMusic extends Component {
         music.play();
         pButton.className = "";
         pButton.className = "fa fa-pause-circle";
+        window.localStorage.setItem("bgmusic", "play");
     } else {
         music.pause();
         pButton.className = "";
         pButton.className = "fa fa-play-circle-o";
+        window.localStorage.setItem("bgmusic", "pause");
     }
   }
 

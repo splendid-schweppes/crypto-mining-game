@@ -4,19 +4,26 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Mina', sans-serif;
-  background: linear-gradient(198deg, #415ad4, #46b3dc, #00b8ff, #fd00ff);
-  background-size: 800% 800%;
-  animation: AnimationName 160s ease infinite;
+  background: linear-gradient(270deg, #00e6ff, #008fb0, #0066ca);
+  background-size: 600% 600%;
+
+  -webkit-animation: background-animation 59s ease infinite;
+  -moz-animation: background-animation 59s ease infinite;
+  animation: background-animation 59s ease infinite;
 }
 
-@keyframes AnimationName {
-  0% {
-    background-position: 56% 0%;
-  }
-  50% {
-    background-position:45% 100%;
-  }
-  100% {
-    background-position:56% 0%;
-  }
+@-webkit-keyframes background-animation {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes background-animation {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes background-animation {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
 }

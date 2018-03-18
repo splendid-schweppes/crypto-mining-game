@@ -5,43 +5,45 @@ class BackgroundMusic extends Component {
     constructor() {
     super()
     this.state = {
-      bgMusic: 'play'
+      bgMusic: 'play',
+      playStateOnStorage: window.localStorage.getItem("bgmusic")
     }
   }
 
   componentDidMount() {
-    const music = document.getElementById('music');
-    const bgMusic = window.localStorage.getItem("bgmusic");
-    if (bgMusic === 'pause') {
+    if (this.state.playStateOnStorage === 'pause') {
       this.setState({bgMusic: 'pause'});
-      music.pause();
+      this._audio.pause();
     }
-    if (bgMusic === 'play') {
+    if (this.state.playStateOnStorage === 'play') {
       this.setState({bgMusic: 'play'});
-      music.play();
+      this._audio.play();
     }
   }
 
-  backGroundMusic = () => {
-    const music = document.getElementById('music');
-    if (music.paused) {
+  backGroundMusic = (e) => {
+    console.log('wut', this.state.bgMusic);
+    if (this.state.bgMusic === 'pause') {
       this.setState({bgMusic: 'play'});
-      music.play();
+      this._audio.play();
       window.localStorage.setItem("bgmusic", "play");
     } else {
       this.setState({bgMusic: 'pause'});
-      music.pause();
+      this._audio.pause();
       window.localStorage.setItem("bgmusic", "pause");
     }
   }
 
   render() {
+    const buttonClasses = this.state.bgMusic === 'play' ? 'fa fa-pause-circle' : 'fa fa-play-circle-o'
+    const classes = `${buttonClasses} music-button`;
+    console.log('classes', classes);
     return (
       <div className="audio-controls">
-        <audio id="music" preload="true" src="audio/game_music.mp3" autoPlay loop/>
+        <audio ref={(a) => this._audio = a} preload="true" src="audio/game_music.mp3" autoPlay loop/>
         <div>
           <p>Background music</p>
-        	<i id="pButton" className={this.state.bgMusic === 'play' ? 'fa fa-pause-circle' : 'fa fa-play-circle-o'} onClick={this.backGroundMusic}></i>
+        	<i className={classes} onClick={this.backGroundMusic}></i>
         </div>
       </div>
     )

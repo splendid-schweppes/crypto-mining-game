@@ -1,16 +1,35 @@
 @import url('https://fonts.googleapis.com/css?family=Mina');
 
+html {
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: 'Mina', sans-serif;
-  background: linear-gradient(270deg, #00e6ff, #008fb0, #0066ca);
+  color: white;
+  text-shadow: 0px 1px 1px rgba(0, 0, 0, 1);
+
+
+  background-color: #434343;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  background: linear-gradient(270deg, #527350, #282828);
   background-size: 600% 600%;
 
   -webkit-animation: background-animation 59s ease infinite;
   -moz-animation: background-animation 59s ease infinite;
   animation: background-animation 59s ease infinite;
-  color: white;
+}
+
+#root {
+  background-color: transparent;
+  background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent);
+  height:100%;
+  background-size:50px 50px;
 }
 
 @-webkit-keyframes background-animation {

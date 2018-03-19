@@ -1,17 +1,6 @@
 import React, { Component } from 'react'
-import './menu.css'
-// import eventIcon from './svg_assets/trollcoin.svg'
 
-class Events extends Component {
-    constructor() {
-    super()
-    this.state = {
-    }
-  }
-
-  componentDidMount() {
-  }
-
+export default class Events extends Component {
   render() {
     return (
       <div className="menu-item">
@@ -23,5 +12,3 @@ class Events extends Component {
     )
   }
 }
-
-export default Events

@@ -1,16 +1,6 @@
 import React, { Component } from 'react'
-import './menu.css'
 
-class Achievements extends Component {
-    constructor() {
-    super()
-    this.state = {
-    }
-  }
-
-  componentDidMount() {
-  }
-
+export default class Achievements extends Component {
   render() {
     return (
       <div className="menu-item">
@@ -22,5 +12,3 @@ class Achievements extends Component {
     )
   }
 }
-
-export default Achievements

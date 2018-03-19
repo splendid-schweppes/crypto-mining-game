@@ -1,17 +1,6 @@
 import React, { Component } from 'react'
-import './menu.css'
 
-class Wallet extends Component {
-    constructor() {
-    super()
-    this.state = {
-
-    }
-  }
-
-  componentDidMount() {
-  }
-
+export default class Wallet extends Component {
   render() {
     return (
       <div className="menu-item">
@@ -24,5 +13,3 @@ class Wallet extends Component {
     )
   }
 }
-
-export default Wallet

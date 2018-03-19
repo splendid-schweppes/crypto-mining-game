@@ -1,7 +1,5 @@
-import React, { Component } from 'react';
-import { Grid, Row, Col } from 'react-flexbox-grid';
-import 'font-awesome/css/font-awesome.min.css'
-
+import React, { Component } from 'react'
+import { Grid, Row, Col } from 'react-flexbox-grid'
 import Stats from './Stats'
 import ClickArea from './ClickArea'
 import FlyingClick from './FlyingClick'
@@ -11,7 +9,8 @@ import BackgroundMusic from './BackgroundMusic'
 import StringAnimation from './StringAnimation'
 import Menu from './Menu'
 
-import './App.css';
+import 'font-awesome/css/font-awesome.min.css'
+import './App.css'
 
 export default class App extends Component {
   render() {
@@ -34,6 +33,6 @@ export default class App extends Component {
           </Col>
         </Row>
       </Grid>
-    );
+    )
   }
 }

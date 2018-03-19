@@ -1,21 +1,13 @@
 import React, { Component } from 'react'
-import './menu.css'
+
 import Wallet from './Wallet'
 import Shop from './Shop'
 import Events from './Events'
 import Achievements from './Achievements'
 
-class Menu extends Component {
-    constructor() {
-    super()
-    this.state = {
+import './Menu.css'
 
-    }
-  }
-
-  componentDidMount() {
-  }
-
+export default class Menu extends Component {
   render() {
     return (
       <div className="menu">
@@ -28,4 +20,3 @@ class Menu extends Component {
   }
 }
 
-export default Menu

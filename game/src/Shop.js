@@ -1,16 +1,6 @@
 import React, { Component } from 'react'
-import './menu.css'
 
-class Shop extends Component {
-    constructor() {
-    super()
-    this.state = {
-    }
-  }
-
-  componentDidMount() {
-  }
-
+export default class Shop extends Component {
   render() {
     return (
       <div className="menu-item">
@@ -22,5 +12,3 @@ class Shop extends Component {
     )
   }
 }
-
-export default Shop

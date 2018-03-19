@@ -6,7 +6,7 @@ export default class Events extends Component {
       <div className="menu-item">
         <div>
           <h3>Events</h3>
-          <i className="fa fa-calendar menu-icon"></i>
+          <i className="fa fa-4x fa-calendar menu-icon"></i>
         </div>
       </div>
     )

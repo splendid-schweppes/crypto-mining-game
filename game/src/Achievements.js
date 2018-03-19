@@ -6,7 +6,7 @@ export default class Achievements extends Component {
       <div className="menu-item">
         <div>
           <h3>Achievements</h3>
-          <i className="fa fa-trophy menu-icon"></i>
+          <i className="fa fa-4x fa-trophy menu-icon"></i>
         </div>
       </div>
     )

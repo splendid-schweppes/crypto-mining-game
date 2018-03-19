@@ -24,7 +24,7 @@ class BackgroundMusic extends Component {
 
   render() {
     const buttonClasses = this.state.playStateOnStorage === 'play' ? 'fa-pause-circle' : 'fa-play-circle-o'
-    const classes = `fa ${buttonClasses} music-button`
+    const classes = `fa fa-4x ${buttonClasses} music-button`
 
     return (
       <div className="audio-controls">

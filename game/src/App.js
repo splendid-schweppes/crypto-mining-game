@@ -9,6 +9,7 @@ import SolveBlocks from './SolveBlocks'
 import GetCoins from './GetCoins'
 import BackgroundMusic from './BackgroundMusic'
 import StringAnimation from './StringAnimation'
+import Menu from './Menu'
 
 import './App.css';
 
@@ -18,7 +19,7 @@ export default class App extends Component {
       <Grid fluid className="centered">
         <Row>
           <Col md={3} lg={3}>
-            Hello, world!
+            <Menu />
           </Col>
           <Col md={6} lg={6}>
             <FlyingClick />

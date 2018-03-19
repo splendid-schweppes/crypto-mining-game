@@ -16,7 +16,7 @@ class Achievements extends Component {
       <div className="menu-item">
         <div>
           <h3>Achievements</h3>
-          <i class="fa fa-trophy menu-icon"></i>
+          <i className="fa fa-trophy menu-icon"></i>
         </div>
       </div>
     )

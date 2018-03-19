@@ -17,8 +17,8 @@ class Wallet extends Component {
       <div className="menu-item">
         <div>
           <h3>Account Balance</h3>
-          <p>20 Trollcoins <i class="fa fa-connectdevelop"></i></p>
-          <p>400 $ <i class="fa fa-credit-card"></i></p>
+          <p>20 Trollcoins <i className="fa fa-connectdevelop"></i></p>
+          <p>400 $ <i className="fa fa-credit-card"></i></p>
         </div>
       </div>
     )

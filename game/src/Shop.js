@@ -16,7 +16,7 @@ class Shop extends Component {
       <div className="menu-item">
         <div>
           <h3>Shop</h3>
-          <i class="fa fa-shopping-cart menu-icon"></i>
+          <i className="fa fa-shopping-cart menu-icon"></i>
         </div>
       </div>
     )

@@ -1,7 +1,6 @@
 import {extend} from 'lodash'
 
-const loadClicks = () =>
-  JSON.parse(window.localStorage.getItem('clicks') || '[]')
+import {loadClicks} from '../Util'
 
 const saveClick = click => {
   window.localStorage.setItem('clicks', JSON.stringify([...loadClicks(), click]))

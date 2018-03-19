@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {reject} from 'lodash'
 
 import './FlyingClick.css'
+import coinSvg from './svg_assets/trollcoin.svg'
 
 const clickSize = 50 / 2
 
@@ -30,8 +31,10 @@ class FlyingClick extends Component {
     const style = {top: click.y - clickSize - 60, left: click.x - clickSize}
 
     return (
-      <div
+      <img
+        src={coinSvg}
         key={click.id}
+        alt="coin"
         className="flying-click"
         style={style}
         onAnimationEnd={() => this.handleRemove(click.id)}

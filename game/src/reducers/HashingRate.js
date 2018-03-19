@@ -1,9 +1,4 @@
-
-const defaultRate = 0.005
-
-// Copypaste from middleware
-const loadHashingRate = () =>
-  Number(JSON.parse(window.localStorage.getItem('hashingRate') || defaultRate))
+import {loadHashingRate} from '../Util'
 
 export default (state = loadHashingRate(), action) => {
   switch (action.type) {

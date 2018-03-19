@@ -1,7 +1,4 @@
-
-// Copypaste from middleware
-const loadClicks = () =>
-  JSON.parse(window.localStorage.getItem('clicks') || '[]')
+import {loadClicks} from '../Util'
 
 export default (state = {data: loadClicks(), latestClick: {}}, action) => {
   switch (action.type) {

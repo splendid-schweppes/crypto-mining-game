@@ -1,9 +1,7 @@
 import {extend} from 'lodash'
 
-const defaultRate = 0.005
-
-const loadHashingRate = () =>
-  Number(JSON.parse(window.localStorage.getItem('hashingRate') || defaultRate))
+import {defaultRate} from '../Config'
+import {loadHashingRate} from '../Util'
 
 const saveClick = () => {
   window.localStorage.setItem('hashingRate', JSON.stringify(loadHashingRate() + defaultRate))

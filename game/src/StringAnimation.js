@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import {times} from 'lodash'
 
 import './StringAnimation.css'
+import laptopPng from './svg_assets/computer_screen.png'
 
-const STRING_LENGTH = 16
+const STRING_LENGTH = 19
 
 export default class StringAnimation extends Component {
   constructor() {
@@ -26,7 +27,10 @@ export default class StringAnimation extends Component {
   render() {
     return (
       <div className="string-animation">
-        {this.state.text}
+        <img src={laptopPng} className="string-animation-image" alt="computer" />
+        <div className="content">
+          {this.state.text}
+        </div>
       </div>
     )
   }

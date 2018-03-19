@@ -1,8 +1,5 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import {connect} from 'react-redux'
-
-const blocksSolved = 0
-const assets = 0
 
 class SolveBlocks extends Component {
   componentDidMount() {
@@ -26,7 +23,6 @@ const mapDispatchToProps = (dispatch, props) => ({
 
 const mapStateToProps = state => {
   return {
-    blocks: state.blocks,
     hashingRate: state.hashingRate
   }
 }

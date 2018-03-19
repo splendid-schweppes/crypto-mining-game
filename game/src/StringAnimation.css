@@ -2,19 +2,26 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  word-wrap: break-word;
-  overflow: hidden;
-  height: 190px;
-  width: 300px;
   margin: 10px;
   color: #ffffff;
   font-size: 12px;
-  /* opacity: 0.5; */
   color: rgb(0, 187, 30);
   padding: 40px;
-  background-image: url(/svg_assets/computer_screen.png);
-  background-size: cover;
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position-y: 20px;
+}
+
+.string-animation .string-animation-image {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  height: 225px;
+  width: 380px;
+}
+
+.string-animation .content {
+  word-wrap: break-word;
+  overflow: hidden;
+  height: 155px;
+  width: 300px;
+  z-index: 10;
 }

@@ -5,6 +5,8 @@ import {uniqueId} from 'lodash'
 import './ClickArea.css'
 import 'csshake/dist/csshake.css';
 
+import coinSvg from './svg_assets/trollcoin.svg'
+
 const shakes = [
   '',
   'shake shake-little',
@@ -17,9 +19,11 @@ const shakes = [
 class ClickArea extends Component {
   render() {
     return (
-      <div
+      <img
+        src={coinSvg}
         className="click-area"
         onClick={this.props.click}
+        alt="click"
       />
     )
   }

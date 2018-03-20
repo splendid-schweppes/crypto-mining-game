@@ -6,7 +6,7 @@ export default class Shop extends Component {
     super();
 
     this.state = {
-      modalIsOpen: true
+      modalIsOpen: false
     };
 
     this.openModal = this.openModal.bind(this);

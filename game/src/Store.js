@@ -14,13 +14,13 @@ const appReducer = combineReducers({
   coins: CoinsReducer,
   hashingRate: HashingRateReducer,
   blocks: BlocksReducer
-});
+})
 
 const middleware = applyMiddleware(
   ClickMiddleware,
   CoinsMiddleware,
   HashingRateMiddleware,
   BlocksMiddleware
-);
+)
 
 export default createStore(appReducer, middleware)

@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import './BackgroundMusic.css'
 
-class BackgroundMusic extends Component {
-    constructor() {
+export default class BackgroundMusic extends Component {
+  constructor() {
     super()
     this.state = {
       playStateOnStorage: window.localStorage.getItem('bgmusic') || 'play'
-
     }
   }
 
@@ -37,5 +36,3 @@ class BackgroundMusic extends Component {
     )
   }
 }
-
-export default BackgroundMusic

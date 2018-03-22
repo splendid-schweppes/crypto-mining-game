@@ -3,22 +3,22 @@ import ShopModal from './ShopModal'
 
 export default class Shop extends Component {
   constructor() {
-    super();
+    super()
 
     this.state = {
       modalIsOpen: false
-    };
+    }
 
-    this.openModal = this.openModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
+    this.openModal = this.openModal.bind(this)
+    this.closeModal = this.closeModal.bind(this)
   }
 
   openModal() {
-    this.setState({modalIsOpen: true});
+    this.setState({modalIsOpen: true})
   }
 
   closeModal() {
-    this.setState({modalIsOpen: false});
+    this.setState({modalIsOpen: false})
   }
 
   render() {

@@ -10,14 +10,19 @@ export default class StringAnimation extends Component {
   constructor() {
     super()
     this.state = {
-      text: this.getText()
+      text: this.jepJuu()
     }
   }
 
-  componentDidMount() {
-    setInterval(() => {
-      this.setState({text: times(STRING_LENGTH, this.getText).join('')})
-    }, 1000/8)
+  // Animation disabled for now
+  // componentDidMount() {
+  //   setInterval(() => {
+  //     this.setState({text: this.jepJuu()})
+  //   }, 1000/8)
+  // }
+
+  jepJuu() {
+    return times(STRING_LENGTH, this.getText).join('')
   }
 
   getText() {

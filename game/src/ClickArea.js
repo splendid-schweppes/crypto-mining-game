@@ -7,14 +7,14 @@ import 'csshake/dist/csshake.css';
 
 import coinSvg from './svg_assets/trollcoin.svg'
 
-const shakes = [
-  '',
-  'shake shake-little',
-  'shake shake',
-  'shake shake-slow',
-  'shake shake-hard',
-  'shake shake-crazy'
-]
+// const shakes = [
+//   '',
+//   'shake shake-little',
+//   'shake shake',
+//   'shake shake-slow',
+//   'shake shake-hard',
+//   'shake shake-crazy'
+// ]
 
 class ClickArea extends Component {
   render() {

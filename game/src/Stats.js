@@ -9,6 +9,7 @@ class Stats extends Component {
         <p>Blocks solved: {this.props.blocks.toFixed(3)}/30</p>
         <p>Coins: {this.props.coins}</p>
         <p>Assets: {this.props.assets}</p>
+        <p>Electricity required: {this.props.electricity}</p>
       </div>
     )
   }
@@ -19,7 +20,8 @@ const mapStateToProps = state => {
     blocks: state.blocks,
     coins: state.coins,
     hashingRate: state.hashingRate,
-    assets: 0
+    assets: 0,
+    electricity: 0
   }
 }
 

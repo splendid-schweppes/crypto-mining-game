@@ -1,7 +1,26 @@
-.modal-close-button{
+.modal-close-button {
   position: absolute;
   top: 0;
   right: 0;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+  background-color: #292929;
+  color: white;
+  border: 2px solid white;
+  margin-right: 20px;
+  margin-top: 20px;
+}
+
+.modal-close-button:hover {
+  background-color: #555555;
+  color: white;
 }
 
 .computershoplogo {
@@ -19,7 +38,7 @@
   max-width: 100px;
 }
 
-.shop-item-icon-gpu1 {
+.shop-item-icon-general {
   max-width: 250px;
 }
 
@@ -29,23 +48,8 @@
 
 .shop-item {
   font-size: 1.4em;
-
-
-/*Gradient makes the modal super slow*/
-/*  background:
-  radial-gradient(circle farthest-side at 0% 50%,#2b3f74 23.5%,rgba(240,166,17,0) 0)21px 30px,
-  radial-gradient(circle farthest-side at 0% 50%,#20305b 24%,rgba(240,166,17,0) 0)19px 30px,
-  linear-gradient(#2b3f74 14%,rgba(240,166,17,0) 0, rgba(240,166,17,0) 85%,#2b3f74 0)0 0,
-  linear-gradient(150deg,#2b3f74 24%,#20305b 0,#20305b 26%,rgba(240,166,17,0) 0,rgba(240,166,17,0) 74%,#20305b 0,#20305b 76%,#2b3f74 0)0 0,
-  linear-gradient(30deg,#2b3f74 24%,#20305b 0,#20305b 26%,rgba(240,166,17,0) 0,rgba(240,166,17,0) 74%,#20305b 0,#20305b 76%,#2b3f74 0)0 0,
-  linear-gradient(90deg,#20305b 2%,#2b3f74 0,#2b3f74 98%,#20305b 0%)0 0 #2b3f74;
-*/
-
-  background: #20305b;
-  background-size:40px 60px;
-
-  border-radius: 200px;
-  padding: 20px;
+  background: #005073;
+  padding: 0px 20px 20px 20px;
   min-height: 400px;
   margin-top: 20px;
   transition: 0.3s;
@@ -70,4 +74,18 @@
 .buy-item-button:hover {
   background-color: #3b883e;
   cursor: pointer;
+}
+
+.item-details {
+  font-size: 14px;
+}
+
+.shop-highlight {
+  color: #a9dd15;
+}
+
+.shop-item-heading {
+  background-color: #107dac;
+  border-radius: 0px 0px 20px 20px;
+  padding: 10px 10px 1px 10px;
 }

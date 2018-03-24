@@ -1,8 +1,9 @@
 {
-  "main.css": "static/css/main.8bb5344c.css",
-  "main.css.map": "static/css/main.8bb5344c.css.map",
-  "main.js": "static/js/main.d2484431.js",
-  "main.js.map": "static/js/main.d2484431.js.map",
+  "main.css": "static/css/main.f271c716.css",
+  "main.css.map": "static/css/main.f271c716.css.map",
+  "main.js": "static/js/main.4e547e46.js",
+  "main.js.map": "static/js/main.4e547e46.js.map",
+  "static/media/cat1.png": "static/media/cat1.2acf1843.png",
   "static/media/computer_screen.png": "static/media/computer_screen.60606b56.png",
   "static/media/computershoplogo.png": "static/media/computershoplogo.885837f5.png",
   "static/media/fontawesome-webfont.eot": "static/media/fontawesome-webfont.674f50d2.eot",
@@ -13,8 +14,14 @@
   "static/media/gpu1fan.svg": "static/media/gpu1fan.9b76600f.svg",
   "static/media/gpu2fan.svg": "static/media/gpu2fan.bbf62423.svg",
   "static/media/gpu3fan.svg": "static/media/gpu3fan.d7c6752e.svg",
+  "static/media/motherboard.svg": "static/media/motherboard.3b56f53e.svg",
+  "static/media/motherboard2.svg": "static/media/motherboard2.36cd3105.svg",
+  "static/media/motherboard3.svg": "static/media/motherboard3.41399e6c.svg",
   "static/media/pc.svg": "static/media/pc.8598bc39.svg",
   "static/media/pc2.svg": "static/media/pc2.a1da7568.svg",
   "static/media/pc3.svg": "static/media/pc3.2e0632bd.svg",
+  "static/media/powersupply.svg": "static/media/powersupply.fa28f7be.svg",
+  "static/media/powersupply2.svg": "static/media/powersupply2.9d559093.svg",
+  "static/media/powersupply3.svg": "static/media/powersupply3.be640fb4.svg",
   "static/media/trollcoin.svg": "static/media/trollcoin.5d150bcf.svg"
 }

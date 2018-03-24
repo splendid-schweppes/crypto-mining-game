@@ -28,7 +28,6 @@
   cursor: pointer;
 }
 
-/*
-.menu-icon {
-  font-size: 52px;
-} */
+.wallet-coins {
+  color: #50ffb0;
+}

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import AchievementsModal from './AchievementsModal'
 import Modal from 'react-modal'
 
-Modal.setAppElement('#root');
+Modal.setAppElement('#root')
 
 export default class Achievements extends Component {
   constructor() {
@@ -12,16 +12,16 @@ export default class Achievements extends Component {
       isModalOpen: false,
     }
 
-    this.openModal = this.openModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
+    this.openModal = this.openModal.bind(this)
+    this.closeModal = this.closeModal.bind(this)
   }
 
   openModal() {
-    this.setState({isModalOpen: true});
+    this.setState({isModalOpen: true})
   }
 
   closeModal() {
-    this.setState({isModalOpen: false});
+    this.setState({isModalOpen: false})
   }
 
   render() {

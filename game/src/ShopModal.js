@@ -49,12 +49,10 @@ export default class ShopModal extends React.Component {
             alt="computershoplogo"
             className="computershoplogo"
           />
-          <button
-            onClick={this.props.closeModal}
-            className="modal-close-button"
-          >
-            close
-          </button>
+
+          <div className="modal-close-button" onClick={this.props.closeModal}>
+            <span id="x">X</span>
+          </div>
 
           <Grid fluid className="centered shop-grid">
             <Row>

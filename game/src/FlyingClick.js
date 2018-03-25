@@ -57,7 +57,7 @@ class FlyingClick extends Component {
 
 const mapStateToProps = state => {
   return {
-    latestClick: state.clicks.latestClick,
+    latestClick: state.clicks.latestClick
   }
 }
 

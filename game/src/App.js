@@ -4,6 +4,7 @@ import Stats from './Stats'
 import ClickArea from './ClickArea'
 import FlyingClick from './FlyingClick'
 import SolveBlocks from './SolveBlocks'
+import DecreaseHashingRate from './DecreaseHashingRate'
 import GetCoins from './GetCoins'
 import BackgroundMusic from './BackgroundMusic'
 import StringAnimation from './StringAnimation'
@@ -25,6 +26,7 @@ export default class App extends Component {
             <ClickArea />
             <Stats />
             <SolveBlocks />
+            <DecreaseHashingRate />
             <GetCoins />
           </Col>
           <Col md={3} lg={3}>

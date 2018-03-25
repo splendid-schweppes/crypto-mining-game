@@ -45,7 +45,7 @@ const achievementCatText = [
   {heading: 'Hurrr a Purrr', text: 'Cattastic day for you! Looks like there are couple of achievements to do.'},
   {heading: 'Meaow', text: 'I am not helping much? Am I? Well, it\'s not my fault if you cant click any faster.'},
   {heading: 'My ball of wool is!....', text: 'Oh sorry, I didn\'t pay attention. Get clicking you lazy player!'},
-  {heading: 'What should we do today?', text: 'Maybe you should click faster to get more assets from the Hot Rod computer store?'}
+  {heading: 'What should we do today?', text: 'Maybe you should click faster to get more assets from the KittyCat PC store?'}
 ]
 
 class AchievementsModal extends React.Component {

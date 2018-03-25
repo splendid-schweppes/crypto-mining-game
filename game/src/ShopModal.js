@@ -54,7 +54,7 @@ const assets = [
 ]
 
 const sellerCatText = [
-  {heading: 'Welcome to the Hot Rod Computer store!', text: 'We offer the finest selection of computers, components and of course a special price, just for you my friend!'},
+  {heading: 'Welcome to the KittyCat PC Store!', text: 'We offer the finest selection of computers, components and of course a special price, just for you my friend!'},
   {heading: 'Super deals today!', text: 'Today we have extra fine computer equipment for sale. If you have any questions, I will not answer!'},
   {heading: 'Oh it\'s you, welcome!', text: 'I hope you find something suitable for what ever you are doing.'},
   {heading: 'Hello stranger!', text: 'My shop has been here for a decade and we always try to find the latest tech and stuff for our customers to enjoy.'},
@@ -156,12 +156,12 @@ class ShopModal extends React.Component {
       <div>
         <Modal isOpen={this.props.modalIsOpen} style={customStyles}>
           <h2 className="centered">
-            The Hot Rod Computer store
+            KittyCat PC STORE
           </h2>
           <img
             src={computershoplogo}
             alt="computershoplogo"
-            className="computershoplogo"
+            className="computershoplogo img-responsive"
           />
 
           <div className="modal-close-button" onClick={this.props.closeModal}>

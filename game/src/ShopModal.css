@@ -1,7 +1,8 @@
 .computershoplogo {
   position: absolute;
    top: 0;
-   margin-top: 30px;
+   padding: 20px;
+   max-width: 420px;
    left: 20;
 }
 

@@ -66,14 +66,16 @@ class ShopModal extends React.Component {
   }
 
   changeCoinCount({target}) {
-    if (target.value <= this.props.coins) {
+    if (target.value >= 0 && target.value <= this.props.coins) {
       this.setState({coins: target.value})
     }
   }
 
   sellCoins() {
-    this.props.sellCoins(this.state.coins)
-    this.setState({coins: this.props.coins - this.state.coins})
+    if (this.state.coins >= 0) {
+      this.props.sellCoins(this.state.coins)
+      this.setState({coins: this.props.coins - this.state.coins})
+    }
   }
 
   buyAsset(asset) {
@@ -132,12 +134,17 @@ class ShopModal extends React.Component {
             <span id="x">X</span>
           </div>
 
+          <div>
+            Sell coins:
+            <input type="number" value={this.state.coins} onChange={this.changeCoinCount} />
+            <button onClick={this.sellCoins}>
+              Sell
+            </button>
+          </div>
 
-          Sell coins: todo set state
-          <input type="number" value={this.state.coins} onChange={this.changeCoinCount} />
-          <button onClick={this.sellCoins}>
-            Sell
-          </button>
+          <div>
+            ${this.props.money.toFixed(2)}
+          </div>
 
           <Grid fluid className="centered shop-grid">
             <Row>

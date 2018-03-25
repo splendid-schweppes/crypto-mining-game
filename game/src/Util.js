@@ -18,3 +18,7 @@ export const loadMoney = () =>
 
 export const loadAssets = () =>
   JSON.parse(window.localStorage.getItem('assets') || '[]')
+
+export const loadAchievements = () =>
+  JSON.parse(window.localStorage.getItem('achievements') || '[]')
+

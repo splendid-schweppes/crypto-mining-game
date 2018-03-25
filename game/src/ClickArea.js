@@ -42,6 +42,7 @@ class ClickArea extends Component {
         className={className}
         onClick={this.props.click}
         alt="click"
+        draggable="false"
       />
     )
   }

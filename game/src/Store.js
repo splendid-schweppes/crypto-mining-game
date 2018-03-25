@@ -5,6 +5,7 @@ import HashingRateReducer from './reducers/HashingRate'
 import BlocksReducer from './reducers/Blocks'
 import MoneyReducer from './reducers/Money'
 import AssetsReducer from './reducers/Assets'
+import AchievementsReducer from './reducers/Achievements'
 
 import ClickMiddleware from './middleware/Click'
 import CoinsMiddleware from './middleware/Coins'
@@ -12,6 +13,7 @@ import HashingRateMiddleware from './middleware/HashingRate'
 import BlocksMiddleware from './middleware/Blocks'
 import MoneyMiddleware from './middleware/Money'
 import AssetsMiddleware from './middleware/Assets'
+import AchievementsMiddleware from './middleware/Achievements'
 
 const appReducer = combineReducers({
   clicks: ClickReducer,
@@ -19,7 +21,8 @@ const appReducer = combineReducers({
   hashingRate: HashingRateReducer,
   blocks: BlocksReducer,
   money: MoneyReducer,
-  assets: AssetsReducer
+  assets: AssetsReducer,
+  achievements: AchievementsReducer
 })
 
 const middleware = applyMiddleware(
@@ -28,7 +31,8 @@ const middleware = applyMiddleware(
   HashingRateMiddleware,
   BlocksMiddleware,
   MoneyMiddleware,
-  AssetsMiddleware
+  AssetsMiddleware,
+  AchievementsMiddleware
 )
 
 export default createStore(appReducer, middleware)

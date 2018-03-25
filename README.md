@@ -47,7 +47,7 @@ Kauppa mistä voi päivittää konetta ja saada automaattisesti mainattua
   * ~~Bittirahan myyminen dollareiksi~~
   * ~~dollareilla ostetaan assetteja~~
   * ~~Kauppias ottaa välistä 5%~~
-* Saavutukset
+* ~~Saavutukset~~
 * Tapahtumat (matala prioriteetti, esimerkiksi yhteisö klikit tms.)
 * ~~Lompakkokuvake tms.~~
 * ~~Klikkien replay~~

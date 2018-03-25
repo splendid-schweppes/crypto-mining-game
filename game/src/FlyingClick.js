@@ -28,9 +28,7 @@ class FlyingClick extends Component {
   }
 
   handleClick() {
-    if (random(0, 3) < 2) {
-      this.props.getCoin()
-    }
+    this.props.getBlock()
   }
 
   renderFlying(click, i) {
@@ -69,8 +67,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = (dispatch, props) => ({
-  getCoin: () => {
-    dispatch({type: 'GET_COIN'})
+  getBlock: () => {
+    dispatch({type: 'SOLVE_BLOCK', count: 1})
   }
 })
 

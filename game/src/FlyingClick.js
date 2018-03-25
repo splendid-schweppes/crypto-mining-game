@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import {reject} from 'lodash'
+import {reject, get} from 'lodash'
 
 import './FlyingClick.css'
 import coinSvg from './svg_assets/trollcoin.svg'
@@ -42,7 +42,7 @@ class FlyingClick extends Component {
   }
 
   render() {
-    if (!this.props.latestClick.x) {
+    if (!get(this, 'props.latestClick.x')) {
       return null
     }
 

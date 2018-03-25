@@ -64,7 +64,10 @@ export default class AchievementsModal extends React.Component {
             <Col md={6} lg={6}>
               <div className="talk-bubble tri-right left-top round">
                 <div className="talktext">
-                  <p>Welcome to your achievements! I shall be your fluffy advisor cat. 0 / 100 completed.</p>
+                  <p>
+                    Welcome to your achievements! I shall be your fluffy advisor cat.<br/>
+                    0 / 100 completed.
+                  </p>
                 </div>
               </div>
             </Col>

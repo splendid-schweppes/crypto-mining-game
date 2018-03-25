@@ -182,10 +182,12 @@ class ShopModal extends React.Component {
           <Row>
           <Col md={3} lg={3}>
           <div className="shop-electricity">
-            Electricity available: <strong>0</strong> wats
+            <strong>0</strong>
+            <i className="fa fa-battery-three-quarters status-icons" aria-hidden="true"></i>
           </div>
             <div className="shop-wallet">
-              Cash available: <strong>{this.props.money.toFixed(2)}</strong> $
+              <strong>{this.props.money.toFixed(2)}</strong>
+              <i className="fa fa-usd status-icons" aria-hidden="true"></i>
             </div>
           </Col>
             <Col md={6} lg={6}>

@@ -134,3 +134,8 @@
   font-size: 22px;
   margin-bottom: 20px;
 }
+
+.status-icons {
+  float: right;
+  padding: 7px;
+}

@@ -23,25 +23,27 @@
 .menu-item:hover {
   width: 350px;
   transition: 0.3s;
-  background-color: rgb(94, 199, 105);
-  text-shadow: 0px 3px 4px rgba(255, 112, 145, 1);
+  background-color: #96de00;
+  text-shadow: 0px 3px 4px rgba(0, 64, 255, 1);
   cursor: pointer;
 }
 
 .wallet-coins {
-  color: #50ffb0;
+  color: #faff00;
 }
 
 .wallet {
-  min-height: 210px;
+  min-height: 300px;
+  font-size: 22px;
 }
 
 input[type=number] {
     margin: 10px 0px 10px 0px;
-    width: 100px;
-    padding: 12px 20px;
+    width: 130px;
+    padding: 5px 0px 5px 5px;;
     margin: 8px 0;
     box-sizing: border-box;
+    font-size: 22px;
 }
 
 input[type=number]:focus, input:focus{
@@ -52,7 +54,7 @@ input[type=number]:focus, input:focus{
   background-color: #4CAF50;
   border: none;
   color: white;
-  padding: 8px 10px 12px 10px;
+  padding: 9px 19px 8px 15px;
   text-align: center;
   text-decoration: none;
   display: inline-block;

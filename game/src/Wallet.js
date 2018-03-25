@@ -32,9 +32,9 @@ class Wallet extends Component {
           <h3>Account Balance</h3>
           <p>
             <strong className="wallet-coins">{this.props.coins}</strong>{' '}
-            Trollcoins <i className="fa fa-connectdevelop"></i>
+            <i className="fa fa-connectdevelop"></i>
           </p>
-          <p>${this.props.money.toFixed(2)} <i className="fa fa-credit-card"></i></p>
+          <p><span className="wallet-coins">{this.props.money.toFixed(2)}</span> $</p>
           <div>
             <input type="number" value={this.state.coins} onChange={this.changeCoinCount} step="1" min="1" className=""/>
             <button onClick={this.sellCoins} className="sell-coins-button">

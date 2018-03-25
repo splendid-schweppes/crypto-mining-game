@@ -24,7 +24,7 @@ const mapStateToProps = state => {
     hashingRate: state.hashingRate,
     assets: state.assets,
     hashingRateFromAssets: sumBy(state.assets, 'hashingRate'),
-    electricity: 0
+    electricity: sumBy(state.assets, 'electricityCost')
   }
 }
 

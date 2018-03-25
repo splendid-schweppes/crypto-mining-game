@@ -21,7 +21,7 @@ const shakes = [
 ]
 
 const getShake = shake => {
-  if (shake > shakes.length) {
+  if (shake > shakes.length - 1) {
     return last(shakes)
   }
 

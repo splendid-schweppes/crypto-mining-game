@@ -42,11 +42,12 @@ Kauppa mistä voi päivittää konetta ja saada automaattisesti mainattua
 * Tärinäefekti jos klikkailee tarpeeksi nopeasti
   * Tärinä kasvaa progressiivisesti
 * Kauppa
-  * Bittirahan myyminen dollareiksi ja dollareilla ostetaan assetteja
-  * Kauppias ottaa välistä 3%
+  * ~~Bittirahan myyminen dollareiksi~~
+  * dollareilla ostetaan assetteja
+  * ~~Kauppias ottaa välistä 5%~~
 * Saavutukset
 * Tapahtumat (matala prioriteetti, esimerkiksi yhteisö klikit tms.)
-* Lompakkokuvake tms.
+* ~~Lompakkokuvake tms.~~
 * Klikkien replay
 * Sähkölasku 10 min välein tms
   * Jos ei maksa, tietokoneet sammuu

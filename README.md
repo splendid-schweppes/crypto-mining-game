@@ -12,6 +12,8 @@
 # Slogan
 * To The Moon!
 
+https://splendid-schweppes.github.io/crypto-mining-game/
+
 # Peruspeli MVP
 
 Keskellä ruutua ns. Mining asset jota klikkaamalla saa kryptoa louhittua omalle tililleen. Mitä nopeammin rämpyttää sitä nopeampi “hashing rate” Kun kryptovaluuttaa on tarpeeksi tilillä, voi ostaa Pentin PC kaupasta parempia komponentteja. Esimerkiksi prosessori on halvempi kuin näytönohjain, mutta hashing rate on pienempi. Näytönohjaimissa isompi hashing rate, mutta ovat kalliimpia. Ehkä joku limit kuinka monta komponenttia voi olla per PC. Kokonainen PC mainaa nopeammin, ja tietokonetta voi päivittää aina tiettyyn pisteeseen. Ehkä jopa niin että emolevyjä on erilaisia ja niihin saa X määrän komponentteja.

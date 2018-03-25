@@ -1,10 +1,9 @@
 import {extend, random} from 'lodash'
 
 import {loadMoney} from '../Util'
+import {shop_commission_percent} from '../Config'
 
 const coin_conversion_rate = random(10, 100, true)
-
-const shop_commission_percent = 5
 
 const saveMoney = count => {
   window.localStorage.setItem('money', JSON.stringify(count))

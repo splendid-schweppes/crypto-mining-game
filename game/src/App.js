@@ -7,6 +7,7 @@ import SolveBlocks from './SolveBlocks'
 import DecreaseHashingRate from './DecreaseHashingRate'
 import GetCoins from './GetCoins'
 import BackgroundMusic from './BackgroundMusic'
+import Replay from './Replay'
 import StringAnimation from './StringAnimation'
 import InvisibleElement from './InvisibleElement'
 import Menu from './Menu'
@@ -33,6 +34,7 @@ export default class App extends Component {
           </Col>
           <Col md={3} lg={3}>
             <BackgroundMusic />
+            <Replay />
             <StringAnimation />
           </Col>
         </Row>

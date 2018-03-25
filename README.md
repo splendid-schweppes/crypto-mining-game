@@ -40,16 +40,16 @@ Kauppa mistä voi päivittää konetta ja saada automaattisesti mainattua
 * ~~Jos klikkaa pientä palloa, saa yhden lohkon~~
   * ~~Lohkot pitää nollaantua kun 30 lohkoa on ratkottu ja siitä saa yhden kolikon~~
 * ~~Hashing rate alkaa tippua jos ei klikkaile~~
-  * Kun on ostanut assetteja, hashing rate pysyy jossain vakiossa
+  * ~~Kun on ostanut assetteja, hashing rate pysyy jossain vakiossa~~
 * ~~Tärinäefekti jos klikkailee tarpeeksi nopeasti~~
   * ~~Tärinä kasvaa progressiivisesti~~
-* Kauppa
+* ~~Kauppa~~
   * ~~Bittirahan myyminen dollareiksi~~
-  * dollareilla ostetaan assetteja
+  * ~~dollareilla ostetaan assetteja~~
   * ~~Kauppias ottaa välistä 5%~~
 * Saavutukset
 * Tapahtumat (matala prioriteetti, esimerkiksi yhteisö klikit tms.)
 * ~~Lompakkokuvake tms.~~
-* Klikkien replay
+* ~~Klikkien replay~~
 * Sähkölasku 10 min välein tms
   * Jos ei maksa, tietokoneet sammuu

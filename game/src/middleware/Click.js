@@ -15,6 +15,8 @@ export default () => next => action => {
   switch (action.type) {
     case 'CLICK':
       return save({action, next})
+    case 'REPLAY_CLICK':
+      return next(extend({}, action, {clicks: loadClicks()}))
     default:
       return next(action)
   }

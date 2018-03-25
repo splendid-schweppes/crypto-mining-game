@@ -5,6 +5,8 @@ export default (state = {data: loadClicks(), latestClick: last(loadClicks())}, a
   switch (action.type) {
     case 'CLICK':
       return {data: [...action.clicks], latestClick: action.click}
+    case 'REPLAY_CLICK':
+      return {data: [...action.clicks], latestClick: action.click}
     default:
       return state
   }

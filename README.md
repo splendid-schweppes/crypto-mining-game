@@ -39,8 +39,8 @@ Kauppa mistä voi päivittää konetta ja saada automaattisesti mainattua
   * ~~Lohkot pitää nollaantua kun 30 lohkoa on ratkottu ja siitä saa yhden kolikon~~
 * ~~Hashing rate alkaa tippua jos ei klikkaile~~
   * Kun on ostanut assetteja, hashing rate pysyy jossain vakiossa
-* Tärinäefekti jos klikkailee tarpeeksi nopeasti
-  * Tärinä kasvaa progressiivisesti
+* ~~Tärinäefekti jos klikkailee tarpeeksi nopeasti~~
+  * ~~Tärinä kasvaa progressiivisesti~~
 * Kauppa
   * ~~Bittirahan myyminen dollareiksi~~
   * dollareilla ostetaan assetteja

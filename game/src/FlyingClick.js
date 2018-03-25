@@ -43,6 +43,7 @@ class FlyingClick extends Component {
         style={style}
         onAnimationEnd={() => this.handleRemove(click.id)}
         onClick={this.handleClick}
+        draggable="false"
       />
     )
   }

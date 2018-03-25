@@ -1,5 +1,6 @@
 import React from 'react'
 import Modal from 'react-modal'
+import {connect} from 'react-redux'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 
 import computershoplogo from './svg_assets/computershoplogo.png'
@@ -80,7 +81,30 @@ const renderAsset = (asset) => {
   )
 }
 
-export default class ShopModal extends React.Component {
+class ShopModal extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      coins: props.coins
+    }
+
+    this.changeCoinCount = this.changeCoinCount.bind(this)
+    this.sell = this.sell.bind(this)
+  }
+
+  changeCoinCount({target}) {
+    console.log(target.value)
+
+    if (target.value <= this.props.coins) {
+      this.setState({coins: target.value})
+    }
+  }
+
+  sell() {
+    this.props.sell(this.state.coins)
+    this.setState({coins: this.props.coins - this.state.coins})
+  }
+
   render() {
     return (
       <div>
@@ -101,6 +125,11 @@ export default class ShopModal extends React.Component {
             <span id="x">X</span>
           </div>
 
+
+          Sell coins: todo set state
+          <input type="number" value={this.state.coins} onChange={this.changeCoinCount} />
+          <button onClick={this.sell}>Sell</button>
+
           <Grid fluid className="centered shop-grid">
             <Row>
               {assets.map(renderAsset)}
@@ -111,3 +140,19 @@ export default class ShopModal extends React.Component {
     )
   }
 }
+
+const mapDispatchToProps = (dispatch, props) => ({
+  sell: count => {
+    dispatch({type: 'SELL_COINS', count})
+    dispatch({type: 'REMOVE_COINS', count})
+  }
+})
+
+const mapStateToProps = state => {
+  return {
+    coins: state.coins,
+    assets: 0,
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShopModal)

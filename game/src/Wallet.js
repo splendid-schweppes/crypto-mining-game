@@ -8,10 +8,10 @@ class Wallet extends Component {
         <div>
           <h3>Account Balance</h3>
           <p>
-            <strong className="wallet-coins">{this.props.coins}</strong>
+            <strong className="wallet-coins">{this.props.coins}</strong>{' '}
             Trollcoins <i className="fa fa-connectdevelop"></i>
           </p>
-          <p>0 $ <i className="fa fa-credit-card"></i></p>
+          <p>${this.props.money.toFixed(2)} <i className="fa fa-credit-card"></i></p>
         </div>
       </div>
     )
@@ -23,6 +23,7 @@ const mapStateToProps = state => {
     blocks: state.blocks,
     coins: state.coins,
     hashingRate: state.hashingRate,
+    money: state.money,
     assets: 0,
     electricity: 0
   }

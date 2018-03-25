@@ -3,19 +3,19 @@ import {extend} from 'lodash'
 import {defaultHashingRate} from '../Config'
 import {loadHashingRate} from '../Util'
 
-const saveClick = (rate) => {
+const saveRate = (rate) => {
   window.localStorage.setItem('hashingRate', JSON.stringify(rate))
 }
 
 const increase = ({action, next}) => {
-  saveClick(loadHashingRate() + defaultHashingRate)
+  saveRate(loadHashingRate() + defaultHashingRate)
   return next(extend({}, action, {hashingRate: loadHashingRate()}))
 }
 
 const decrease = ({action, next}) => {
-  const rate = loadHashingRate() - defaultHashingRate
+  const rate = Number(loadHashingRate().toFixed(3)) - defaultHashingRate
   if (rate >= 0) {
-    saveClick(rate)
+    saveRate(rate)
   }
   return next(extend({}, action, {hashingRate: loadHashingRate()}))
 }

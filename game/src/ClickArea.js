@@ -49,7 +49,8 @@ class ClickArea extends Component {
 
 const mapStateToProps = state => {
   return {
-    clicks: state.clicks.data
+    clicks: state.clicks.data,
+    blocks: state.blocks // for getting shakes off
   }
 }
 

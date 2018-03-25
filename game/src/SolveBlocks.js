@@ -1,10 +1,11 @@
-import { Component } from 'react';
+import { Component } from 'react'
 import {connect} from 'react-redux'
+import {sumBy} from 'lodash'
 
 class SolveBlocks extends Component {
   componentDidMount() {
     setInterval(() => {
-      this.props.solveBlock(this.props.hashingRate)
+      this.props.solveBlock(this.props.hashingRate + this.props.hashingRateFromAssets)
     }, 1000)
   }
 
@@ -23,7 +24,8 @@ const mapDispatchToProps = (dispatch, props) => ({
 
 const mapStateToProps = state => {
   return {
-    hashingRate: state.hashingRate
+    hashingRate: state.hashingRate,
+    hashingRateFromAssets: sumBy(state.assets, 'hashingRate'),
   }
 }
 

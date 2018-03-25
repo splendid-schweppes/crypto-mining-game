@@ -34,7 +34,6 @@ const customStyles = {
 
 Modal.setAppElement('#root')
 
-
 const assets = [
   {title: 'Basic PC', details: 'The Oversoul', hashingRate: 0.01, electricityCost: 1400, price: 1200, img: pc1},
   {title: 'Power PC', details: 'Illustrated Primer', hashingRate: 0.02, electricityCost: 2400, price: 1800, img: pc2},
@@ -53,34 +52,6 @@ const assets = [
   {title: 'Super Powersupply', details: 'Solar', hashingRate: 0, electricityCost: 1400, price: 800, img: powersupply3},
 ]
 
-const renderAsset = (asset) => {
-  return (
-    <Col md={4} key={asset.title}>
-      <div className="shop-item">
-        <div className="shop-item-heading">
-          <strong>{asset.title}</strong>
-          <p className="item-details">{asset.details}</p>
-        </div>
-        {asset.hashingRate > 0 &&
-          <p className="item-details">
-            Hashing Rate: <span className="shop-highlight">{asset.hashingRate}</span>
-          </p>
-        }
-        <p className="item-details">
-          Electricity Cost: <span className="shop-highlight">{asset.electricityCost} w</span>
-        </p>
-        <img src={asset.img} alt="pc1" className="shop-item-icon-pc" />
-        <p>
-          <strong>${asset.price}</strong>
-        </p>
-        <button className="buy-item-button">
-          Buy
-        </button>
-      </div>
-    </Col>
-  )
-}
-
 class ShopModal extends React.Component {
   constructor(props) {
     super(props)
@@ -89,20 +60,56 @@ class ShopModal extends React.Component {
     }
 
     this.changeCoinCount = this.changeCoinCount.bind(this)
-    this.sell = this.sell.bind(this)
+    this.renderAsset = this.renderAsset.bind(this)
+    this.sellCoins = this.sellCoins.bind(this)
+    this.buyAsset = this.buyAsset.bind(this)
   }
 
   changeCoinCount({target}) {
-    console.log(target.value)
-
     if (target.value <= this.props.coins) {
       this.setState({coins: target.value})
     }
   }
 
-  sell() {
-    this.props.sell(this.state.coins)
+  sellCoins() {
+    this.props.sellCoins(this.state.coins)
     this.setState({coins: this.props.coins - this.state.coins})
+  }
+
+  buyAsset(asset) {
+    return () => {
+      if (this.props.money > 0 && this.props.money >= asset.price) {
+        this.props.buyAsset(asset)
+      }
+    }
+  }
+
+  renderAsset(asset) {
+    return (
+      <Col md={4} key={asset.title}>
+        <div className="shop-item">
+          <div className="shop-item-heading">
+            <strong>{asset.title}</strong>
+            <p className="item-details">{asset.details}</p>
+          </div>
+          {asset.hashingRate > 0 &&
+            <p className="item-details">
+              Hashing Rate: <span className="shop-highlight">{asset.hashingRate}</span>
+            </p>
+          }
+          <p className="item-details">
+            Electricity Cost: <span className="shop-highlight">{asset.electricityCost} w</span>
+          </p>
+          <img src={asset.img} alt={asset.title} className="shop-item-icon-pc" />
+          <p>
+            <strong>${asset.price}</strong>
+          </p>
+          <button className="buy-item-button" onClick={this.buyAsset(asset)}>
+            Buy
+          </button>
+        </div>
+      </Col>
+    )
   }
 
   render() {
@@ -128,11 +135,13 @@ class ShopModal extends React.Component {
 
           Sell coins: todo set state
           <input type="number" value={this.state.coins} onChange={this.changeCoinCount} />
-          <button onClick={this.sell}>Sell</button>
+          <button onClick={this.sellCoins}>
+            Sell
+          </button>
 
           <Grid fluid className="centered shop-grid">
             <Row>
-              {assets.map(renderAsset)}
+              {assets.map(this.renderAsset)}
             </Row>
           </Grid>
         </Modal>
@@ -142,16 +151,21 @@ class ShopModal extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch, props) => ({
-  sell: count => {
+  sellCoins: count => {
     dispatch({type: 'SELL_COINS', count})
     dispatch({type: 'REMOVE_COINS', count})
+  },
+  buyAsset: asset => {
+    dispatch({type: 'ADD_ASSET', asset})
+    dispatch({type: 'REMOVE_MONEY', amount: asset.price})
   }
 })
 
 const mapStateToProps = state => {
   return {
     coins: state.coins,
-    assets: 0,
+    money: state.money,
+    assets: state.assets,
   }
 }
 

@@ -23,8 +23,7 @@ class FlyingClick extends Component {
   }
 
   handleRemove(id) {
-    const newItems = reject(this.state.clicks, {id})
-    this.setState({items: newItems});
+    this.setState((state) => ({clicks: reject(state.clicks, {id})}))
   }
 
   renderFlying(click, i) {

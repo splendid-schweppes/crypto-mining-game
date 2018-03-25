@@ -8,7 +8,7 @@ class Wallet extends Component {
         <div>
           <h3>Account Balance</h3>
           <p>
-            <strong className="wallet-coins">{this.props.coins} </strong>
+            <strong className="wallet-coins">{this.props.coins}</strong>
             Trollcoins <i className="fa fa-connectdevelop"></i>
           </p>
           <p>0 $ <i className="fa fa-credit-card"></i></p>

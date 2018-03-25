@@ -20,6 +20,27 @@ const customStyles = {
 
 Modal.setAppElement('#root')
 
+const achievements = [
+  {name: '1. Your first coin', locked: true},
+  {name: '2. Ten coins', locked: true},
+  {name: '3. First asset bought', locked: true},
+  {name: '4. First PC bought', locked: true},
+]
+
+const renderAchievement = (achievement) => {
+  const className = 'fa achievement-icon' + (achievement.locked && ' fa-lock')
+  return (
+    <Row>
+      <Col mdOffset={3} md={6}>
+        <div className="achievement-item-box">
+        <p className="achievement-text">{achievement.name}</p>
+        <i className={className}></i>
+        </div>
+      </Col>
+    </Row>
+  )
+}
+
 export default class AchievementsModal extends React.Component {
   render() {
     return (
@@ -48,38 +69,7 @@ export default class AchievementsModal extends React.Component {
               </div>
             </Col>
           </Row>
-          <Row>
-            <Col mdOffset={3} md={6}>
-              <div className="achievement-item-box">
-              <p className="achievement-text">1. Your first coin</p>
-              <i className="fa fa-lock achievement-icon"></i>
-              </div>
-            </Col>
-          </Row>
-          <Row>
-            <Col mdOffset={3} md={6}>
-              <div className="achievement-item-box">
-              <p className="achievement-text">2. Ten coins</p>
-              <i className="fa fa-lock achievement-icon"></i>
-              </div>
-            </Col>
-          </Row>
-          <Row>
-            <Col mdOffset={3} md={6}>
-              <div className="achievement-item-box">
-              <p className="achievement-text">3. First asset bought</p>
-              <i className="fa fa-lock achievement-icon"></i>
-              </div>
-            </Col>
-          </Row>
-          <Row>
-            <Col mdOffset={3} md={6}>
-              <div className="achievement-item-box">
-              <p className="achievement-text">4. First PC bought</p>
-              <i className="fa fa-lock achievement-icon"></i>
-              </div>
-            </Col>
-          </Row>
+          {achievements.map(renderAchievement)}
         </Grid>
       </Modal>
     )

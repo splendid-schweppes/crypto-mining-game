@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import {reject, get} from 'lodash'
+import {reject, get, random} from 'lodash'
 
 import './FlyingClick.css'
 import coinSvg from './svg_assets/trollcoin.svg'
@@ -16,6 +16,7 @@ class FlyingClick extends Component {
 
     this.handleRemove = this.handleRemove.bind(this)
     this.renderFlying = this.renderFlying.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -24,6 +25,12 @@ class FlyingClick extends Component {
 
   handleRemove(id) {
     this.setState((state) => ({clicks: reject(state.clicks, {id})}))
+  }
+
+  handleClick() {
+    if (random(0, 3) < 2) {
+      this.props.getCoin()
+    }
   }
 
   renderFlying(click, i) {
@@ -37,6 +44,7 @@ class FlyingClick extends Component {
         className="flying-click"
         style={style}
         onAnimationEnd={() => this.handleRemove(click.id)}
+        onClick={this.handleClick}
       />
     )
   }
@@ -60,4 +68,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(FlyingClick)
+const mapDispatchToProps = (dispatch, props) => ({
+  getCoin: () => {
+    dispatch({type: 'GET_COIN'})
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(FlyingClick)

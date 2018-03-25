@@ -1,10 +1,10 @@
 import {extend} from 'lodash'
 
-import {defaultRate} from '../Config'
+import {defaultHashingRate} from '../Config'
 import {loadHashingRate} from '../Util'
 
 const saveClick = () => {
-  window.localStorage.setItem('hashingRate', JSON.stringify(loadHashingRate() + defaultRate))
+  window.localStorage.setItem('hashingRate', JSON.stringify(loadHashingRate() + defaultHashingRate))
 }
 
 const save = ({action, next}) => {

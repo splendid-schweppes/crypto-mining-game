@@ -9,10 +9,10 @@ import pc3 from './svg_assets/pc3.svg'
 import gpu1fan from './svg_assets/gpu1fan.svg'
 import gpu2fan from './svg_assets/gpu2fan.svg'
 import gpu3fan from './svg_assets/gpu3fan.svg'
-import motherboard from './svg_assets/motherboard.svg'
+import motherboard1 from './svg_assets/motherboard.svg'
 import motherboard2 from './svg_assets/motherboard2.svg'
 import motherboard3 from './svg_assets/motherboard3.svg'
-import powersupply from './svg_assets/powersupply.svg'
+import powersupply1 from './svg_assets/powersupply.svg'
 import powersupply2 from './svg_assets/powersupply2.svg'
 import powersupply3 from './svg_assets/powersupply3.svg'
 
@@ -20,18 +20,65 @@ import './ShopModal.css'
 
 const customStyles = {
   content : {
-    // top                   : '20%',
-    // left                  : '50%',
-    // right                 : 'auto',
-    // bottom                : 'auto',
-    // marginRight           : '-50%',
-    // minWidth              : '800px',
-    // transform             : 'translate(-50%, -50%)',
-    backgroundColor       : '#292929'
+    // top: '20%',
+    // left: '50%',
+    // right: 'auto',
+    // bottom: 'auto',
+    // marginRight: '-50%',
+    // minWidth: '800px',
+    // transform: 'translate(-50%, -50%)',
+    backgroundColor: '#292929'
   }
 }
 
 Modal.setAppElement('#root')
+
+
+const assets = [
+  {title: 'Basic PC', details: 'The Oversoul', hashingRate: 0.01, electricityCost: 1400, price: 1200, img: pc1},
+  {title: 'Power PC', details: 'Illustrated Primer', hashingRate: 0.02, electricityCost: 2400, price: 1800, img: pc2},
+  {title: 'Super PC', details: 'The Quark 9000', hashingRate: 0.03, electricityCost: 3400, price: 2200, img: pc3},
+
+  {title: 'Basic GPU', details: 'Miniac', hashingRate: 0.004, electricityCost: 300, price: 400, img: gpu1fan},
+  {title: 'Power GPU', details: 'Teletraan', hashingRate: 0.006, electricityCost: 400, price: 600, img: gpu2fan},
+  {title: 'Super GPU', details: 'Illustrated', hashingRate: 0.008, electricityCost: 500, price: 800, img: gpu3fan},
+
+  {title: 'Basic Motherboard', details: 'Upoc', hashingRate: 0.001, electricityCost: 50, price: 100, img: motherboard1},
+  {title: 'Power Motherboard', details: 'Distilling X5', hashingRate: 0.002, electricityCost: 100, price: 200, img: motherboard2},
+  {title: 'Super Motherboard', details: 'Dypado 500', hashingRate: 0.003, electricityCost: 200, price: 300, img: motherboard3},
+
+  {title: 'Basic Powersupply', details: 'Trixter', hashingRate: 0, electricityCost: 400, price: 200, img: powersupply1},
+  {title: 'Power Powersupply', details: 'The Nuclear Plant', hashingRate: 0, electricityCost: 800, price: 400, img: powersupply2},
+  {title: 'Super Powersupply', details: 'Solar', hashingRate: 0, electricityCost: 1400, price: 800, img: powersupply3},
+]
+
+const renderAsset = (asset) => {
+  return (
+    <Col md={4} key={asset.title}>
+      <div className="shop-item">
+        <div className="shop-item-heading">
+          <strong>{asset.title}</strong>
+          <p className="item-details">{asset.details}</p>
+        </div>
+        {asset.hashingRate > 0 &&
+          <p className="item-details">
+            Hashing Rate: <span className="shop-highlight">{asset.hashingRate}</span>
+          </p>
+        }
+        <p className="item-details">
+          Electricity Cost: <span className="shop-highlight">{asset.electricityCost} w</span>
+        </p>
+        <img src={asset.img} alt="pc1" className="shop-item-icon-pc" />
+        <p>
+          <strong>${asset.price}</strong>
+        </p>
+        <button className="buy-item-button">
+          Buy
+        </button>
+      </div>
+    </Col>
+  )
+}
 
 export default class ShopModal extends React.Component {
   render() {
@@ -56,165 +103,7 @@ export default class ShopModal extends React.Component {
 
           <Grid fluid className="centered shop-grid">
             <Row>
-              <Col md={4}>
-                <div className="shop-item">
-                  <div className="shop-item-heading">
-                  <strong>Basic PC</strong>
-                  <p className="item-details">The Oversoul</p>
-                  </div>
-                  <p className="item-details">Hashing Rate: <span className="shop-highlight">0.01</span></p>
-                  <p className="item-details">Electricity Cost: <span className="shop-highlight">1400 w</span></p>
-                  <img src={pc1} alt="pc1" className="shop-item-icon-pc" />
-                  <p><strong>1200$</strong></p>
-                  <button className="buy-item-button">Buy</button>
-                </div>
-              </Col>
-              <Col md={4}>
-                <div className="shop-item">
-                <div className="shop-item-heading">
-                  <strong>Power PC</strong>
-                  <p className="item-details">Illustrated Primer</p>
-                </div>
-                  <p className="item-details">Hashing Rate: <span className="shop-highlight">0.02</span></p>
-                  <p className="item-details">Electricity Cost: <span className="shop-highlight">2400 w</span></p>
-                  <img src={pc2} alt="pc2" className="shop-item-icon-pc" />
-                  <p><strong>1800$</strong></p>
-                  <button className="buy-item-button">Buy</button>
-                </div>
-              </Col>
-              <Col md={4}>
-                <div className="shop-item">
-                <div className="shop-item-heading">
-                  <strong>Super PC</strong>
-                  <p className="item-details">The Quark 9000</p>
-                </div>
-                  <p className="item-details">Hashing Rate: <span className="shop-highlight">0.03</span></p>
-                  <p className="item-details">Electricity Cost: <span className="shop-highlight">3400 w</span></p>
-                  <img src={pc3} alt="pc3" className="shop-item-icon-pc" />
-                  <p><strong>2200$</strong></p>
-                  <button className="buy-item-button">Buy</button>
-                </div>
-              </Col>
-            </Row>
-            <Row>
-              <Col md={4}>
-                <div className="shop-item">
-                <div className="shop-item-heading">
-                  <strong>Basic GPU</strong>
-                  <p className="item-details">Miniac</p>
-                </div>
-                  <p className="item-details">Hashing Rate: <span className="shop-highlight">0.004</span></p>
-                  <p className="item-details">Electricity Cost: <span className="shop-highlight">300 w</span></p>
-                  <img src={gpu1fan} alt="gpu1fan" className="shop-item-icon-general" />
-                  <p><strong>400$</strong></p>
-                  <button className="buy-item-button">Buy</button>
-                </div>
-              </Col>
-              <Col md={4}>
-                <div className="shop-item">
-                <div className="shop-item-heading">
-                  <strong>Power GPU</strong>
-                  <p className="item-details">Teletraan</p>
-                </div>
-                  <p className="item-details">Hashing Rate: <span className="shop-highlight">0.006</span></p>
-                  <p className="item-details">Electricity Cost: <span className="shop-highlight">400 w</span></p>
-                  <img src={gpu2fan} alt="gpu2fan" className="shop-item-icon-gpu2" />
-                  <p><strong>600$</strong></p>
-                  <button className="buy-item-button">Buy</button>
-                </div>
-              </Col>
-              <Col md={4}>
-                <div className="shop-item">
-                <div className="shop-item-heading">
-                  <strong>Super GPU</strong>
-                  <p className="item-details">The Brain</p>
-                </div>
-                  <p className="item-details">Hashing Rate: <span className="shop-highlight">0.008</span></p>
-                  <p className="item-details">Electricity Cost: <span className="shop-highlight">500 w</span></p>
-                  <img src={gpu3fan} alt="gpu3fan" className="shop-item-icon-gpu2" />
-                  <p><strong>800$</strong></p>
-                  <button className="buy-item-button">Buy</button>
-                </div>
-              </Col>
-            </Row>
-            <Row>
-              <Col md={4}>
-                <div className="shop-item">
-                <div className="shop-item-heading">
-                  <strong>Basic Motherboard</strong>
-                  <p className="item-details">Upoc</p>
-                </div>
-                  <p className="item-details">Hashing Rate: <span className="shop-highlight">0.001</span></p>
-                  <p className="item-details">Electricity Cost: <span className="shop-highlight">50 w</span></p>
-                  <img src={motherboard} alt="motherboard" className="shop-item-icon-general"/>
-                  <p><strong>100$</strong></p>
-                  <button className="buy-item-button">Buy</button>
-                </div>
-              </Col>
-              <Col md={4}>
-              <div className="shop-item">
-              <div className="shop-item-heading">
-                <strong>Power Motherboard</strong>
-                <p className="item-details">Distilling X5</p>
-              </div>
-                <p className="item-details">Hashing Rate: <span className="shop-highlight">0.002</span></p>
-                <p className="item-details">Electricity Cost: <span className="shop-highlight">100 w</span></p>
-                <img src={motherboard2} alt="motherboard2" className="shop-item-icon-general"/>
-                <p><strong>200$</strong></p>
-                <button className="buy-item-button">Buy</button>
-              </div>
-              </Col>
-              <Col md={4}>
-                <div className="shop-item">
-                <div className="shop-item-heading">
-                  <strong>Super Motherboard</strong>
-                  <p className="item-details">Dypado 500</p>
-                </div>
-                  <p className="item-details">Hashing Rate: <span className="shop-highlight">0.003</span></p>
-                  <p className="item-details">Electricity Cost: <span className="shop-highlight">200 w</span></p>
-                  <img src={motherboard3} alt="motherboard3" className="shop-item-icon-general"/>
-                  <p><strong>300$</strong></p>
-                  <button className="buy-item-button">Buy</button>
-                </div>
-              </Col>
-            </Row>
-            <Row>
-              <Col md={4}>
-                <div className="shop-item">
-                <div className="shop-item-heading">
-                  <strong>Basic Powersupply</strong>
-                  <p className="item-details">Trixter</p>
-                </div>
-                  <p className="item-details">Electricity: <span className="shop-highlight">400 w</span></p>
-                  <img src={powersupply} alt="powersupply1" className="shop-item-icon-general"/>
-                  <p><strong>200$</strong></p>
-                  <button className="buy-item-button">Buy</button>
-                </div>
-              </Col>
-              <Col md={4}>
-              <div className="shop-item">
-              <div className="shop-item-heading">
-                <strong>Power Powersupply</strong>
-                <p className="item-details">The Nuclear Plant</p>
-              </div>
-                <p className="item-details">Electricity: <span className="shop-highlight">800 w</span></p>
-                <img src={powersupply2} alt="powersupply2" className="shop-item-icon-general"/>
-                <p><strong>400$</strong></p>
-                <button className="buy-item-button">Buy</button>
-              </div>
-              </Col>
-              <Col md={4}>
-                <div className="shop-item">
-                <div className="shop-item-heading">
-                  <strong>Super Powersupply</strong>
-                  <p className="item-details">Solar</p>
-                </div>
-                  <p className="item-details">Electricity: <span className="shop-highlight">1400 w</span></p>
-                  <img src={powersupply3} alt="powersupply3" className="shop-item-icon-general"/>
-                  <p><strong>800$</strong></p>
-                  <button className="buy-item-button">Buy</button>
-                </div>
-              </Col>
+              {assets.map(renderAsset)}
             </Row>
           </Grid>
         </Modal>

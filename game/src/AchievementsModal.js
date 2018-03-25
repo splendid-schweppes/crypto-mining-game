@@ -7,14 +7,14 @@ import advisorCat from './svg_assets/cat1.png'
 
 const customStyles = {
   content : {
-    // top                   : '20%',
-    // left                  : '50%',
-    // right                 : 'auto',
-    // bottom                : 'auto',
-    // marginRight           : '-50%',
-    // minWidth              : '800px',
-    // transform             : 'translate(-50%, -50%)',
-    backgroundColor       : '#292929'
+    // top: '20%',
+    // left: '50%',
+    // right: 'auto',
+    // bottom: 'auto',
+    // marginRight: '-50%',
+    // minWidth: '800px',
+    // transform: 'translate(-50%, -50%)',
+    backgroundColor: '#292929'
   }
 }
 
@@ -30,7 +30,7 @@ const achievements = [
 const renderAchievement = (achievement) => {
   const className = 'fa achievement-icon' + (achievement.locked && ' fa-lock')
   return (
-    <Row>
+    <Row key={achievement.name}>
       <Col mdOffset={3} md={6}>
         <div className="achievement-item-box">
         <p className="achievement-text">{achievement.name}</p>

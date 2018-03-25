@@ -24,15 +24,14 @@
 .shop-item {
   font-size: 1.4em;
   background: #005073;
-  padding: 0px 20px 20px 20px;
+  padding: 0 20px 20px 20px;
   min-height: 400px;
   margin-top: 20px;
-  transition: 0.3s;
+  transition: 0.1s;
 }
 
 .shop-item:hover {
-   transition: 0.3s;
-   transform: scale(1.02);
+  transform: scale(1.02);
 }
 
 .buy-item-button {
@@ -61,7 +60,7 @@
 
 .shop-item-heading {
   background-color: #107dac;
-  border-radius: 0px 0px 20px 20px;
+  border-radius: 0 0 20px 20px;
   padding: 10px 10px 1px 10px;
 }
 
@@ -81,11 +80,10 @@
   right: 0;
   margin-right: 20px;
   margin-top: 20px;
+  cursor: pointer;
 }
-
 
 .modal-close-button:hover {
   background-color: #c16e00;
   color: white;
-  cursor: pointer;
 }

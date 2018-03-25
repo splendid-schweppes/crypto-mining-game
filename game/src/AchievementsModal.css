@@ -12,7 +12,7 @@
   border-radius: 30px;
 }
 
-.tri-right.left-top:after{
+.tri-right.left-top:after {
 	content: ' ';
 	position: absolute;
 	width: 0;

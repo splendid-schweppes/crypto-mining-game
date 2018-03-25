@@ -13,7 +13,7 @@ const shakeThresholdAmount = 5
 
 const shakes = [
   '',
-  'shake-slow shake-constant',
+  // 'shake-slow shake-constant',
   'shake-little shake-constant',
   'shake shake-constant',
   'shake-hard shake-constant',

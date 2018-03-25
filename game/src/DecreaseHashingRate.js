@@ -14,7 +14,6 @@ class DecreaseHashingRate extends Component {
       if (diff_in_milliseconds / 1000 > decrease_treshold_seconds) {
         this.props.decreaseHashingRate()
       }
-
     }, 1000)
   }
 

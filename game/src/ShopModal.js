@@ -59,24 +59,24 @@ class ShopModal extends React.Component {
       coins: props.coins
     }
 
-    this.changeCoinCount = this.changeCoinCount.bind(this)
+    // this.changeCoinCount = this.changeCoinCount.bind(this)
     this.renderAsset = this.renderAsset.bind(this)
-    this.sellCoins = this.sellCoins.bind(this)
+    // this.sellCoins = this.sellCoins.bind(this)
     this.buyAsset = this.buyAsset.bind(this)
   }
 
-  changeCoinCount({target}) {
-    if (target.value >= 0 && target.value <= this.props.coins) {
-      this.setState({coins: target.value})
-    }
-  }
-
-  sellCoins() {
-    if (this.state.coins >= 0) {
-      this.props.sellCoins(this.state.coins)
-      this.setState({coins: this.props.coins - this.state.coins})
-    }
-  }
+  // changeCoinCount({target}) {
+  //   if (target.value >= 0 && target.value <= this.props.coins) {
+  //     this.setState({coins: target.value})
+  //   }
+  // }
+  //
+  // sellCoins() {
+  //   if (this.state.coins >= 0) {
+  //     this.props.sellCoins(this.state.coins)
+  //     this.setState({coins: this.props.coins - this.state.coins})
+  //   }
+  // }
 
   buyAsset(asset) {
     return () => {
@@ -100,7 +100,7 @@ class ShopModal extends React.Component {
             </p>
           }
           <p className="item-details">
-            Electricity Cost: <span className="shop-highlight">{asset.electricityCost} w</span>
+            {asset.type === 'power' ? 'Electricity' : 'Electricity Cost'}: <span className="shop-highlight">{asset.electricityCost} w</span>
           </p>
           <img src={asset.img} alt={asset.title} className="shop-item-icon-pc" />
           <p>
@@ -134,13 +134,15 @@ class ShopModal extends React.Component {
             <span id="x">X</span>
           </div>
 
-          <div>
-            Sell coins:
-            <input type="number" value={this.state.coins} onChange={this.changeCoinCount} />
-            <button onClick={this.sellCoins}>
-              Sell
-            </button>
-          </div>
+        {
+          //  <div>
+          //   Sell coins:
+          //   <input type="number" value={this.state.coins} onChange={this.changeCoinCount} />
+          //   <button onClick={this.sellCoins}>
+          //     Sell
+          //   </button>
+          // </div>
+        }
 
           <div>
             ${this.props.money.toFixed(2)}

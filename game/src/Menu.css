@@ -31,3 +31,35 @@
 .wallet-coins {
   color: #50ffb0;
 }
+
+.wallet {
+  min-height: 210px;
+}
+
+input[type=number] {
+    margin: 10px 0px 10px 0px;
+    width: 100px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+input[type=number]:focus, input:focus{
+  outline: none;
+}
+
+.sell-coins-button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 8px 10px 12px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+}
+
+.sell-coins-button:hover {
+  background-color: #3b883e;
+  cursor: pointer;
+}

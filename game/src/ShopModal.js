@@ -53,17 +53,40 @@ const assets = [
   {type: 'power', title: 'Super Powersupply', details: 'Solar', hashingRate: 0, electricityCost: 1400, price: 800, img: powersupply3},
 ]
 
+const sellerCatText = [
+  {heading: 'Welcome to the Hot Rod Computer store!', text: 'We offer the finest selection of computers, components and of course a special price, just for you my friend!'},
+  {heading: 'Super deals today!', text: 'Today we have extra fine computer equipment for sale. If you have any questions, I will not answer!'},
+  {heading: 'Oh it\'s you, welcome!', text: 'I hope you find something suitable for what ever you are doing.'},
+  {heading: 'Hello stranger!', text: 'My shop has been here for a decade and we always try to find the latest tech and stuff for our customers to enjoy.'},
+  {heading: 'Looking for something?', text: 'I might have a couple of special items just for your needs, please have a look at my inventory.'}
+]
+
 class ShopModal extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      coins: props.coins
+      coins: props.coins,
+      sellerCatText: Math.floor(Math.random() * sellerCatText.length)
     }
 
     // this.changeCoinCount = this.changeCoinCount.bind(this)
     this.renderAsset = this.renderAsset.bind(this)
     // this.sellCoins = this.sellCoins.bind(this)
     this.buyAsset = this.buyAsset.bind(this)
+    this.renderCatText = this.renderCatText.bind(this)
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(() => {
+      if (this.state.sellerCatText === sellerCatText.length - 1) {
+        this.setState({ sellerCatText: 0 });
+      } else {
+        this.setState({ sellerCatText: this.state.sellerCatText + 1 });
+      }
+    }, 10000);
+  }
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   // changeCoinCount({target}) {
@@ -85,6 +108,20 @@ class ShopModal extends React.Component {
         this.props.buyAsset(asset)
       }
     }
+  }
+
+  renderCatText() {
+    console.log('wut');
+    return (
+      <div className="talktext">
+        <h2>
+          {sellerCatText[this.state.sellerCatText].heading}
+        </h2>
+        <p>
+          {sellerCatText[this.state.sellerCatText].text}
+        </p>
+        </div>
+      )
   }
 
   renderAsset(asset) {
@@ -154,14 +191,7 @@ class ShopModal extends React.Component {
           </Col>
             <Col md={6} lg={6}>
               <div className="talk-bubble-shop tri-left left-top round">
-                <div className="talktext">
-                <h2>
-                  Welcome to the Hot Rod Computer store
-                </h2>
-                <p>
-                  We offer the finest selection of computers, components and of course a special price, just for you my friend!
-                </p>
-                </div>
+                {this.renderCatText()}
               </div>
             </Col>
             <Col md={3} lg={3}>
@@ -201,7 +231,7 @@ const mapStateToProps = state => {
   return {
     coins: state.coins,
     money: state.money,
-    assets: state.assets,
+    assets: state.assets
   }
 }
 

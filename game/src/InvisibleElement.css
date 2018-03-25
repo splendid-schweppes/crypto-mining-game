@@ -26,15 +26,15 @@
 
 @keyframes travel {
   from, to { left: 0; top: 10%; }
-  10%   { left: 100%; top: 100%; }
+  10%   { left: 80%; top: 90%; }
   20%   { left: 21%; top: 54%; }
-  30%   { left: 31%; top: 99%; }
+  30%   { left: 31%; top: 89%; }
   40%   { left: 61%; top: 56%; }
   50%   { left: 51%; top: 12%; }
   60%   { left: 41%; top: 21%; }
   63%   { left: 1%; top: 2%; }
   70%   { left: 81%; top: 61%; }
-  80%   { left: 10%; top: 100%; }
+  80%   { left: 10%; top: 95%; }
 }
 
 @keyframes bounce {

@@ -87,3 +87,49 @@
   background-color: #c16e00;
   color: white;
 }
+
+.sellerCat {
+  max-width: 300px;
+  border-radius: 100px;
+  background-color: white;
+}
+
+.tri-left.left-top:after {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 100%;
+  top: 50px;
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(270deg);
+  bottom: auto;
+  border: 22px solid;
+  border-color: #ffffff transparent transparent transparent;
+}
+
+.talk-bubble-shop {
+  display: inline-block;
+  position: relative;
+  height: auto;
+  color: black;
+  text-shadow: none;
+  padding: 30px;
+  background-color: white;
+}
+
+.shop-wallet {
+  background-color: #00c253;
+  padding: 20px;
+  border-radius: 50px;
+  font-size: 22px;
+}
+
+.shop-electricity {
+  background-color: #c24549;
+  padding: 20px;
+  border-radius: 50px;
+  font-size: 22px;
+  margin-bottom: 20px;
+}

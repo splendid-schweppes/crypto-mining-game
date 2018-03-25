@@ -18,6 +18,7 @@ import powersupply2 from './svg_assets/powersupply2.svg'
 import powersupply3 from './svg_assets/powersupply3.svg'
 
 import './ShopModal.css'
+import sellerCat from './svg_assets/cat2.png'
 
 const customStyles = {
   content : {
@@ -119,11 +120,8 @@ class ShopModal extends React.Component {
       <div>
         <Modal isOpen={this.props.modalIsOpen} style={customStyles}>
           <h2 className="centered">
-            Welcome to the Hot Rod Computer store
+            The Hot Rod Computer store
           </h2>
-          <p className="centered">
-            We offer the finest selection of computers, components and of course a special price, just for you my friend!
-          </p>
           <img
             src={computershoplogo}
             alt="computershoplogo"
@@ -144,12 +142,37 @@ class ShopModal extends React.Component {
           // </div>
         }
 
-          <div>
-            ${this.props.money.toFixed(2)}
+          <Grid fluid className="shop-grid">
+          <Row>
+          <Col md={3} lg={3}>
+          <div className="shop-electricity">
+            Electricity available: <strong>0</strong> wats
           </div>
-
-          <Grid fluid className="centered shop-grid">
-            <Row>
+            <div className="shop-wallet">
+              Cash available: <strong>{this.props.money.toFixed(2)}</strong> $
+            </div>
+          </Col>
+            <Col md={6} lg={6}>
+              <div className="talk-bubble-shop tri-left left-top round">
+                <div className="talktext">
+                <h2>
+                  Welcome to the Hot Rod Computer store
+                </h2>
+                <p>
+                  We offer the finest selection of computers, components and of course a special price, just for you my friend!
+                </p>
+                </div>
+              </div>
+            </Col>
+            <Col md={3} lg={3}>
+              <img
+                src={sellerCat}
+                alt="sellerCat"
+                className="sellerCat img-responsive"
+              />
+            </Col>
+          </Row>
+            <Row className="centered">
               {assets.map(this.renderAsset)}
             </Row>
           </Grid>

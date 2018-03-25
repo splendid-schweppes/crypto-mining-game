@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import {uniqueId, get, filter, last} from 'lodash'
+import {uniqueId, filter, last} from 'lodash'
 import moment from 'moment'
 
 import './ClickArea.css'

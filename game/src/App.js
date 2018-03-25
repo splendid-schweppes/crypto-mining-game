@@ -8,6 +8,7 @@ import DecreaseHashingRate from './DecreaseHashingRate'
 import GetCoins from './GetCoins'
 import BackgroundMusic from './BackgroundMusic'
 import StringAnimation from './StringAnimation'
+import InvisibleElement from './InvisibleElement'
 import Menu from './Menu'
 
 import 'font-awesome/css/font-awesome.min.css'
@@ -17,6 +18,7 @@ export default class App extends Component {
   render() {
     return (
       <Grid fluid className="centered">
+        <InvisibleElement />
         <Row>
           <Col md={3} lg={3}>
             <Menu />

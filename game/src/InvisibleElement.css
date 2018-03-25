@@ -1,0 +1,49 @@
+
+.traveler {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+
+  animation-name: travel;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-duration: 14.8s;
+}
+
+.bouncer {
+  position: absolute;
+  width: 30px;
+  height: 20px;
+  border-radius: 10px;
+
+  animation-name: bounce;
+  animation-iteration-count: infinite;
+  animation-duration: 24.2s;
+}
+
+@keyframes travel {
+  from, to { left: 0; top: 10%; }
+  10%   { left: 100%; top: 100%; }
+  20%   { left: 21%; top: 54%; }
+  30%   { left: 31%; top: 99%; }
+  40%   { left: 61%; top: 56%; }
+  50%   { left: 51%; top: 12%; }
+  60%   { left: 41%; top: 21%; }
+  63%   { left: 1%; top: 2%; }
+  70%   { left: 81%; top: 61%; }
+  80%   { left: 10%; top: 100%; }
+}
+
+@keyframes bounce {
+  from, to  {
+    bottom: 0;
+    animation-timing-function: ease-out;
+  }
+  50% {
+    bottom: 100%;
+    animation-timing-function: ease-in;
+  }
+}

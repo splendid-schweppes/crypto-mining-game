@@ -36,8 +36,8 @@ Kauppa mistä voi päivittää konetta ja saada automaattisesti mainattua
 
 # Todo
 
-* Näkymätön pieni elementti, jos sitä onnistuu klikkaamaan saa kokonaisen lohkon (esim 30kpl) / 1 kolikon heti
-* Jos klikkaa pientä palloa, saa yhden lohkon
+* ~~Näkymätön pieni elementti, jos sitä onnistuu klikkaamaan saa kokonaisen lohkon (esim 30kpl) / 1 kolikon heti~~
+* ~~Jos klikkaa pientä palloa, saa yhden lohkon~~
   * ~~Lohkot pitää nollaantua kun 30 lohkoa on ratkottu ja siitä saa yhden kolikon~~
 * ~~Hashing rate alkaa tippua jos ei klikkaile~~
   * Kun on ostanut assetteja, hashing rate pysyy jossain vakiossa

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import {reject, get, random} from 'lodash'
+import {reject, get} from 'lodash'
 
 import './FlyingClick.css'
 import coinSvg from './svg_assets/trollcoin.svg'

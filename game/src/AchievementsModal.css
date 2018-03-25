@@ -6,7 +6,8 @@
   text-shadow: none;
   padding: 30px;
 	background-color: white;
-  margin-top: 45px;
+  margin-top: 20px;
+  width: 90%;
 }
 .round{
   border-radius: 30px;
@@ -19,7 +20,7 @@
 	height: 0;
   left: -40px;
 	right: auto;
-  top: 37px;
+  top: 60px;
   transform: rotate(90deg);
 	bottom: auto;
 	border: 22px solid;
@@ -27,7 +28,7 @@
 }
 
 .advisorCat {
-  max-width: 200px;
+  max-width: 250px;
   background-color: white;
   border-radius: 115px;
 }
@@ -55,4 +56,12 @@
 
 .achievement-text {
   float: left;
+}
+
+.unlocked-item {
+  background-color: #00a429;
+}
+
+.unlock-icon {
+  background-color: #55de00;
 }

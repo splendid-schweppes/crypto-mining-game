@@ -111,7 +111,6 @@ class ShopModal extends React.Component {
   }
 
   renderCatText() {
-    console.log('wut');
     return (
       <div className="talktext">
         <h2>

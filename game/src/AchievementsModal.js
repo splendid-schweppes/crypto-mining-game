@@ -36,8 +36,14 @@ const achievements = [
   {id: 11, name: 'To the moon! 1000 coins hashed', locked: true},
   {id: 12, name: 'Home Data Center owner, 50 assets bought', locked: true},
   {id: 13, name: 'Cloud Data Center owner, 100 assets', locked: true},
-  {id: 14, name: 'Crypto dealer, 100 coins sold', locked: true},
-  {id: 15, name: 'Crypto king, 1000 coins sold', locked: true},
+  {id: 14, name: 'Crypto hustler, 100 coins hashed', locked: true},
+  {id: 15, name: 'Crypto king, 1000 coins hashed', locked: true},
+  {id: 16, name: 'First coin sold', locked: true},
+  {id: 17, name: 'Crypto dealer, 10 coins sold', locked: true},
+  {id: 17, name: 'Boss dealer, 100 coins sold', locked: true},
+  {id: 18, name: 'Burn the circuits, run out of power', locked: true},
+  {id: 19, name: 'Young money, cash money. Wallet contains 10 000 $', locked: true},
+  {id: 20, name: 'You did it! 1 000 000 coins hashed. This is the end game. Nice job.', locked: true}
 ]
 
 const achievementCatText = [
@@ -95,7 +101,7 @@ class AchievementsModal extends React.Component {
 
     return (
       <Row key={achievement.name}>
-        <Col mdOffset={3} md={6}>
+        <Col md={12}>
           <div className={achievementItemBox}>
           <p className="achievement-text"><strong>{achievement.id}. </strong>{achievement.name}</p>
           <i className={className}></i>

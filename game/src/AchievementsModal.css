@@ -40,10 +40,12 @@
   overflow:hidden;
   transition: 0.3s;
   margin-top: 20px;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 .achievement-item-box:hover {
-  transform: scale(1.05);
+  transform: scale(1.01);
   transition: 0.3s;
 }
 

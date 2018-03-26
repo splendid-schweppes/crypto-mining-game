@@ -1,0 +1,20 @@
+
+.powerup-item {
+  font-size: 1.4em;
+  background: #872618;
+  padding: 0 20px 20px 20px;
+  min-height: 400px;
+  margin-top: 20px;
+  transition: 0.1s;
+}
+
+
+.powerup-item-heading {
+  background-color: #c84301;
+  border-radius: 0 0 20px 20px;
+  padding: 10px 10px 1px 10px;
+}
+
+.powerup-item:hover {
+  transform: scale(1.02);
+}

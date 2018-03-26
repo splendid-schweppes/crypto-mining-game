@@ -36,7 +36,7 @@ class Wallet extends Component {
           </p>
           <p><span className="wallet-coins">{this.props.money.toFixed(2)}</span> $</p>
           <div>
-            <input type="number" value={this.state.coins} onChange={this.changeCoinCount} step="1" min="1" className=""/>
+            <input type="number" value={this.state.coins} onChange={this.changeCoinCount} step="1" min="1" />
             <button onClick={this.sellCoins} className="sell-coins-button">
               Sell
             </button>

@@ -79,8 +79,8 @@ class AchievementsModal extends React.Component {
         <p>
           {achievementCatText[this.state.achievementCatText].text}
         </p>
-        </div>
-      )
+      </div>
+    )
   }
 
   renderAchievement(achievement) {
@@ -97,8 +97,8 @@ class AchievementsModal extends React.Component {
       <Row key={achievement.name}>
         <Col mdOffset={3} md={6}>
           <div className={achievementItemBox}>
-          <p className="achievement-text"><strong>{achievement.id}. </strong>{achievement.name}</p>
-          <i className={className}></i>
+            <p className="achievement-text"><strong>{achievement.id}. </strong>{achievement.name}</p>
+            <i className={className}></i>
           </div>
         </Col>
       </Row>

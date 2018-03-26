@@ -179,30 +179,30 @@ class ShopModal extends React.Component {
         }
 
           <Grid fluid className="shop-grid">
-          <Row>
-          <Col md={3} lg={3}>
-          <div className="shop-electricity">
-            <strong>0</strong>
-            <i className="fa fa-battery-three-quarters status-icons" aria-hidden="true"></i>
-          </div>
-            <div className="shop-wallet">
-              <strong>{this.props.money.toFixed(2)}</strong>
-              <i className="fa fa-usd status-icons" aria-hidden="true"></i>
-            </div>
-          </Col>
-            <Col md={6} lg={6}>
-              <div className="talk-bubble-shop tri-left left-top round">
-                {this.renderCatText()}
-              </div>
-            </Col>
-            <Col md={3} lg={3}>
-              <img
-                src={sellerCat}
-                alt="sellerCat"
-                className="sellerCat img-responsive"
-              />
-            </Col>
-          </Row>
+            <Row>
+              <Col md={3} lg={3}>
+                <div className="shop-electricity">
+                  <strong>0</strong>
+                  <i className="fa fa-battery-three-quarters status-icons" aria-hidden="true"></i>
+                </div>
+                <div className="shop-wallet">
+                  <strong>{this.props.money.toFixed(2)}</strong>
+                  <i className="fa fa-usd status-icons" aria-hidden="true"></i>
+                </div>
+              </Col>
+              <Col md={6} lg={6}>
+                <div className="talk-bubble-shop tri-left left-top round">
+                  {this.renderCatText()}
+                </div>
+              </Col>
+              <Col md={3} lg={3}>
+                <img
+                  src={sellerCat}
+                  alt="sellerCat"
+                  className="sellerCat img-responsive"
+                />
+              </Col>
+            </Row>
             <Row className="centered">
               {assets.map(this.renderAsset)}
             </Row>
@@ -222,6 +222,7 @@ const mapDispatchToProps = (dispatch, props) => ({
     dispatch({type: 'ADD_ASSET', asset})
     dispatch({type: 'REMOVE_MONEY', amount: asset.price})
     dispatch({type: 'ACHIEVEMENT_FIRST_ASSET'})
+
     if (asset.type === 'pc') {
       dispatch({type: 'ACHIEVEMENT_FIRST_COMPUTER'})
     }

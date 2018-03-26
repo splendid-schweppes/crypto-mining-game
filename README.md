@@ -33,6 +33,9 @@ Kauppa mistä voi päivittää konetta ja saada automaattisesti mainattua
 * Click battle muita pelaajia vastaan, laitetaan esimerkiksi joku veto omista asseteista, kumpi kliksuttelee nopeammin esim 100 kertaa voittaa ja vie palkinnon.
 * Henkilökohtaiset daily tavoitteet, tai unlokit. Kun on saanut tietyn määrän valuuttaa kasaan aukeaa esimerkiksi mahdollisuus ostaa yritystason tietokoneita jotka hashaa nopeammin
 * PRO: valuutan myyminen ja ostaminen coinmarketcapin kurssien mukaan
+* Tapahtumat (matala prioriteetti, esimerkiksi yhteisö klikit tms.)
+* Sähkölasku 10 min välein tms
+  * Jos ei maksa, tietokoneet sammuu
 
 # Todo
 
@@ -47,9 +50,16 @@ Kauppa mistä voi päivittää konetta ja saada automaattisesti mainattua
   * ~~Bittirahan myyminen dollareiksi~~
   * ~~dollareilla ostetaan assetteja~~
   * ~~Kauppias ottaa välistä 5%~~
+  * Visualisointi että kauppias ottaa rahaa välistä ja paljonko dollareita saa kun myy
 * ~~Saavutukset~~
-* Tapahtumat (matala prioriteetti, esimerkiksi yhteisö klikit tms.)
 * ~~Lompakkokuvake tms.~~
 * ~~Klikkien replay~~
-* Sähkölasku 10 min välein tms
-  * Jos ei maksa, tietokoneet sammuu
+* Sähkön laskenta paljonko assetit vaatii sähköä
+  * jos assetit vie enemmän sähköä kuin saatavilla, +from assets nolliin
+* Click streak, jos pitää "Crazy sheikkiä" päällä esim 10 sekkaa, saa streakin ja suoraan kolikon
+  * Joku hieno efekti streakista
+* Achievementit unlokkaa "power uppeja" jotka pitää toki ostaa
+  * Power upit
+* Statistiikan visualisoiminen pelin etusivulle
+* Hidden elementtiin osuminen = suoraan 10 kolikkoa, esim räjähdys efekti tms??
+* Random string generator kone voisi toimia ns assettina, 1 assetti olisi yksi kone jos niitä voisi tunkea etusivulle vaikka X määrän, samaan tapaan kuin cookie clickerissä tulee sormia tökkimään keksiä niin saisi koneita laskemaan

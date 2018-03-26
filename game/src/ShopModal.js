@@ -22,13 +22,6 @@ import sellerCat from './svg_assets/cat2.png'
 
 const customStyles = {
   content : {
-    // top: '20%',
-    // left: '50%',
-    // right: 'auto',
-    // bottom: 'auto',
-    // marginRight: '-50%',
-    // minWidth: '800px',
-    // transform: 'translate(-50%, -50%)',
     backgroundColor: '#292929'
   }
 }
@@ -68,10 +61,7 @@ class ShopModal extends React.Component {
       coins: props.coins,
       sellerCatText: Math.floor(Math.random() * sellerCatText.length)
     }
-
-    // this.changeCoinCount = this.changeCoinCount.bind(this)
     this.renderAsset = this.renderAsset.bind(this)
-    // this.sellCoins = this.sellCoins.bind(this)
     this.buyAsset = this.buyAsset.bind(this)
     this.renderCatText = this.renderCatText.bind(this)
   }
@@ -88,19 +78,6 @@ class ShopModal extends React.Component {
   componentWillUnmount() {
     clearInterval(this.interval);
   }
-
-  // changeCoinCount({target}) {
-  //   if (target.value >= 0 && target.value <= this.props.coins) {
-  //     this.setState({coins: target.value})
-  //   }
-  // }
-  //
-  // sellCoins() {
-  //   if (this.state.coins >= 0) {
-  //     this.props.sellCoins(this.state.coins)
-  //     this.setState({coins: this.props.coins - this.state.coins})
-  //   }
-  // }
 
   buyAsset(asset) {
     return () => {
@@ -167,16 +144,6 @@ class ShopModal extends React.Component {
           <div className="modal-close-button" onClick={this.props.closeModal}>
             <span id="x">X</span>
           </div>
-
-        {
-          //  <div>
-          //   Sell coins:
-          //   <input type="number" value={this.state.coins} onChange={this.changeCoinCount} />
-          //   <button onClick={this.sellCoins}>
-          //     Sell
-          //   </button>
-          // </div>
-        }
 
           <Grid fluid className="shop-grid">
             <Row>

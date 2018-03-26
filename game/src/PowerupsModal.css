@@ -1,4 +1,3 @@
-
 .powerup-item {
   font-size: 1.4em;
   background: #872618;
@@ -51,4 +50,8 @@
 
 .unlocked:after, .unlocked:before {
    content: none;
+}
+
+.powerup-icon {
+  max-height: 172px;
 }

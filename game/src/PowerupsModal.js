@@ -17,17 +17,17 @@ const customStyles = {
 Modal.setAppElement('#root')
 
 const assets = [
-  {type: 'addPower', title: 'Hamster on spinning wheel', details: 'Hamster farm to boost your electricity', hashingRate: 0, electricityCost: 10000, price: 2500, img: null},
-  {type: 'powerup', title: 'Chinese hackers', details: 'Hire chinese hackers to hash faster', hashingRate: 0.1, electricityCost: 0, price: 8000, img: null},
-  {type: 'powerup', title: 'Overclock lvl 1', details: 'Overclock to boost your hashing by 0.3', hashingRate: 0.3, electricityCost: 10000, price: 0, img: null},
+  {type: 'addPower', title: 'Hamster on spinning wheel', details: 'Hamster farm to boost your electricity', hashingRate: 0, electricityCost: 10000, price: 2500, img: null, locked: true},
+  {type: 'powerup', title: 'Chinese hackers', details: 'Hire chinese hackers to hash faster', hashingRate: 0.1, electricityCost: 0, price: 8000, img: null, locked: true},
+  {type: 'powerup', title: 'Overclock lvl 1', details: 'Overclock to boost your hashing by 0.3', hashingRate: 0.3, electricityCost: 10000, price: 0, img: null, locked: true},
 
-  {type: 'addPower', title: 'Electricity boost', details: '20 000 electricity for lifetime', hashingRate: 0.00, electricityCost: 20000, price: 5000, img: null},
-  {type: 'powerup', title: 'Overclock lvl 2', details: 'Double your hashing rate', hashingRate: 0.5, electricityCost: 20000, price: 0, img: null},
-  {type: 'powerup', title: 'Cloud hashing', details: 'Cloud datacenter for lifetime hashing', hashingRate: 0.9, electricityCost: 0, price: 20000, img: null},
+  {type: 'addPower', title: 'Electricity boost', details: '20 000 electricity for lifetime', hashingRate: 0.00, electricityCost: 20000, price: 5000, img: null, locked: true},
+  {type: 'powerup', title: 'Overclock lvl 2', details: 'Double your hashing rate', hashingRate: 0.5, electricityCost: 20000, price: 0, img: null, locked: true},
+  {type: 'powerup', title: 'Cloud hashing', details: 'Cloud datacenter for lifetime hashing', hashingRate: 0.9, electricityCost: 0, price: 20000, img: null, locked: true},
 
-  {type: 'powerup', title: 'Russian datacenter', details: 'Russian datacenter for hashing Putin fast', hashingRate: 2, electricityCost: 0, price: 40000, img: null},
-  {type: 'powerup', title: 'Stuxnet computer virus', details: 'Spread Stuxnet virus to hash on infected pc', hashingRate: 3, electricityCost: 0, price: 70000, img: null},
-  {type: 'powerup', title: 'To the moon', details: 'Steal Nasa blueprints to build a space rocket', hashingRate: 8, electricityCost: 40000, price: 100000, img: null},
+  {type: 'powerup', title: 'Russian datacenter', details: 'Russian datacenter for hashing Putin fast', hashingRate: 2, electricityCost: 0, price: 40000, img: null, locked: true},
+  {type: 'powerup', title: 'Stuxnet computer virus', details: 'Spread Stuxnet virus to hash on infected pc', hashingRate: 3, electricityCost: 0, price: 70000, img: null, locked: true},
+  {type: 'powerup', title: 'To the moon', details: 'Steal Nasa blueprints to build a space rocket', hashingRate: 8, electricityCost: 40000, price: 100000, img: null, locked: true},
 ]
 
 const sellerCatText = [
@@ -85,9 +85,10 @@ class ShopModal extends React.Component {
   }
 
   renderAsset(asset) {
+    const itemLockedStyle = `powerup-item ${asset.locked ? 'locked' : 'unlocked'}`
     return (
       <Col md={4} key={asset.title}>
-        <div className="powerup-item">
+        <div className={itemLockedStyle}>
           <div className="powerup-item-heading">
             <strong>{asset.title}</strong>
             <p className="item-details">{asset.details}</p>

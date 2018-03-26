@@ -6,8 +6,9 @@
   min-height: 400px;
   margin-top: 20px;
   transition: 0.1s;
+  position: relative;
+  overflow: hidden;
 }
-
 
 .powerup-item-heading {
   background-color: #c84301;
@@ -17,4 +18,37 @@
 
 .powerup-item:hover {
   transform: scale(1.02);
+}
+
+.locked {
+  opacity: 0.5
+}
+
+.powerup-item:before, .powerup-item:after {
+    position: absolute;
+    content: '';
+    background: #bb0d0d;
+    display: block;
+    width: 100%;
+    height: 30px;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.powerup-item:after {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.unlocked {
+  opacity: 1
+}
+
+.unlocked:after, .unlocked:before {
+   content: none;
 }

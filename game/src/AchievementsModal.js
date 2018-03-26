@@ -23,27 +23,27 @@ const customStyles = {
 Modal.setAppElement('#root')
 
 const achievements = [
-  {id: 1, name: 'Your first coin', locked: true},
-  {id: 2, name: 'Ten coins hashed', locked: true},
-  {id: 3, name: 'First asset bought', locked: true},
-  {id: 4, name: 'First PC bought', locked: true},
-  {id: 5, name: 'Fifty coins hashed', locked: true},
-  {id: 6, name: '10 computers bought', locked: true},
-  {id: 7, name: '10 GPU\'s bought', locked: true},
-  {id: 8, name: '10 Motherboards bought', locked: true},
-  {id: 9, name: '10 Power supplies bought', locked: true},
-  {id: 10, name: '100 Coins hashed', locked: true},
-  {id: 11, name: 'To the moon! 1000 coins hashed', locked: true},
-  {id: 12, name: 'Home Data Center owner, 50 assets bought', locked: true},
-  {id: 13, name: 'Cloud Data Center owner, 100 assets', locked: true},
-  {id: 14, name: 'Crypto hustler, 100 coins hashed', locked: true},
-  {id: 15, name: 'Crypto king, 1000 coins hashed', locked: true},
-  {id: 16, name: 'First coin sold', locked: true},
-  {id: 17, name: 'Crypto dealer, 10 coins sold', locked: true},
-  {id: 17, name: 'Boss dealer, 100 coins sold', locked: true},
-  {id: 18, name: 'Burn the circuits, run out of power', locked: true},
-  {id: 19, name: 'Young money, cash money. Wallet contains 10 000 $', locked: true},
-  {id: 20, name: 'You did it! 1 000 000 coins hashed. This is the end game. Nice job.', locked: true}
+  {id: 1, name: 'Your first coin'},
+  {id: 2, name: 'Ten coins hashed'},
+  {id: 3, name: 'First asset bought'},
+  {id: 4, name: 'First PC bought'},
+  {id: 5, name: 'Fifty coins hashed'},
+  {id: 6, name: '10 computers bought'},
+  {id: 7, name: '10 GPU\'s bought'},
+  {id: 8, name: '10 Motherboards bought'},
+  {id: 9, name: '10 Power supplies bought'},
+  {id: 10, name: '100 Coins hashed'},
+  {id: 11, name: 'To the moon! 1000 coins hashed'},
+  {id: 12, name: 'Home Data Center owner, 50 assets bought'},
+  {id: 13, name: 'Cloud Data Center owner, 100 assets'},
+  {id: 14, name: 'Crypto hustler, 100 coins hashed'},
+  {id: 15, name: 'Crypto king, 1000 coins hashed'},
+  {id: 16, name: 'First coin sold'},
+  {id: 17, name: 'Crypto dealer, 10 coins sold'},
+  {id: 17, name: 'Boss dealer, 100 coins sold'},
+  {id: 18, name: 'Burn the circuits, run out of power'},
+  {id: 19, name: 'Young money, cash money. Wallet contains 10 000 $'},
+  {id: 20, name: 'You did it! 1 000 000 coins hashed. This is the end game. Nice job.'}
 ]
 
 const achievementCatText = [
@@ -93,7 +93,7 @@ class AchievementsModal extends React.Component {
     const achievementEarned = find(this.props.achievements, {id: achievement.id})
 
     const className = 'fa achievement-icon' +
-      (!achievementEarned && achievement.locked ? ' fa-lock' : '') +
+      (!achievementEarned ? ' fa-lock' : '') +
       (achievementEarned ? ' fa-unlock unlock-icon' : '')
 
     const achievementItemBox = 'achievement-item-box' +

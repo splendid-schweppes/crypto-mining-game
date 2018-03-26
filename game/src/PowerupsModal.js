@@ -38,6 +38,7 @@ const sellerCatText = [
   {heading: 'They said post a selfie', text: 'So I posted one of my middle finger.'}
 ]
 
+// incorrect classname
 class ShopModal extends React.Component {
   constructor(props) {
     super(props)
@@ -80,8 +81,8 @@ class ShopModal extends React.Component {
         <p>
           {sellerCatText[this.state.sellerCatText].text}
         </p>
-        </div>
-      )
+      </div>
+    )
   }
 
   renderAsset(asset) {
@@ -93,9 +94,9 @@ class ShopModal extends React.Component {
             <strong>{asset.title}</strong>
             <p className="item-details">{asset.details}</p>
           </div>
-            <p className="item-details">
-              Hashing Rate: <span className="shop-highlight">{asset.hashingRate}</span>
-            </p>
+          <p className="item-details">
+            Hashing Rate: <span className="shop-highlight">{asset.hashingRate}</span>
+          </p>
           <p className="item-details">
             {asset.type === 'addPower' ? 'Electricity added' : 'Electricity Cost'}: <span className="shop-highlight">{asset.electricityCost.toLocaleString()} w</span>
           </p>
@@ -124,30 +125,30 @@ class ShopModal extends React.Component {
           </div>
 
           <Grid fluid className="shop-grid">
-          <Row>
-          <Col md={3} lg={3}>
-          <div className="shop-electricity">
-            <strong>0</strong>
-            <i className="fa fa-battery-three-quarters status-icons" aria-hidden="true"></i>
-          </div>
-            <div className="shop-wallet">
-              <strong>{this.props.money.toFixed(2)}</strong>
-              <i className="fa fa-usd status-icons" aria-hidden="true"></i>
-            </div>
-          </Col>
-            <Col md={6} lg={6}>
-              <div className="talk-bubble-shop tri-left left-top round">
-                {this.renderCatText()}
-              </div>
-            </Col>
-            <Col md={3} lg={3}>
-              <img
-                src={grumpyCat}
-                alt="grumpyCat"
-                className="sellerCat img-responsive"
-              />
-            </Col>
-          </Row>
+            <Row>
+              <Col md={3} lg={3}>
+                <div className="shop-electricity">
+                  <strong>0</strong>
+                  <i className="fa fa-battery-three-quarters status-icons" aria-hidden="true"></i>
+                </div>
+                <div className="shop-wallet">
+                  <strong>{this.props.money.toFixed(2)}</strong>
+                  <i className="fa fa-usd status-icons" aria-hidden="true"></i>
+                </div>
+              </Col>
+              <Col md={6} lg={6}>
+                <div className="talk-bubble-shop tri-left left-top round">
+                  {this.renderCatText()}
+                </div>
+              </Col>
+              <Col md={3} lg={3}>
+                <img
+                  src={grumpyCat}
+                  alt="grumpyCat"
+                  className="sellerCat img-responsive"
+                />
+              </Col>
+            </Row>
             <Row className="centered">
               {assets.map(this.renderAsset)}
             </Row>
@@ -159,14 +160,18 @@ class ShopModal extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch, props) => ({
+  // ?????????
   sellCoins: count => {
     dispatch({type: 'SELL_COINS', count})
     dispatch({type: 'REMOVE_COINS', count})
   },
+
+  // ?????????
   buyAsset: asset => {
     dispatch({type: 'ADD_ASSET', asset})
     dispatch({type: 'REMOVE_MONEY', amount: asset.price})
     dispatch({type: 'ACHIEVEMENT_FIRST_ASSET'})
+
     if (asset.type === 'pc') {
       dispatch({type: 'ACHIEVEMENT_FIRST_COMPUTER'})
     }

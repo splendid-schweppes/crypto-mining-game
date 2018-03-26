@@ -23,7 +23,7 @@ export default class Powerups extends Component {
             <i className="fa fa-4x fa-star-half-o menu-icon"></i>
           </div>
         </div>
-        <PowerupsModal modalIsOpen={this.state.modalIsOpen} closeModal={this.toggleModal}/>
+        <PowerupsModal modalIsOpen={this.state.modalIsOpen} closeModal={this.toggleModal} />
       </div>
     )
   }

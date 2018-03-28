@@ -7,7 +7,10 @@ import './ShopModal.css'
 import './PowerupsModal.css'
 import grumpyCat from './svg_assets/grumpycat.png'
 import comingSoon from './svg_assets/coming-soon.png'
-import hamster from './svg_assets/hamster.svg'
+import hamster from './svg_assets/hamster.png'
+import spacerocket from './svg_assets/spacerocket.png'
+import chinese from './svg_assets/chinese.png'
+import overclock from './svg_assets/overclock.png'
 
 const customStyles = {
   content : {
@@ -19,8 +22,8 @@ Modal.setAppElement('#root')
 
 const assets = [
   {type: 'addPower', title: 'Hamster on spinning wheel', details: 'Hamster farm to boost your electricity', hashingRate: 0, electricityCost: 10000, price: 2500, img: hamster, locked: true},
-  {type: 'powerup', title: 'Chinese hackers', details: 'Hire chinese hackers to hash faster', hashingRate: 0.1, electricityCost: 0, price: 8000, img: comingSoon, locked: true},
-  {type: 'powerup', title: 'Overclock lvl 1', details: 'Overclock to boost your hashing by 0.3', hashingRate: 0.3, electricityCost: 10000, price: 0, img: comingSoon, locked: true},
+  {type: 'powerup', title: 'Chinese hackers', details: 'Hire chinese hackers to hash faster', hashingRate: 0.1, electricityCost: 0, price: 8000, img: chinese, locked: true},
+  {type: 'powerup', title: 'Overclock lvl 1', details: 'Overclock to boost your hashing by 0.3', hashingRate: 0.3, electricityCost: 10000, price: 0, img: overclock, locked: true},
 
   {type: 'addPower', title: 'Electricity boost', details: '20 000 electricity for lifetime', hashingRate: 0.00, electricityCost: 20000, price: 5000, img: comingSoon, locked: true},
   {type: 'powerup', title: 'Overclock lvl 2', details: 'Double your hashing rate', hashingRate: 0.5, electricityCost: 20000, price: 0, img: comingSoon, locked: true},
@@ -28,7 +31,7 @@ const assets = [
 
   {type: 'powerup', title: 'Russian datacenter', details: 'Russian datacenter for hashing Putin fast', hashingRate: 2, electricityCost: 0, price: 40000, img: comingSoon, locked: true},
   {type: 'powerup', title: 'Stuxnet computer virus', details: 'Spread Stuxnet virus to hash on infected pc', hashingRate: 3, electricityCost: 0, price: 70000, img: comingSoon, locked: true},
-  {type: 'powerup', title: 'To the moon', details: 'Steal Nasa blueprints to build a space rocket', hashingRate: 8, electricityCost: 40000, price: 100000, img: comingSoon, locked: true},
+  {type: 'powerup', title: 'To The Moon!', details: 'Steal Nasa blueprints to build a space rocket', hashingRate: 8, electricityCost: 40000, price: 100000, img: spacerocket, locked: true},
 ]
 
 const sellerCatText = [

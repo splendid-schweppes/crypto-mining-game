@@ -53,5 +53,6 @@
 }
 
 .powerup-icon {
-  max-height: 172px;
+  max-width: 180px;
+  min-width: 180px;
 }

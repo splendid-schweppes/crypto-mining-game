@@ -11,6 +11,10 @@ import hamster from './svg_assets/hamster.png'
 import spacerocket from './svg_assets/spacerocket.png'
 import chinese from './svg_assets/chinese.png'
 import overclock from './svg_assets/overclock.png'
+import penguin from './svg_assets/penguin.png'
+import clouddata from './svg_assets/clouddata.png'
+import russian from './svg_assets/russian.png'
+import power from './svg_assets/power.png'
 
 const customStyles = {
   content : {
@@ -25,12 +29,12 @@ const assets = [
   {type: 'powerup', title: 'Chinese hackers', details: 'Hire chinese hackers to hash faster', hashingRate: 0.1, electricityCost: 0, price: 8000, img: chinese, locked: true},
   {type: 'powerup', title: 'Overclock lvl 1', details: 'Overclock to boost your hashing by 0.3', hashingRate: 0.3, electricityCost: 10000, price: 0, img: overclock, locked: true},
 
-  {type: 'addPower', title: 'Electricity boost', details: '20 000 electricity for lifetime', hashingRate: 0.00, electricityCost: 20000, price: 5000, img: comingSoon, locked: true},
+  {type: 'addPower', title: 'Electricity boost', details: '20 000 electricity for lifetime', hashingRate: 0.00, electricityCost: 20000, price: 5000, img: power, locked: true},
   {type: 'powerup', title: 'Overclock lvl 2', details: 'Double your hashing rate', hashingRate: 0.5, electricityCost: 20000, price: 0, img: comingSoon, locked: true},
-  {type: 'powerup', title: 'Cloud hashing', details: 'Cloud datacenter for lifetime hashing', hashingRate: 0.9, electricityCost: 0, price: 20000, img: comingSoon, locked: true},
+  {type: 'powerup', title: 'Cloud hashing', details: 'Cloud datacenter for lifetime hashing', hashingRate: 0.9, electricityCost: 0, price: 20000, img: clouddata, locked: true},
 
-  {type: 'powerup', title: 'Russian datacenter', details: 'Russian datacenter for hashing Putin fast', hashingRate: 2, electricityCost: 0, price: 40000, img: comingSoon, locked: true},
-  {type: 'powerup', title: 'Stuxnet computer virus', details: 'Spread Stuxnet virus to hash on infected pc', hashingRate: 3, electricityCost: 0, price: 70000, img: comingSoon, locked: true},
+  {type: 'powerup', title: 'Russian datacenter', details: 'Russian datacenter for hashing Putin fast', hashingRate: 2, electricityCost: 0, price: 40000, img: russian, locked: true},
+  {type: 'powerup', title: 'Stuxnet computer virus', details: 'Spread Stuxnet virus to hash on infected pc', hashingRate: 3, electricityCost: 0, price: 70000, img: penguin, locked: true},
   {type: 'powerup', title: 'To The Moon!', details: 'Steal Nasa blueprints to build a space rocket', hashingRate: 8, electricityCost: 40000, price: 100000, img: spacerocket, locked: true},
 ]
 

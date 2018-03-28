@@ -15,6 +15,7 @@ import penguin from './svg_assets/penguin.png'
 import clouddata from './svg_assets/clouddata.png'
 import russian from './svg_assets/russian.png'
 import power from './svg_assets/power.png'
+import overclock2 from './svg_assets/overclock2.png'
 
 const customStyles = {
   content : {
@@ -30,7 +31,7 @@ const assets = [
   {type: 'powerup', title: 'Overclock lvl 1', details: 'Overclock to boost your hashing by 0.3', hashingRate: 0.3, electricityCost: 10000, price: 0, img: overclock, locked: true},
 
   {type: 'addPower', title: 'Electricity boost', details: '20 000 electricity for lifetime', hashingRate: 0.00, electricityCost: 20000, price: 5000, img: power, locked: true},
-  {type: 'powerup', title: 'Overclock lvl 2', details: 'Double your hashing rate', hashingRate: 0.5, electricityCost: 20000, price: 0, img: comingSoon, locked: true},
+  {type: 'powerup', title: 'Overclock lvl 2', details: 'Double your hashing rate', hashingRate: 0.5, electricityCost: 20000, price: 0, img: overclock2, locked: true},
   {type: 'powerup', title: 'Cloud hashing', details: 'Cloud datacenter for lifetime hashing', hashingRate: 0.9, electricityCost: 0, price: 20000, img: clouddata, locked: true},
 
   {type: 'powerup', title: 'Russian datacenter', details: 'Russian datacenter for hashing Putin fast', hashingRate: 2, electricityCost: 0, price: 40000, img: russian, locked: true},

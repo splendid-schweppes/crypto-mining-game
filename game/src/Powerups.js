@@ -5,7 +5,7 @@ export default class Powerups extends Component {
   constructor() {
     super()
     this.state = {
-      modalIsOpen: true
+      modalIsOpen: false
     }
     this.toggleModal = this.toggleModal.bind(this)
   }

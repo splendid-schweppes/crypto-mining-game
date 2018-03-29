@@ -11,13 +11,13 @@ class RightSideStats extends Component {
           <strong className="rightside-stats-text">Electricity: {this.props.electricity} / 0</strong>
           <i className="fa fa-bolt status-icons" aria-hidden="true"></i>
         </div>
-        <div className="player-wallet rightside-stats">
-          <strong className="rightside-stats-text">Cash: {this.props.money.toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1,')}</strong>
-          <i className="fa fa-usd status-icons" aria-hidden="true"></i>
-        </div>
         <div className="player-coins rightside-stats">
           <strong className="rightside-stats-text">Coins: {this.props.coins}</strong>
           <i className="fa fa-connectdevelop status-icons" aria-hidden="true"></i>
+        </div>
+        <div className="player-wallet rightside-stats">
+          <strong className="rightside-stats-text">Cash: {this.props.money.toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1,')}</strong>
+          <i className="fa fa-usd status-icons" aria-hidden="true"></i>
         </div>
         <div className="player-level rightside-stats">
           <strong className="rightside-stats-text">Level: 0 / 20</strong>

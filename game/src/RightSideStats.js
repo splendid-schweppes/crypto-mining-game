@@ -20,7 +20,7 @@ class RightSideStats extends Component {
           <i className="fa fa-usd status-icons" aria-hidden="true"></i>
         </div>
         <div className="player-level rightside-stats">
-          <strong className="rightside-stats-text">Level: 0 / 20</strong>
+          <strong className="rightside-stats-text">Level: {this.props.achievements.length} / 20</strong>
           <i className="fa fa-level-up status-icons" aria-hidden="true"></i>
         </div>
         <div className="player-assets rightside-stats">
@@ -40,7 +40,8 @@ const mapStateToProps = state => {
     assets: state.assets,
     hashingRateFromAssets: sumBy(state.assets, 'hashingRate'),
     electricity: sumBy(state.assets, 'electricityCost'),
-    money: state.money
+    money: state.money,
+    achievements: state.achievements
   }
 }
 

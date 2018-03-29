@@ -9,13 +9,6 @@ import advisorCat from './svg_assets/cat1.png'
 
 const customStyles = {
   content : {
-    // top: '20%',
-    // left: '50%',
-    // right: 'auto',
-    // bottom: 'auto',
-    // marginRight: '-50%',
-    // minWidth: '800px',
-    // transform: 'translate(-50%, -50%)',
     backgroundColor: '#292929'
   }
 }
@@ -137,7 +130,7 @@ class AchievementsModal extends React.Component {
             </Col>
             <Col md={3}>
             <div className="player-level margin-t-20">
-              <strong>0 / 20</strong>
+              <strong>{this.props.achievements.length} / 20</strong>
               <i className="fa fa-level-up status-icons" aria-hidden="true"></i>
             </div>
             </Col>

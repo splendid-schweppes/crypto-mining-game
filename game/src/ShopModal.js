@@ -2,6 +2,7 @@ import React from 'react'
 import Modal from 'react-modal'
 import {connect} from 'react-redux'
 import { Grid, Row, Col } from 'react-flexbox-grid'
+import {sumBy} from 'lodash'
 
 import computershoplogo from './svg_assets/computershoplogo.png'
 import pc1 from './svg_assets/pc.svg'
@@ -149,7 +150,7 @@ class ShopModal extends React.Component {
             <Row>
               <Col md={3} lg={3}>
                 <div className="player-electricity">
-                  <strong>0</strong>
+                  <strong>{this.props.electricity}  / 0 Available</strong>
                   <i className="fa fa-bolt status-icons" aria-hidden="true"></i>
                 </div>
                 <div className="player-wallet">
@@ -157,7 +158,7 @@ class ShopModal extends React.Component {
                   <i className="fa fa-usd status-icons" aria-hidden="true"></i>
                 </div>
                 <div className="player-level">
-                  <strong>0 / 20</strong>
+                  <strong>{this.props.achievements.length} / 20</strong>
                   <i className="fa fa-level-up status-icons" aria-hidden="true"></i>
                 </div>
               </Col>
@@ -204,7 +205,9 @@ const mapStateToProps = state => {
   return {
     coins: state.coins,
     money: state.money,
-    assets: state.assets
+    assets: state.assets,
+    electricity: sumBy(state.assets, 'electricityCost'),
+    achievements: state.achievements
   }
 }
 

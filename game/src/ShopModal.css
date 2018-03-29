@@ -121,29 +121,6 @@
   background-color: white;
 }
 
-.shop-wallet {
-  background-color: #00c253;
-  padding: 20px;
-  border-radius: 50px;
-  font-size: 22px;
-  margin-bottom: 20px;
-}
-
-.shop-level {
-  background-color: #13a8b1;
-  padding: 20px;
-  border-radius: 50px;
-  font-size: 22px;
-}
-
-.shop-electricity {
-  background-color: #c24549;
-  padding: 20px;
-  border-radius: 50px;
-  font-size: 22px;
-  margin-bottom: 20px;
-}
-
 .status-icons {
   float: right;
   padding: 7px;

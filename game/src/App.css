@@ -13,3 +13,26 @@
 .margin-t-20 {
   margin-top: 20px;
 }
+
+.player-wallet {
+  background-color: #00c253;
+  padding: 20px;
+  border-radius: 50px;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.player-level {
+  background-color: #13a8b1;
+  padding: 20px;
+  border-radius: 50px;
+  font-size: 22px;
+}
+
+.player-electricity {
+  background-color: #c24549;
+  padding: 20px;
+  border-radius: 50px;
+  font-size: 22px;
+  margin-bottom: 20px;
+}

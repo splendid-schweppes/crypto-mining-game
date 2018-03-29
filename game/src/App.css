@@ -19,7 +19,7 @@
   padding: 20px;
   border-radius: 50px;
   font-size: 22px;
-  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .player-level {
@@ -27,6 +27,7 @@
   padding: 20px;
   border-radius: 50px;
   font-size: 22px;
+  margin-top: 20px;
 }
 
 .player-electricity {
@@ -34,5 +35,20 @@
   padding: 20px;
   border-radius: 50px;
   font-size: 22px;
-  margin-bottom: 20px;
+}
+
+.player-coins  {
+  background-color: #25ad0f;
+  padding: 20px;
+  border-radius: 50px;
+  font-size: 22px;
+  margin-top: 20px;
+}
+
+.player-assets {
+  background-color: #4bc9b4;
+  padding: 20px;
+  border-radius: 50px;
+  font-size: 22px;
+  margin-top: 20px;
 }

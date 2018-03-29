@@ -118,7 +118,7 @@ class ShopModal extends React.Component {
           </p>
           <img src={asset.img} alt={asset.title} className="shop-item-icon-pc" />
           <p>
-            <strong>${asset.price}</strong>
+            <strong>${asset.price.toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1,')}</strong>
           </p>
           <button className="buy-item-button" onClick={this.buyAsset(asset)}>
             Buy
@@ -153,7 +153,7 @@ class ShopModal extends React.Component {
                   <i className="fa fa-bolt status-icons" aria-hidden="true"></i>
                 </div>
                 <div className="player-wallet">
-                  <strong>{this.props.money.toFixed(2)}</strong>
+                  <strong>{this.props.money.toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1,')}</strong>
                   <i className="fa fa-usd status-icons" aria-hidden="true"></i>
                 </div>
                 <div className="player-level">

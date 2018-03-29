@@ -34,7 +34,7 @@ class Wallet extends Component {
             <strong className="wallet-coins">{this.props.coins}</strong>{' '}
             <i className="fa fa-connectdevelop"></i>
           </p>
-          <p><span className="wallet-coins">{this.props.money.toFixed(2)}</span> $</p>
+          <p><span className="wallet-coins">{this.props.money.toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1,')}</span> $</p>
           <div>
             <input type="number" value={this.state.coins} onChange={this.changeCoinCount} step="1" min="1" />
             <button onClick={this.sellCoins} className="sell-coins-button">

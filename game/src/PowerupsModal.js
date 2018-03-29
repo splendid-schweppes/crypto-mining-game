@@ -141,7 +141,7 @@ class ShopModal extends React.Component {
                   <i className="fa fa-bolt status-icons" aria-hidden="true"></i>
                 </div>
                 <div className="player-wallet">
-                  <strong>{this.props.money.toFixed(2)}</strong>
+                  <strong>{this.props.money.toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1,')}</strong>
                   <i className="fa fa-usd status-icons" aria-hidden="true"></i>
                 </div>
                 <div className="player-level">

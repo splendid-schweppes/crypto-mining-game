@@ -1,0 +1,13 @@
+.rightside-stats {
+  overflow: hidden;
+  padding-left: 35px !important;
+  transition: 0.3s;
+}
+
+.rightside-stats-text {
+  float: left;
+}
+
+.rightside-stats:hover {
+  transform: scale(1.05);
+}

@@ -138,7 +138,7 @@ class ShopModal extends React.Component {
               <Col md={3} lg={3}>
                 <div className="player-electricity">
                   <strong>0</strong>
-                  <i className="fa fa-battery-three-quarters status-icons" aria-hidden="true"></i>
+                  <i className="fa fa-bolt status-icons" aria-hidden="true"></i>
                 </div>
                 <div className="player-wallet">
                   <strong>{this.props.money.toFixed(2)}</strong>

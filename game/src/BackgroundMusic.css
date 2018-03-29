@@ -3,3 +3,11 @@
   font-size: 48px;
   margin-top: -10px;
 }
+
+.music-button:hover {
+  cursor: pointer;
+}
+
+.audio-controls {
+  margin-top: 40px;
+}

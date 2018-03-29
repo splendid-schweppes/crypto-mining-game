@@ -22,14 +22,13 @@ export default class BackgroundMusic extends Component {
   }
 
   render() {
-    const buttonClasses = this.state.playStateOnStorage === 'play' ? 'fa-pause-circle' : 'fa-play-circle-o'
+    const buttonClasses = this.state.playStateOnStorage === 'play' ? 'fa-volume-up' : 'fa-volume-off'
     const classes = `fa fa-4x ${buttonClasses} music-button`
 
     return (
       <div className="audio-controls">
         <audio ref={(a) => this._audio = a} preload="true" src="audio/game_music.mp3" autoPlay loop />
         <div>
-          <p>Background music</p>
         	<i className={classes} onClick={this.backGroundMusic}></i>
         </div>
       </div>

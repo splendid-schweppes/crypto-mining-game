@@ -156,6 +156,10 @@ class ShopModal extends React.Component {
                   <strong>{this.props.money.toFixed(2)}</strong>
                   <i className="fa fa-usd status-icons" aria-hidden="true"></i>
                 </div>
+                <div className="shop-level">
+                  <strong>0 / 20</strong>
+                  <i className="fa fa-level-up status-icons" aria-hidden="true"></i>
+                </div>
               </Col>
               <Col md={6} lg={6}>
                 <div className="talk-bubble-shop tri-left left-top round">

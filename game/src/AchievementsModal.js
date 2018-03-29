@@ -135,6 +135,12 @@ class AchievementsModal extends React.Component {
                 {this.renderCatText()}
               </div>
             </Col>
+            <Col md={3}>
+            <div className="shop-level margin-t-20">
+              <strong>0 / 20</strong>
+              <i className="fa fa-level-up status-icons" aria-hidden="true"></i>
+            </div>
+            </Col>
           </Row>
           {achievements.map(this.renderAchievement)}
         </Grid>

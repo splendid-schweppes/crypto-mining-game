@@ -126,6 +126,14 @@
   padding: 20px;
   border-radius: 50px;
   font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.shop-level {
+  background-color: #13a8b1;
+  padding: 20px;
+  border-radius: 50px;
+  font-size: 22px;
 }
 
 .shop-electricity {

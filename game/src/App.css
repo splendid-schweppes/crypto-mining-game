@@ -5,3 +5,11 @@
 .img-responsive {
   width: 100%;
 }
+
+.margin-t-10 {
+  margin-top: 10px;
+}
+
+.margin-t-20 {
+  margin-top: 20px;
+}

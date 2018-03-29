@@ -2,6 +2,7 @@
   overflow: hidden;
   padding-left: 35px !important;
   transition: 0.3s;
+  box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.55);
 }
 
 .rightside-stats-text {

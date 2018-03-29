@@ -24,24 +24,25 @@
 }
 
 .powerup-item:before, .powerup-item:after {
-    position: absolute;
-    content: '';
-    background: #bb0d0d;
-    display: block;
-    width: 100%;
-    height: 30px;
-    -webkit-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
+  position: absolute;
+  content: '';
+  background: #bb0d0d;
+  display: block;
+  width: 100%;
+  height: 30px;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 20;
 }
 
 .powerup-item:after {
-    -webkit-transform: rotate(45deg);
-    transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 .unlocked {
@@ -55,4 +56,19 @@
 .powerup-icon {
   max-width: 180px;
   min-width: 180px;
+}
+
+.locked-text {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #db7c18;
+  padding: 20px;
+  border-radius: 20px;
+  z-index: 40;
+}
+
+.unlocked-text {
+  display: none;
 }

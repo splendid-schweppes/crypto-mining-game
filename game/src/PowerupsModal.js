@@ -6,7 +6,6 @@ import { Grid, Row, Col } from 'react-flexbox-grid'
 import './ShopModal.css'
 import './PowerupsModal.css'
 import grumpyCat from './svg_assets/grumpycat.png'
-import comingSoon from './svg_assets/coming-soon.png'
 import hamster from './svg_assets/hamster.png'
 import spacerocket from './svg_assets/spacerocket.png'
 import chinese from './svg_assets/chinese.png'
@@ -94,10 +93,14 @@ class ShopModal extends React.Component {
     )
   }
 
-  renderAsset(asset) {
-    const itemLockedStyle = `powerup-item ${asset.locked ? 'locked' : 'unlocked'}`
+  renderAsset(asset, index) {
+    const itemLockedStyle = `${asset.locked ? 'locked' : 'unlocked'}`
+    const itemLockedText = `${asset.locked ? 'locked-text' : 'unlocked-text'}`
+
     return (
       <Col md={4} key={asset.title}>
+        <div className="powerup-item">
+        <div className={itemLockedText}>Unlock at LVL {2 * index + 2}</div>
         <div className={itemLockedStyle}>
           <div className="powerup-item-heading">
             <strong>{asset.title}</strong>
@@ -116,6 +119,7 @@ class ShopModal extends React.Component {
           <button className="buy-item-button" onClick={this.buyAsset(asset)}>
             Buy
           </button>
+          </div>
         </div>
       </Col>
     )
@@ -126,7 +130,7 @@ class ShopModal extends React.Component {
       <div>
         <Modal isOpen={this.props.modalIsOpen} style={customStyles}>
           <h2 className="centered">
-            Power Ups
+            Grumpy Cat's Power Ups
           </h2>
 
           <div className="modal-close-button" onClick={this.props.closeModal}>

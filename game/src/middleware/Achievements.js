@@ -6,10 +6,10 @@ const saveAchievement = achievements => {
   window.localStorage.setItem('achievements', JSON.stringify(achievements))
 }
 
-const save = ({action, next, achievement}) => {
+const save = ({action, next, id}) => {
   const current_achievements = loadAchievements()
-  if (!find(current_achievements, {id: achievement.id})) {
-    saveAchievement([...current_achievements, achievement])
+  if (!find(current_achievements, {id})) {
+    saveAchievement([...current_achievements, {id, time: new Date()}])
   }
 
   return next(extend({}, action, {achievements: loadAchievements()}))
@@ -18,13 +18,13 @@ const save = ({action, next, achievement}) => {
 export default () => next => action => {
   switch (action.type) {
     case 'ACHIEVEMENT_FIRST_COIN':
-      return save({action, next, achievement: {id: 1, time: new Date()}})
+      return save({action, next, id: 1})
     case 'ACHIEVEMENT_TEN_COINS':
-      return save({action, next, achievement: {id: 2, time: new Date()}})
+      return save({action, next, id: 2})
     case 'ACHIEVEMENT_FIRST_ASSET':
-      return save({action, next, achievement: {id: 3, time: new Date()}})
+      return save({action, next, id: 3})
     case 'ACHIEVEMENT_FIRST_COMPUTER':
-      return save({action, next, achievement: {id: 4, time: new Date()}})
+      return save({action, next, id: 4})
     default:
       return next(action)
   }

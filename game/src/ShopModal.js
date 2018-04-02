@@ -46,36 +46,38 @@ class ShopModal extends React.Component {
   componentDidMount() {
     this.interval = setInterval(() => {
       if (this.state.sellerCatText === sellerCatText.length - 1) {
-        this.setState({ sellerCatText: 0 });
+        this.setState({ sellerCatText: 0 })
       } else {
-        this.setState({ sellerCatText: this.state.sellerCatText + 1 });
+        this.setState({ sellerCatText: this.state.sellerCatText + 1 })
       }
-    }, 10000);
+    }, 10000)
   }
+
   componentWillUnmount() {
-    clearInterval(this.interval);
+    clearInterval(this.interval)
   }
 
   buyAsset(asset) {
     return () => {
+      let doshit = false
+      let electricity = 0
       if (this.props.money > 0 && this.props.money >= asset.price) {
         if (asset.type === 'power') {
-          const electricity = this.state.electricity + asset.electricity;
-          this.setState({electricity});
-          this.props.buyAsset(asset);
-          saveElectricity(electricity);
-          asset.price = asset.price * shop_price_up;
-          asset.hashingRate = asset.hashingRate * shop_hashingRate_up;
-          saveShopAssets(assets);
+          electricity = this.state.electricity + asset.electricity
+          doshit = true
         } else if ((this.state.electricity - asset.electricity) >= 0) {
-          const electricity = this.state.electricity - asset.electricity;
-          this.setState({electricity});
-          this.props.buyAsset(asset);
-          saveElectricity(electricity);
-          asset.price = asset.price * shop_price_up;
-          asset.hashingRate = asset.hashingRate * shop_hashingRate_up;
-          saveShopAssets(assets);
+          electricity = this.state.electricity - asset.electricity
+          doshit = true
         }
+      }
+
+      if (doshit) {
+        this.setState({electricity})
+        this.props.buyAsset(asset)
+        saveElectricity(electricity)
+        asset.price = asset.price * shop_price_up
+        asset.hashingRate = asset.hashingRate * shop_hashingRate_up
+        saveShopAssets(assets)
       }
     }
   }
@@ -89,8 +91,8 @@ class ShopModal extends React.Component {
         <p>
           {sellerCatText[this.state.sellerCatText].text}
         </p>
-        </div>
-      )
+      </div>
+    )
   }
 
   renderAsset(asset) {

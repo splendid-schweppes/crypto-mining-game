@@ -129,10 +129,10 @@ class AchievementsModal extends React.Component {
               </div>
             </Col>
             <Col md={3}>
-            <div className="player-level margin-t-20">
-              <strong>{this.props.achievements.length} / 20</strong>
-              <i className="fa fa-level-up status-icons" aria-hidden="true"></i>
-            </div>
+              <div className="player-level margin-t-20">
+                <strong>{this.props.achievements.length} / 20</strong>
+                <i className="fa fa-level-up status-icons" aria-hidden="true"></i>
+              </div>
             </Col>
           </Row>
           {achievements.map(this.renderAchievement)}

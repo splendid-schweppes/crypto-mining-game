@@ -30,13 +30,13 @@ const assets = [
   {type: 'powerup', title: 'Chinese hackers', details: 'Hire chinese hackers to hash faster', hashingRate: 0.1, electricity: 0, price: 8000, img: chinese, locked: true},
   {type: 'powerup', title: 'Overclock lvl 1', details: 'Overclock to boost your hashing by 0.3', hashingRate: 0.3, electricity: 10000, price: 0, img: overclock, locked: true},
 
-  {type: 'addPower', title: 'Electricity boost', details: '20 000 electricity for lifetime', hashingRate: 0.00, electricity: 20000, price: 5000, img: power, locked: true},
+  {type: 'addPower', title: 'Chernobyl Power Plant', details: '20 000 electricity for lifetime', hashingRate: 0.00, electricity: 20000, price: 5000, img: power, locked: true},
   {type: 'powerup', title: 'Overclock lvl 2', details: 'Double your hashing rate', hashingRate: 0.5, electricity: 20000, price: 0, img: overclock2, locked: true},
   {type: 'powerup', title: 'Cloud hashing', details: 'Cloud datacenter for lifetime hashing', hashingRate: 0.9, electricity: 0, price: 20000, img: clouddata, locked: true},
 
   {type: 'powerup', title: 'Russian datacenter', details: 'Russian datacenter for hashing Putin fast', hashingRate: 2, electricity: 0, price: 40000, img: russian, locked: true},
   {type: 'powerup', title: 'Stuxnet computer virus', details: 'Spread Stuxnet virus to hash on infected pc', hashingRate: 3, electricity: 0, price: 70000, img: penguin, locked: true},
-  {type: 'powerup', title: 'To The Moon!', details: 'Steal Nasa blueprints to build a space rocket', hashingRate: 8, electricity: 40000, price: 100000, img: spacerocket, locked: true},
+  {type: 'powerup', title: 'To The Moon', details: 'Steal Nasa blueprints to build a space rocket', hashingRate: 8, electricity: 40000, price: 100000, img: spacerocket, locked: true},
 ]
 
 const sellerCatText = [

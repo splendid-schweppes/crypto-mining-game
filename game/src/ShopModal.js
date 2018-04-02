@@ -2,7 +2,6 @@ import React from 'react'
 import Modal from 'react-modal'
 import {connect} from 'react-redux'
 import { Grid, Row, Col } from 'react-flexbox-grid'
-// import {sumBy} from 'lodash'
 
 import computershoplogo from './svg_assets/computershoplogo.png'
 import pc1 from './svg_assets/pc.svg'

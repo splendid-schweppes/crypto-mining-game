@@ -2,7 +2,6 @@ import React from 'react'
 import Modal from 'react-modal'
 import {connect} from 'react-redux'
 import { Grid, Row, Col } from 'react-flexbox-grid'
-// import {sumBy} from 'lodash'
 import {loadElectricity} from './Util'
 
 import './ShopModal.css'
@@ -177,25 +176,6 @@ class ShopModal extends React.Component {
     )
   }
 }
-
-// const mapDispatchToProps = (dispatch, props) => ({
-  // ?????????
-//   sellCoins: count => {
-//     dispatch({type: 'SELL_COINS', count})
-//     dispatch({type: 'REMOVE_COINS', count})
-//   },
-//
-//   // ?????????
-//   buyAsset: asset => {
-//     dispatch({type: 'ADD_ASSET', asset})
-//     dispatch({type: 'REMOVE_MONEY', amount: asset.price})
-//     dispatch({type: 'ACHIEVEMENT_FIRST_ASSET'})
-//
-//     if (asset.type === 'pc') {
-//       dispatch({type: 'ACHIEVEMENT_FIRST_COMPUTER'})
-//     }
-//   }
-// })
 
 const mapStateToProps = state => {
   return {

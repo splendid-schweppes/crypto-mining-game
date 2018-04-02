@@ -17,7 +17,7 @@ export const loadCoins = () =>
   Number(JSON.parse(window.localStorage.getItem('coins') || 0))
 
 export const loadMoney = () =>
-  Number(JSON.parse(window.localStorage.getItem('money') || 10000))
+  Number(JSON.parse(window.localStorage.getItem('money') || 0))
 
 export const loadAssets = () =>
   JSON.parse(window.localStorage.getItem('assets') || '[]')

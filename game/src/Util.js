@@ -1,6 +1,6 @@
-
 import {defaultBlocks, initialHashingRate} from './Config'
 import {random} from 'lodash'
+import {shopAssets} from './shopAssets'
 
 const getRandomConversionRate = () => random(10, 1100, true)
 
@@ -17,7 +17,7 @@ export const loadCoins = () =>
   Number(JSON.parse(window.localStorage.getItem('coins') || 0))
 
 export const loadMoney = () =>
-  Number(JSON.parse(window.localStorage.getItem('money') || 0))
+  Number(JSON.parse(window.localStorage.getItem('money') || 10000))
 
 export const loadAssets = () =>
   JSON.parse(window.localStorage.getItem('assets') || '[]')
@@ -36,3 +36,9 @@ export const loadElectricity = () =>
 
 export const saveElectricity = electricity =>
   window.localStorage.setItem('electricity', JSON.stringify(electricity))
+
+export const saveShopAssets = shopAssets =>
+  window.localStorage.setItem('shopAssets', JSON.stringify(shopAssets))
+
+export const loadShopAssets = () =>
+  JSON.parse(window.localStorage.getItem('shopAssets'))  || shopAssets

@@ -11,3 +11,7 @@ export const halmari = 'https://cdn.images.express.co.uk/img/dynamic/galleries/x
 export const decrease_treshold_seconds = 0
 
 export const shop_commission_percent = 5
+
+export const shop_price_up = 1.1
+
+export const shop_hashingRate_up = 1.1

@@ -17,7 +17,7 @@ export const loadCoins = () =>
   Number(JSON.parse(window.localStorage.getItem('coins') || 0))
 
 export const loadMoney = () =>
-  Number(JSON.parse(window.localStorage.getItem('money') || 0))
+  Number(JSON.parse(window.localStorage.getItem('money') || 10000))
 
 export const loadAssets = () =>
   JSON.parse(window.localStorage.getItem('assets') || '[]')
@@ -27,3 +27,12 @@ export const loadAchievements = () =>
 
 export const loadSellingRate = () =>
   JSON.parse(window.localStorage.getItem('sellingrate') || getRandomConversionRate())
+
+export const saveSellingRate = sellingrate =>
+  window.localStorage.setItem('sellingrate', JSON.stringify(sellingrate))
+
+export const loadElectricity = () =>
+  JSON.parse(window.localStorage.getItem('electricity') || 0)
+
+export const saveElectricity = electricity =>
+  window.localStorage.setItem('electricity', JSON.stringify(electricity))

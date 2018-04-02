@@ -1,11 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {random} from 'lodash'
-import {loadSellingRate} from './Util'
-
-const saveSellingRate = sellingrate => {
-  window.localStorage.setItem('sellingrate', JSON.stringify(sellingrate))
-}
+import {loadSellingRate, saveSellingRate} from './Util'
 
 const getRandomConversionRate = () => random(10, 1100, true)
 

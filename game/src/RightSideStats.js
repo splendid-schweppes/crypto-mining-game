@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {sumBy} from 'lodash'
 import './RightSideStats.css'
+import {loadElectricity} from './Util'
 
 class RightSideStats extends Component {
   render() {
     return (
       <div className="stats-container">
         <div className="player-electricity rightside-stats">
-          <strong className="rightside-stats-text">Electricity: {this.props.electricity} / 0</strong>
+          <strong className="rightside-stats-text">Electricity: {this.props.electricity}</strong>
           <i className="fa fa-bolt status-icons" aria-hidden="true"></i>
         </div>
         <div className="player-coins rightside-stats">
@@ -39,7 +40,7 @@ const mapStateToProps = state => {
     hashingRate: state.hashingRate,
     assets: state.assets,
     hashingRateFromAssets: sumBy(state.assets, 'hashingRate'),
-    electricity: sumBy(state.assets, 'electricityCost'),
+    electricity: loadElectricity(),
     money: state.money,
     achievements: state.achievements
   }

@@ -2,7 +2,7 @@ import React from 'react'
 import Modal from 'react-modal'
 import {connect} from 'react-redux'
 import { Grid, Row, Col } from 'react-flexbox-grid'
-import {sumBy} from 'lodash'
+// import {sumBy} from 'lodash'
 
 import computershoplogo from './svg_assets/computershoplogo.png'
 import pc1 from './svg_assets/pc.svg'
@@ -18,6 +18,8 @@ import powersupply1 from './svg_assets/powersupply.svg'
 import powersupply2 from './svg_assets/powersupply2.svg'
 import powersupply3 from './svg_assets/powersupply3.svg'
 
+import {loadElectricity, saveElectricity} from './Util'
+
 import './ShopModal.css'
 import sellerCat from './svg_assets/cat2.png'
 
@@ -30,21 +32,21 @@ const customStyles = {
 Modal.setAppElement('#root')
 
 const assets = [
-  {type: 'pc', title: 'Basic PC', details: 'The Oversoul', hashingRate: 0.01, electricityCost: 1400, price: 1200, img: pc1},
-  {type: 'pc', title: 'Power PC', details: 'Illustrated Primer', hashingRate: 0.02, electricityCost: 2400, price: 1800, img: pc2},
-  {type: 'pc', title: 'Super PC', details: 'The Quark 9000', hashingRate: 0.03, electricityCost: 3400, price: 2200, img: pc3},
+  {type: 'pc', title: 'Basic PC', details: 'The Oversoul', hashingRate: 0.01, electricity: 1400, price: 1200, img: pc1},
+  {type: 'pc', title: 'Power PC', details: 'Illustrated Primer', hashingRate: 0.02, electricity: 2400, price: 1800, img: pc2},
+  {type: 'pc', title: 'Super PC', details: 'The Quark 9000', hashingRate: 0.03, electricity: 3400, price: 2200, img: pc3},
 
-  {type: 'gpu', title: 'Basic GPU', details: 'Miniac', hashingRate: 0.004, electricityCost: 300, price: 400, img: gpu1fan},
-  {type: 'gpu', title: 'Power GPU', details: 'Teletraan', hashingRate: 0.006, electricityCost: 400, price: 600, img: gpu2fan},
-  {type: 'gpu', title: 'Super GPU', details: 'Illustrated', hashingRate: 0.008, electricityCost: 500, price: 800, img: gpu3fan},
+  {type: 'gpu', title: 'Basic GPU', details: 'Miniac', hashingRate: 0.004, electricity: 300, price: 400, img: gpu1fan},
+  {type: 'gpu', title: 'Power GPU', details: 'Teletraan', hashingRate: 0.006, electricity: 400, price: 600, img: gpu2fan},
+  {type: 'gpu', title: 'Super GPU', details: 'Illustrated', hashingRate: 0.008, electricity: 500, price: 800, img: gpu3fan},
 
-  {type: 'motherboard', title: 'Basic Motherboard', details: 'Upoc', hashingRate: 0.001, electricityCost: 50, price: 100, img: motherboard1},
-  {type: 'motherboard', title: 'Power Motherboard', details: 'Distilling X5', hashingRate: 0.002, electricityCost: 100, price: 200, img: motherboard2},
-  {type: 'motherboard', title: 'Super Motherboard', details: 'Dypado 500', hashingRate: 0.003, electricityCost: 200, price: 300, img: motherboard3},
+  {type: 'motherboard', title: 'Basic Motherboard', details: 'Upoc', hashingRate: 0.001, electricity: 50, price: 100, img: motherboard1},
+  {type: 'motherboard', title: 'Power Motherboard', details: 'Distilling X5', hashingRate: 0.002, electricity: 100, price: 200, img: motherboard2},
+  {type: 'motherboard', title: 'Super Motherboard', details: 'Dypado 500', hashingRate: 0.003, electricity: 200, price: 300, img: motherboard3},
 
-  {type: 'power', title: 'Basic Powersupply', details: 'Trixter', hashingRate: 0, electricityCost: 400, price: 200, img: powersupply1},
-  {type: 'power', title: 'Power Powersupply', details: 'The Nuclear Plant', hashingRate: 0, electricityCost: 800, price: 400, img: powersupply2},
-  {type: 'power', title: 'Super Powersupply', details: 'Solar', hashingRate: 0, electricityCost: 1400, price: 800, img: powersupply3},
+  {type: 'power', title: 'Basic Powersupply', details: 'Trixter', hashingRate: 0, electricity: 400, price: 200, img: powersupply1},
+  {type: 'power', title: 'Power Powersupply', details: 'The Nuclear Plant', hashingRate: 0, electricity: 800, price: 400, img: powersupply2},
+  {type: 'power', title: 'Super Powersupply', details: 'Solar', hashingRate: 0, electricity: 1400, price: 800, img: powersupply3},
 ]
 
 const sellerCatText = [
@@ -60,7 +62,8 @@ class ShopModal extends React.Component {
     super(props)
     this.state = {
       coins: props.coins,
-      sellerCatText: Math.floor(Math.random() * sellerCatText.length)
+      sellerCatText: Math.floor(Math.random() * sellerCatText.length),
+      electricity: loadElectricity()
     }
     this.renderAsset = this.renderAsset.bind(this)
     this.buyAsset = this.buyAsset.bind(this)
@@ -83,7 +86,17 @@ class ShopModal extends React.Component {
   buyAsset(asset) {
     return () => {
       if (this.props.money > 0 && this.props.money >= asset.price) {
-        this.props.buyAsset(asset)
+        if (asset.type === 'power') {
+          const electricity = this.state.electricity + asset.electricity;
+          this.setState({electricity});
+          this.props.buyAsset(asset);
+          saveElectricity(electricity);
+        } else if ((this.state.electricity - asset.electricity) >= 0) {
+          const electricity = this.state.electricity - asset.electricity;
+          this.setState({electricity});
+          this.props.buyAsset(asset);
+          saveElectricity(electricity);
+        }
       }
     }
   }
@@ -115,7 +128,7 @@ class ShopModal extends React.Component {
             </p>
           }
           <p className="item-details">
-            {asset.type === 'power' ? 'Electricity' : 'Electricity Cost'}: <span className="shop-highlight">{asset.electricityCost} w</span>
+            {asset.type === 'power' ? 'Electricity' : 'Electricity Cost'}: <span className="shop-highlight">{asset.electricity} w</span>
           </p>
           <img src={asset.img} alt={asset.title} className="shop-item-icon-pc" />
           <p>
@@ -150,7 +163,7 @@ class ShopModal extends React.Component {
             <Row>
               <Col md={3} lg={3}>
                 <div className="player-electricity">
-                  <strong>{this.props.electricity}  / 0 Available</strong>
+                  <strong>{this.state.electricity}</strong>
                   <i className="fa fa-bolt status-icons" aria-hidden="true"></i>
                 </div>
                 <div className="player-wallet">
@@ -206,7 +219,7 @@ const mapStateToProps = state => {
     coins: state.coins,
     money: state.money,
     assets: state.assets,
-    electricity: sumBy(state.assets, 'electricityCost'),
+    electricity: state.electricity,
     achievements: state.achievements
   }
 }

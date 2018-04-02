@@ -2,7 +2,8 @@ import React from 'react'
 import Modal from 'react-modal'
 import {connect} from 'react-redux'
 import { Grid, Row, Col } from 'react-flexbox-grid'
-import {sumBy} from 'lodash'
+// import {sumBy} from 'lodash'
+import {loadElectricity} from './Util'
 
 import './ShopModal.css'
 import './PowerupsModal.css'
@@ -26,17 +27,17 @@ const customStyles = {
 Modal.setAppElement('#root')
 
 const assets = [
-  {type: 'addPower', title: 'Hamster on spinning wheel', details: 'Hamster farm to boost your electricity', hashingRate: 0, electricityCost: 10000, price: 2500, img: hamster, locked: true},
-  {type: 'powerup', title: 'Chinese hackers', details: 'Hire chinese hackers to hash faster', hashingRate: 0.1, electricityCost: 0, price: 8000, img: chinese, locked: true},
-  {type: 'powerup', title: 'Overclock lvl 1', details: 'Overclock to boost your hashing by 0.3', hashingRate: 0.3, electricityCost: 10000, price: 0, img: overclock, locked: true},
+  {type: 'addPower', title: 'Hamster on spinning wheel', details: 'Hamster farm to boost your electricity', hashingRate: 0, electricity: 10000, price: 2500, img: hamster, locked: true},
+  {type: 'powerup', title: 'Chinese hackers', details: 'Hire chinese hackers to hash faster', hashingRate: 0.1, electricity: 0, price: 8000, img: chinese, locked: true},
+  {type: 'powerup', title: 'Overclock lvl 1', details: 'Overclock to boost your hashing by 0.3', hashingRate: 0.3, electricity: 10000, price: 0, img: overclock, locked: true},
 
-  {type: 'addPower', title: 'Electricity boost', details: '20 000 electricity for lifetime', hashingRate: 0.00, electricityCost: 20000, price: 5000, img: power, locked: true},
-  {type: 'powerup', title: 'Overclock lvl 2', details: 'Double your hashing rate', hashingRate: 0.5, electricityCost: 20000, price: 0, img: overclock2, locked: true},
-  {type: 'powerup', title: 'Cloud hashing', details: 'Cloud datacenter for lifetime hashing', hashingRate: 0.9, electricityCost: 0, price: 20000, img: clouddata, locked: true},
+  {type: 'addPower', title: 'Electricity boost', details: '20 000 electricity for lifetime', hashingRate: 0.00, electricity: 20000, price: 5000, img: power, locked: true},
+  {type: 'powerup', title: 'Overclock lvl 2', details: 'Double your hashing rate', hashingRate: 0.5, electricity: 20000, price: 0, img: overclock2, locked: true},
+  {type: 'powerup', title: 'Cloud hashing', details: 'Cloud datacenter for lifetime hashing', hashingRate: 0.9, electricity: 0, price: 20000, img: clouddata, locked: true},
 
-  {type: 'powerup', title: 'Russian datacenter', details: 'Russian datacenter for hashing Putin fast', hashingRate: 2, electricityCost: 0, price: 40000, img: russian, locked: true},
-  {type: 'powerup', title: 'Stuxnet computer virus', details: 'Spread Stuxnet virus to hash on infected pc', hashingRate: 3, electricityCost: 0, price: 70000, img: penguin, locked: true},
-  {type: 'powerup', title: 'To The Moon!', details: 'Steal Nasa blueprints to build a space rocket', hashingRate: 8, electricityCost: 40000, price: 100000, img: spacerocket, locked: true},
+  {type: 'powerup', title: 'Russian datacenter', details: 'Russian datacenter for hashing Putin fast', hashingRate: 2, electricity: 0, price: 40000, img: russian, locked: true},
+  {type: 'powerup', title: 'Stuxnet computer virus', details: 'Spread Stuxnet virus to hash on infected pc', hashingRate: 3, electricity: 0, price: 70000, img: penguin, locked: true},
+  {type: 'powerup', title: 'To The Moon!', details: 'Steal Nasa blueprints to build a space rocket', hashingRate: 8, electricity: 40000, price: 100000, img: spacerocket, locked: true},
 ]
 
 const sellerCatText = [
@@ -111,7 +112,7 @@ class ShopModal extends React.Component {
             Hashing Rate: <span className="shop-highlight">{asset.hashingRate}</span>
           </p>
           <p className="item-details">
-            {asset.type === 'addPower' ? 'Electricity added' : 'Electricity Cost'}: <span className="shop-highlight">{asset.electricityCost.toLocaleString()} w</span>
+            {asset.type === 'addPower' ? 'Electricity added' : 'Electricity Cost'}: <span className="shop-highlight">{asset.electricity.toLocaleString()} w</span>
           </p>
           <img src={asset.img} alt={asset.title} className="img-responsive powerup-icon" />
           <p>
@@ -142,7 +143,7 @@ class ShopModal extends React.Component {
             <Row>
               <Col md={3} lg={3}>
                 <div className="player-electricity">
-                  <strong>{this.props.electricity}  / 0 Available</strong>
+                  <strong>{this.props.electricity}</strong>
                   <i className="fa fa-bolt status-icons" aria-hidden="true"></i>
                 </div>
                 <div className="player-wallet">
@@ -201,7 +202,7 @@ const mapStateToProps = state => {
     coins: state.coins,
     money: state.money,
     assets: state.assets,
-    electricity: sumBy(state.assets, 'electricityCost'),
+    electricity: loadElectricity(),
     achievements: state.achievements
   }
 }

@@ -1,5 +1,8 @@
 
 import {defaultBlocks, initialHashingRate} from './Config'
+import {random} from 'lodash'
+
+const getRandomConversionRate = () => random(10, 1100, true)
 
 export const loadBlocks = () =>
   Number(JSON.parse(window.localStorage.getItem('blocks') || defaultBlocks))
@@ -22,3 +25,5 @@ export const loadAssets = () =>
 export const loadAchievements = () =>
   JSON.parse(window.localStorage.getItem('achievements') || '[]')
 
+export const loadSellingRate = () =>
+  JSON.parse(window.localStorage.getItem('sellingrate') || getRandomConversionRate())

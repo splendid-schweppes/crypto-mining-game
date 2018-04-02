@@ -8,6 +8,6 @@ export const initialHashingRate = 0
 export const pertti = 'http://www.omaga.ro/wp-content/uploads/imported/8891/herman-motanul-adorabil-cu-ochi-uriasi-si-ingrijor-7.jpg'
 export const halmari = 'https://cdn.images.express.co.uk/img/dynamic/galleries/x701/177020.jpg'
 
-export const decrease_treshold_seconds = 10
+export const decrease_treshold_seconds = 0
 
 export const shop_commission_percent = 5

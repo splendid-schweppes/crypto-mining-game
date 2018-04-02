@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import Wallet from './Wallet'
+import Market from './Market'
 import Shop from './Shop'
 import Powerups from './Powerups'
 import Achievements from './Achievements'
@@ -11,7 +11,7 @@ export default class Menu extends Component {
   render() {
     return (
       <div className="menu">
-        <Wallet />
+        <Market />
         <Shop />
         <Powerups />
         <Achievements />

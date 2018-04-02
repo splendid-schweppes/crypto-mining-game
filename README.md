@@ -50,8 +50,9 @@ Kauppa mistä voi päivittää konetta ja saada automaattisesti mainattua
   * ~~Bittirahan myyminen dollareiksi~~
   * ~~dollareilla ostetaan assetteja~~
   * ~~Kauppias ottaa välistä 5%~~
-  * Visualisointi että kauppias ottaa rahaa välistä ja paljonko dollareita saa kun myy
+  * ~~Visualisointi että kauppias ottaa rahaa välistä ja paljonko dollareita saa kun myy~~
 * ~~Saavutukset~~
+  * Loput achievementit
 * ~~Lompakkokuvake tms.~~
 * ~~Klikkien replay~~
 * Sähkön laskenta paljonko assetit vaatii sähköä 0 / 0 eli "paljonko tarvitaan / paljonko saatavilla"

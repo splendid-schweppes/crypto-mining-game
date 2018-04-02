@@ -2,6 +2,7 @@ import React from 'react'
 import Modal from 'react-modal'
 import {connect} from 'react-redux'
 import { Grid, Row, Col } from 'react-flexbox-grid'
+import { ToastContainer, toast } from 'react-toastify';
 import {shop_price_up, shop_hashingRate_up} from './Config'
 
 import computershoplogo from './svg_assets/computershoplogo.png'
@@ -56,6 +57,10 @@ class ShopModal extends React.Component {
     clearInterval(this.interval);
   }
 
+  boughtNotification = () => toast.success("Asset purchased!");
+  noMoneyNotification = () => toast.error("Not enough money!");
+  noElectricityNotification = () => toast.warning("Not enough electricity available!");
+
   buyAsset(asset) {
     return () => {
       if (this.props.money > 0 && this.props.money >= asset.price) {
@@ -67,6 +72,7 @@ class ShopModal extends React.Component {
           asset.price = asset.price * shop_price_up;
           asset.hashingRate = asset.hashingRate * shop_hashingRate_up;
           saveShopAssets(assets);
+          this.boughtNotification()
         } else if ((this.state.electricity - asset.electricity) >= 0) {
           const electricity = this.state.electricity - asset.electricity;
           this.setState({electricity});
@@ -75,7 +81,13 @@ class ShopModal extends React.Component {
           asset.price = asset.price * shop_price_up;
           asset.hashingRate = asset.hashingRate * shop_hashingRate_up;
           saveShopAssets(assets);
+          this.boughtNotification()
+        } else {
+          this.noElectricityNotification()
         }
+      } else {
+        console.log('nigga');
+        this.noMoneyNotification()
       }
     }
   }
@@ -171,6 +183,7 @@ class ShopModal extends React.Component {
               {assets.map(this.renderAsset)}
             </Row>
           </Grid>
+          <ToastContainer autoClose={2000} position="bottom-right"/>
         </Modal>
       </div>
     )

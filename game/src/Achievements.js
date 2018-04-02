@@ -28,7 +28,10 @@ export default class Achievements extends Component {
             <i className="fa fa-4x fa-trophy menu-icon"></i>
           </div>
         </div>
-        <AchievementsModal isOpen={this.state.modalIsOpen} closeModal={this.toggleModal}/>
+        <AchievementsModal
+          isOpen={this.state.modalIsOpen}
+          closeModal={this.toggleModal}
+        />
       </div>
     )
   }

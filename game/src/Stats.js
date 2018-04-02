@@ -13,10 +13,18 @@ class Stats extends Component {
         <div className="fakeButtons fakeZoom"></div>
       </div>
       <div className="fakeScreen">
-        <p className="terminal-text">Hashing speed: <span className="terminal-highlight">{this.props.hashingRate.toFixed(3)}/s</span></p>
-        <p className="terminal-text">+ from assets: <span className="terminal-highlight">{this.props.hashingRateFromAssets.toFixed(3)}/s</span></p>
-        <p className="terminal-text">Blocks solved: <span className="terminal-highlight">{this.props.blocks.toFixed(3)}/30</span></p>
-        <p className="terminal-text">Coins in wallet: <span className="terminal-highlight">{this.props.coins}</span></p>
+        <p className="terminal-text">
+          Hashing speed: <span className="terminal-highlight">{this.props.hashingRate.toFixed(3)}/s</span>
+        </p>
+        <p className="terminal-text">
+          + from assets: <span className="terminal-highlight">{this.props.hashingRateFromAssets.toFixed(3)}/s</span>
+        </p>
+        <p className="terminal-text">
+          Blocks solved: <span className="terminal-highlight">{this.props.blocks.toFixed(3)}/30</span>
+        </p>
+        <p className="terminal-text">
+          Coins in wallet: <span className="terminal-highlight">{this.props.coins}</span>
+        </p>
       </div>
       </div>
     )

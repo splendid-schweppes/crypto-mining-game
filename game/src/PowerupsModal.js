@@ -69,6 +69,7 @@ class ShopModal extends React.Component {
       }
     }, 10000);
   }
+
   componentWillUnmount() {
     clearInterval(this.interval);
   }
@@ -97,6 +98,7 @@ class ShopModal extends React.Component {
   renderAsset(asset, index) {
     const itemLockedStyle = `${asset.locked ? 'locked' : 'unlocked'}`
     const itemLockedText = `${asset.locked ? 'locked-text' : 'unlocked-text'}`
+    const electricityText = asset.type === 'addPower' ? 'Electricity added' : 'Electricity Cost'
 
     return (
       <Col md={4} key={asset.title}>
@@ -111,7 +113,7 @@ class ShopModal extends React.Component {
             Hashing Rate: <span className="shop-highlight">{asset.hashingRate}</span>
           </p>
           <p className="item-details">
-            {asset.type === 'addPower' ? 'Electricity added' : 'Electricity Cost'}: <span className="shop-highlight">{asset.electricity.toLocaleString()} w</span>
+            {electricityText}: <span className="shop-highlight">{asset.electricity.toLocaleString()} w</span>
           </p>
           <img src={asset.img} alt={asset.title} className="img-responsive powerup-icon" />
           <p>

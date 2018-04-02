@@ -58,14 +58,14 @@ Kauppa mistä voi päivittää konetta ja saada automaattisesti mainattua
 * ~~Klikkien replay~~
 * ~~Sähkön laskenta paljonko assetit vaatii sähköä 0 / 0 eli "paljonko tarvitaan / paljonko saatavilla"~~
   * Ehkä sähkön visualisointi paremmin / fiksummin? Nyt sähkömäärää ei voi ylittää, tarvitseeko?
-  * jos assetit vie enemmän sähköä kuin saatavilla, +from assets nolliin
+  * jos assetit vie enemmän sähköä kuin saatavilla, +from assets nolliin??
 * Click streak, jos pitää "Crazy sheikkiä" päällä esim 10 sekkaa, saa streakin ja suoraan kolikon
   * Joku hieno efekti streakista
 * Achievementit unlokkaa "power uppeja" jotka pitää toki ostaa
   * Power uppeja aukeaa aina 2 achievementin välein
   * unlokkaus
   * ostaminen
-* Kaupassa hinnat nousee oston jälkeen tietyn prosenttimäärän, esim 10%
+* ~~Kaupassa hinnat nousee oston jälkeen tietyn prosenttimäärän, esim 10%~~
 * ~~Statistiikan visualisoiminen pelin etusivulle~~
 * Hidden elementtiin osuminen = suoraan 10 kolikkoa, esim räjähdys efekti tms??
 * Random string generator kone voisi toimia ns assettina, 1 assetti olisi yksi kone jos niitä voisi tunkea etusivulle vaikka X määrän, samaan tapaan kuin cookie clickerissä tulee sormia tökkimään keksiä niin saisi koneita laskemaan

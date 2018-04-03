@@ -109,7 +109,7 @@ class ShopModal extends React.Component {
       <Col md={4} key={asset.title}>
         <div className="shop-item">
           <div className="shop-item-heading">
-            <strong>{asset.title} / Level {asset.lvl}</strong>
+            <strong>{asset.title} / <span className="shop-highlight">Level {asset.lvl}</span></strong>
             <p className="item-details">{asset.details}</p>
           </div>
           {asset.hashingRate > 0 &&

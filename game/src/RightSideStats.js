@@ -9,7 +9,7 @@ class RightSideStats extends Component {
     return (
       <div className="stats-container">
         <div className="player-electricity rightside-stats">
-          <strong className="rightside-stats-text">Electricity: {this.props.electricity}</strong>
+          <strong className="rightside-stats-text">Electricity: {this.props.electricity.toFixed(0)}</strong>
           <i className="fa fa-bolt status-icons" aria-hidden="true"></i>
         </div>
         <div className="player-coins rightside-stats">

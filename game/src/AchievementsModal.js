@@ -34,8 +34,8 @@ const achievements = [
   {id: 16, name: 'First coin sold'},
   {id: 17, name: 'Crypto dealer, 10 coins sold'},
   {id: 17, name: 'Boss dealer, 100 coins sold'},
-  {id: 18, name: 'Burn the circuits, run out of power'},
-  {id: 19, name: 'Young money, cash money. Wallet contains 10 000 $'},
+  {id: 18, name: 'Hidden ComboBreaker HIT!'},
+  {id: 19, name: 'Young money, cash money. Wallet contains 100 000 $'},
   {id: 20, name: 'You did it! 1 000 000 coins hashed. This is the end game. Nice job.'}
 ]
 

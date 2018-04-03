@@ -22,9 +22,6 @@ class Stats extends Component {
         <p className="terminal-text">
           Blocks solved: <span className="terminal-highlight">{this.props.blocks.toFixed(3)}/30</span>
         </p>
-        <p className="terminal-text">
-          Coins in wallet: <span className="terminal-highlight">{this.props.coins}</span>
-        </p>
       </div>
       </div>
     )

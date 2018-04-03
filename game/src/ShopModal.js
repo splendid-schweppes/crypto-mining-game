@@ -3,10 +3,7 @@ import Modal from 'react-modal'
 import {connect} from 'react-redux'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 import { ToastContainer, toast } from 'react-toastify';
-import {shop_price_up, shop_hashingRate_up} from './Config'
-
-import computershoplogo from './svg_assets/computershoplogo.png'
-
+import {shop_price_up, shop_hashingRate_up, shop_electricity_up} from './Config'
 import {loadElectricity, saveElectricity} from './Util'
 import {loadShopAssets, saveShopAssets} from './Util'
 
@@ -86,6 +83,8 @@ class ShopModal extends React.Component {
         saveElectricity(electricity)
         asset.price = asset.price * shop_price_up
         asset.hashingRate = asset.hashingRate * shop_hashingRate_up
+        asset.lvl = asset.lvl + 1
+        asset.electricity = asset.electricity * shop_electricity_up
         saveShopAssets(assets)
         this.boughtNotification()
       }
@@ -110,7 +109,7 @@ class ShopModal extends React.Component {
       <Col md={4} key={asset.title}>
         <div className="shop-item">
           <div className="shop-item-heading">
-            <strong>{asset.title}</strong>
+            <strong>{asset.title} / Level {asset.lvl}</strong>
             <p className="item-details">{asset.details}</p>
           </div>
           {asset.hashingRate > 0 &&
@@ -119,7 +118,7 @@ class ShopModal extends React.Component {
             </p>
           }
           <p className="item-details">
-            {asset.type === 'power' ? 'Electricity' : 'Electricity Cost'}: <span className="shop-highlight">{asset.electricity} w</span>
+            {asset.type === 'power' ? 'Electricity' : 'Electricity Cost'}: <span className="shop-highlight">{asset.electricity.toFixed(0)} w</span>
           </p>
           <img src={asset.img} alt={asset.title} className="shop-item-icon-pc" />
           <p>
@@ -140,11 +139,6 @@ class ShopModal extends React.Component {
           <h2 className="centered">
             KittyCat PC STORE
           </h2>
-          <img
-            src={computershoplogo}
-            alt="computershoplogo"
-            className="computershoplogo img-responsive"
-          />
 
           <div className="modal-close-button" onClick={this.props.closeModal}>
             <span id="x">X</span>
@@ -152,26 +146,26 @@ class ShopModal extends React.Component {
 
           <Grid fluid className="shop-grid">
             <Row>
-              <Col md={3} lg={3}>
-                <div className="player-electricity">
-                  <strong>{this.state.electricity}</strong>
+              <div className="player-stats-container">
+                <div className="player-electricity player-shop-stats">
+                  <strong>{this.state.electricity.toFixed(0)}</strong>
                   <i className="fa fa-bolt status-icons" aria-hidden="true"></i>
                 </div>
-                <div className="player-wallet">
+                <div className="player-wallet player-shop-stats">
                   <strong>{this.props.money.toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1,')}</strong>
                   <i className="fa fa-usd status-icons" aria-hidden="true"></i>
                 </div>
-                <div className="player-level">
+                <div className="player-level player-shop-stats">
                   <strong>{this.props.achievements.length} / 20</strong>
                   <i className="fa fa-level-up status-icons" aria-hidden="true"></i>
                 </div>
-              </Col>
-              <Col md={6} lg={6}>
+              </div>
+              <Col mdOffset={4} md={5}>
                 <div className="talk-bubble-shop tri-left left-top round">
                   {this.renderCatText()}
                 </div>
               </Col>
-              <Col md={3} lg={3}>
+              <Col md={3}>
                 <img
                   src={sellerCat}
                   alt="sellerCat"

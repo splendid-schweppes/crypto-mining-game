@@ -117,11 +117,29 @@
   color: black;
   text-shadow: none;
   padding: 30px;
+  padding-right: 5px;
   width: 90%;
+  padding-left: 40px;
   background-color: white;
+}
+
+.talk-bubble-shop:hover {
+  z-index: 4;
 }
 
 .status-icons {
   float: right;
   padding: 7px;
+}
+
+.player-stats-container {
+  position: fixed;
+  top: 65px;
+  z-index: 2;
+  min-width: 350px;
+  top: 90px;
+}
+
+.player-shop-stats {
+  box-shadow: 3px 3px 30px -6px rgba(0,0,0,0.75);
 }

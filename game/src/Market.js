@@ -3,7 +3,8 @@ import {connect} from 'react-redux'
 import {random} from 'lodash'
 import {loadSellingRate, saveSellingRate} from './Util'
 
-const getRandomConversionRate = () => random(10, 1100, true)
+const getRandomSellingRate = () => random(10, 1100, true)
+const getRandomInterval = () => random(30000, 60000, true)
 
 class Market extends Component {
   constructor(props) {
@@ -18,15 +19,23 @@ class Market extends Component {
   }
 
   componentDidMount() {
-    this.interval = setInterval(() => {
-      const rate = getRandomConversionRate();
+    const changeCryptoMarkets = () => {
+      const rate = getRandomSellingRate();
       this.setState({ coin_conversion_rate: rate });
       saveSellingRate(rate);
-    }, 30000);
+      setTimeout(changeCryptoMarkets, getRandomInterval());
+    }
+    setTimeout(changeCryptoMarkets, getRandomInterval());
+
+    // this.interval = setInterval(() => {
+    //   const rate = getRandomConversionRate();
+    //   this.setState({ coin_conversion_rate: rate });
+    //   saveSellingRate(rate);
+    // }, 30000);
   }
 
   componentWillUnmount() {
-    clearInterval(this.interval);
+    // clearInterval(this.interval);
   }
 
   changeCoinCount({target}) {
@@ -47,7 +56,7 @@ class Market extends Component {
       <div className="menu-item wallet">
         <div>
           <h3>Crypto Exchange</h3>
-          <p>Rate for selling</p>
+          <p>Current rate for selling</p>
           <p><strong>{this.state.coin_conversion_rate.toFixed(2)}</strong></p>
           <div>
             <input type="number" value={this.state.coins} onChange={this.changeCoinCount} step="1" min="1" />

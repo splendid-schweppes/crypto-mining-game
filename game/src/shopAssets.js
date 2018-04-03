@@ -12,19 +12,19 @@ import powersupply2 from './svg_assets/powersupply2.svg'
 import powersupply3 from './svg_assets/powersupply3.svg'
 
 export const shopAssets = [
-  {type: 'pc', title: 'Basic PC', details: 'The Oversoul', hashingRate: 0.01, electricity: 1400, price: 1200, img: pc1},
-  {type: 'pc', title: 'Power PC', details: 'Illustrated Primer', hashingRate: 0.02, electricity: 2400, price: 1800, img: pc2},
-  {type: 'pc', title: 'Super PC', details: 'The Quark 9000', hashingRate: 0.03, electricity: 3400, price: 2200, img: pc3},
+  {type: 'pc', title: 'Basic PC', lvl: 1, details: 'The Oversoul', hashingRate: 0.01, electricity: 1400, price: 1200, img: pc1},
+  {type: 'pc', title: 'Power PC', lvl: 1, details: 'Illustrated Primer', hashingRate: 0.02, electricity: 2400, price: 1800, img: pc2},
+  {type: 'pc', title: 'Super PC', lvl: 1, details: 'The Quark 9000', hashingRate: 0.03, electricity: 3400, price: 2200, img: pc3},
 
-  {type: 'gpu', title: 'Basic GPU', details: 'Miniac', hashingRate: 0.004, electricity: 300, price: 400, img: gpu1fan},
-  {type: 'gpu', title: 'Power GPU', details: 'Teletraan', hashingRate: 0.006, electricity: 400, price: 600, img: gpu2fan},
-  {type: 'gpu', title: 'Super GPU', details: 'Illustrated', hashingRate: 0.008, electricity: 500, price: 800, img: gpu3fan},
+  {type: 'gpu', title: 'Basic GPU', lvl: 1, details: 'Miniac', hashingRate: 0.004, electricity: 300, price: 400, img: gpu1fan},
+  {type: 'gpu', title: 'Power GPU', lvl: 1, details: 'Teletraan', hashingRate: 0.006, electricity: 400, price: 600, img: gpu2fan},
+  {type: 'gpu', title: 'Super GPU', lvl: 1, details: 'Illustrated', hashingRate: 0.008, electricity: 500, price: 800, img: gpu3fan},
 
-  {type: 'motherboard', title: 'Basic Motherboard', details: 'Upoc', hashingRate: 0.001, electricity: 50, price: 100, img: motherboard1},
-  {type: 'motherboard', title: 'Power Motherboard', details: 'Distilling X5', hashingRate: 0.002, electricity: 100, price: 200, img: motherboard2},
-  {type: 'motherboard', title: 'Super Motherboard', details: 'Dypado 500', hashingRate: 0.003, electricity: 200, price: 300, img: motherboard3},
+  {type: 'motherboard', title: 'Basic Motherboard', lvl: 1, details: 'Upoc', hashingRate: 0.001, electricity: 50, price: 100, img: motherboard1},
+  {type: 'motherboard', title: 'Power Motherboard', lvl: 1, details: 'Distilling X5', hashingRate: 0.002, electricity: 100, price: 200, img: motherboard2},
+  {type: 'motherboard', title: 'Super Motherboard', lvl: 1, details: 'Dypado 500', hashingRate: 0.003, electricity: 200, price: 300, img: motherboard3},
 
-  {type: 'power', title: 'Basic Powersupply', details: 'Trixter', hashingRate: 0, electricity: 400, price: 200, img: powersupply1},
-  {type: 'power', title: 'Power Powersupply', details: 'The Nuclear Plant', hashingRate: 0, electricity: 800, price: 400, img: powersupply2},
-  {type: 'power', title: 'Super Powersupply', details: 'Solar', hashingRate: 0, electricity: 1400, price: 800, img: powersupply3},
+  {type: 'power', title: 'Basic Powersupply', lvl: 1, details: 'Trixter', hashingRate: 0, electricity: 400, price: 200, img: powersupply1},
+  {type: 'power', title: 'Power Powersupply', lvl: 1, details: 'The Nuclear Plant', hashingRate: 0, electricity: 800, price: 400, img: powersupply2},
+  {type: 'power', title: 'Super Powersupply', lvl: 1, details: 'Solar', hashingRate: 0, electricity: 1400, price: 800, img: powersupply3},
 ]

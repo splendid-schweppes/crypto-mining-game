@@ -15,3 +15,5 @@ export const shop_commission_percent = 5
 export const shop_price_up = 1.1
 
 export const shop_hashingRate_up = 1.1
+
+export const shop_electricity_up = 1.1

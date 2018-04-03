@@ -1,6 +1,7 @@
 import {defaultBlocks, initialHashingRate} from './Config'
 import {random} from 'lodash'
 import {shopAssets} from './shopAssets'
+import {powerUps} from './powerUpAssets'
 
 const getRandomConversionRate = () => random(10, 1100, true)
 
@@ -42,3 +43,15 @@ export const saveShopAssets = shopAssets =>
 
 export const loadShopAssets = () =>
   JSON.parse(window.localStorage.getItem('shopAssets'))  || shopAssets
+
+export const savePowerUps = powerUps =>
+  window.localStorage.setItem('powerUps', JSON.stringify(powerUps))
+
+export const loadPowerUps = () =>
+  JSON.parse(window.localStorage.getItem('powerUps'))  || powerUps
+
+export const loadPowerUpsOwned = () =>
+  JSON.parse(window.localStorage.getItem('powerUpsOwned') || '[]')
+
+export const savePowerUpsOwned = powerUps =>
+  window.localStorage.setItem('powerUpsOwned', JSON.stringify(powerUps))

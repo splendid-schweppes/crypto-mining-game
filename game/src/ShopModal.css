@@ -135,7 +135,7 @@
 .player-stats-container {
   position: fixed;
   top: 65px;
-  z-index: 2;
+  z-index: 99;
   min-width: 350px;
   top: 90px;
 }

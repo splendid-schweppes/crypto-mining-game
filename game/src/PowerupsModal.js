@@ -2,20 +2,16 @@ import React from 'react'
 import Modal from 'react-modal'
 import {connect} from 'react-redux'
 import { Grid, Row, Col } from 'react-flexbox-grid'
-import {loadElectricity} from './Util'
+import {loadElectricity, saveElectricity} from './Util'
+import {shop_price_up, shop_hashingRate_up, shop_electricity_up} from './Config'
+import {loadPowerUps, savePowerUps} from './Util'
+import { ToastContainer, toast } from 'react-toastify';
 
 import './ShopModal.css'
 import './PowerupsModal.css'
 import grumpyCat from './svg_assets/grumpycat.png'
-import hamster from './svg_assets/hamster.png'
-import spacerocket from './svg_assets/spacerocket.png'
-import chinese from './svg_assets/chinese.png'
-import overclock from './svg_assets/overclock.png'
-import penguin from './svg_assets/penguin.png'
-import clouddata from './svg_assets/clouddata.png'
-import russian from './svg_assets/russian.png'
-import power from './svg_assets/power.png'
-import overclock2 from './svg_assets/overclock2.png'
+
+const assets = loadPowerUps()
 
 const customStyles = {
   content : {
@@ -24,20 +20,6 @@ const customStyles = {
 }
 
 Modal.setAppElement('#root')
-
-const assets = [
-  {type: 'addPower', title: 'Hamster on spinning wheel', details: 'Hamster farm to boost your electricity', hashingRate: 0, electricity: 10000, price: 2500, img: hamster, locked: true},
-  {type: 'powerup', title: 'Chinese hackers', details: 'Hire chinese hackers to hash faster', hashingRate: 0.1, electricity: 0, price: 8000, img: chinese, locked: true},
-  {type: 'powerup', title: 'Overclock lvl 1', details: 'Overclock to boost your hashing by 0.3', hashingRate: 0.3, electricity: 10000, price: 0, img: overclock, locked: true},
-
-  {type: 'addPower', title: 'Chernobyl Power Plant', details: '20 000 electricity for lifetime', hashingRate: 0.00, electricity: 20000, price: 5000, img: power, locked: true},
-  {type: 'powerup', title: 'Overclock lvl 2', details: 'Double your hashing rate', hashingRate: 0.5, electricity: 20000, price: 0, img: overclock2, locked: true},
-  {type: 'powerup', title: 'Cloud hashing', details: 'Cloud datacenter for lifetime hashing', hashingRate: 0.9, electricity: 0, price: 20000, img: clouddata, locked: true},
-
-  {type: 'powerup', title: 'Russian datacenter', details: 'Russian datacenter for hashing Putin fast', hashingRate: 2, electricity: 0, price: 40000, img: russian, locked: true},
-  {type: 'powerup', title: 'Stuxnet computer virus', details: 'Spread Stuxnet virus to hash on infected pc', hashingRate: 3, electricity: 0, price: 70000, img: penguin, locked: true},
-  {type: 'powerup', title: 'To The Moon', details: 'Steal Nasa blueprints to build a space rocket', hashingRate: 8, electricity: 40000, price: 100000, img: spacerocket, locked: true},
-]
 
 const sellerCatText = [
   {heading: 'Looking for power ups?', text: 'I would piss on you if you were on fire. If I could piss gasoline.'},
@@ -48,16 +30,25 @@ const sellerCatText = [
 ]
 
 // incorrect classname
-class ShopModal extends React.Component {
+class PowerUpsModal extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       coins: props.coins,
-      sellerCatText: Math.floor(Math.random() * sellerCatText.length)
+      sellerCatText: Math.floor(Math.random() * sellerCatText.length),
+      electricity: loadElectricity()
     }
     this.renderAsset = this.renderAsset.bind(this)
     this.buyAsset = this.buyAsset.bind(this)
     this.renderCatText = this.renderCatText.bind(this)
+  }
+
+  unlockAssets() {
+    assets.forEach((asset) => {
+      if (this.props.achievements.length >= asset.unlocklvl) {
+        asset.locked = false;
+      }
+    });
   }
 
   componentDidMount() {
@@ -68,16 +59,51 @@ class ShopModal extends React.Component {
         this.setState({ sellerCatText: this.state.sellerCatText + 1 });
       }
     }, 10000);
+    this.unlockAssets();
   }
 
   componentWillUnmount() {
     clearInterval(this.interval);
   }
 
+  boughtNotification = () => toast.success("Asset purchased!");
+  noMoneyNotification = () => toast.error("Not enough money!");
+  noElectricityNotification = () => toast.error("Not enough electricity available!");
+  itemLockedNotification = () => toast.warning("Item is locked!");
+  assetMaxeddNotification = () => toast.error("PowerUp on maximum level!");
+
   buyAsset(asset) {
     return () => {
-      if (this.props.money > 0 && this.props.money >= asset.price) {
-        this.props.buyAsset(asset)
+      let doshit = false
+      let electricity = 0
+      if (asset.locked) {
+        this.itemLockedNotification()
+      } else if (asset.lvl === asset.maxlvl) {
+        this.assetMaxeddNotification()
+      } else if (this.props.money > 0 && this.props.money >= asset.price) {
+        if (asset.type === 'addPower') {
+          electricity = this.state.electricity + asset.electricity
+          doshit = true
+        } else if ((this.state.electricity - asset.electricity) >= 0) {
+          electricity = this.state.electricity - asset.electricity
+          doshit = true
+        } else {
+          this.noElectricityNotification()
+        }
+      } else {
+        this.noMoneyNotification()
+      }
+
+      if (doshit) {
+        this.setState({electricity})
+        this.props.buyPowerUp(asset)
+        saveElectricity(electricity)
+        asset.price = asset.price * shop_price_up
+        asset.hashingRate = asset.hashingRate * shop_hashingRate_up
+        asset.lvl = asset.lvl + 1
+        asset.electricity = asset.electricity * shop_electricity_up
+        savePowerUps(assets)
+        this.boughtNotification()
       }
     }
   }
@@ -107,13 +133,14 @@ class ShopModal extends React.Component {
         <div className={itemLockedStyle}>
           <div className="powerup-item-heading">
             <strong>{asset.title}</strong>
+            <p className="shop-highlight">{asset.lvl === asset.maxlvl ? 'Maximum level' : `Level ${asset.lvl}`}</p>
             <p className="item-details">{asset.details}</p>
           </div>
           <p className="item-details">
-            Hashing Rate: <span className="shop-highlight">{asset.hashingRate}</span>
+            Hashing Rate: <span className="shop-highlight">{asset.hashingRate.toFixed(3)}</span>
           </p>
           <p className="item-details">
-            {electricityText}: <span className="shop-highlight">{asset.electricity.toLocaleString()} w</span>
+            {electricityText}: <span className="shop-highlight">{asset.electricity.toFixed(0)} w</span>
           </p>
           <img src={asset.img} alt={asset.title} className="img-responsive powerup-icon" />
           <p>
@@ -142,21 +169,21 @@ class ShopModal extends React.Component {
 
           <Grid fluid className="shop-grid">
             <Row>
-              <Col md={3} lg={3}>
-                <div className="player-electricity">
-                  <strong>{this.props.electricity}</strong>
+            <div className="player-stats-container">
+                <div className="player-electricity player-shop-stats">
+                  <strong>{this.state.electricity.toFixed(0)}</strong>
                   <i className="fa fa-bolt status-icons" aria-hidden="true"></i>
                 </div>
-                <div className="player-wallet">
+                <div className="player-wallet player-shop-stats">
                   <strong>{this.props.money.toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1,')}</strong>
                   <i className="fa fa-usd status-icons" aria-hidden="true"></i>
                 </div>
-                <div className="player-level">
+                <div className="player-level player-shop-stats">
                   <strong>{this.props.achievements.length} / 20</strong>
                   <i className="fa fa-level-up status-icons" aria-hidden="true"></i>
                 </div>
-              </Col>
-              <Col md={6} lg={6}>
+              </div>
+              <Col mdOffset={4} md={5}>
                 <div className="talk-bubble-shop tri-left left-top round">
                   {this.renderCatText()}
                 </div>
@@ -173,11 +200,19 @@ class ShopModal extends React.Component {
               {assets.map(this.renderAsset)}
             </Row>
           </Grid>
+          <ToastContainer autoClose={2000} position="bottom-right"/>
         </Modal>
       </div>
     )
   }
 }
+
+const mapDispatchToProps = (dispatch, props) => ({
+  buyPowerUp: powerUp => {
+    dispatch({type: 'ADD_POWERUP', powerUp})
+    dispatch({type: 'REMOVE_MONEY', amount: powerUp.price})
+  }
+})
 
 const mapStateToProps = state => {
   return {
@@ -189,4 +224,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(ShopModal)
+export default connect(mapStateToProps, mapDispatchToProps)(PowerUpsModal)

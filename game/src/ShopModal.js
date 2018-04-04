@@ -1,17 +1,17 @@
 import React from 'react'
 import Modal from 'react-modal'
 import {connect} from 'react-redux'
-import { Grid, Row, Col } from 'react-flexbox-grid'
-import { ToastContainer, toast } from 'react-toastify';
+import {Grid, Row, Col} from 'react-flexbox-grid'
+import {ToastContainer, toast} from 'react-toastify'
+
 import {shop_price_up, shop_hashingRate_up, shop_electricity_up} from './Config'
-import {loadElectricity, saveElectricity} from './Util'
-import {loadShopAssets, saveShopAssets} from './Util'
+import {loadElectricity, saveElectricity, loadShopAssets, saveShopAssets} from './Util'
 
 import './ShopModal.css'
 import sellerCat from './svg_assets/cat2.png'
 
 const customStyles = {
-  content : {
+  content: {
     backgroundColor: '#292929'
   }
 }
@@ -36,6 +36,7 @@ class ShopModal extends React.Component {
       sellerCatText: Math.floor(Math.random() * sellerCatText.length),
       electricity: loadElectricity()
     }
+
     this.renderAsset = this.renderAsset.bind(this)
     this.buyAsset = this.buyAsset.bind(this)
     this.renderCatText = this.renderCatText.bind(this)
@@ -43,10 +44,13 @@ class ShopModal extends React.Component {
 
   componentDidMount() {
     this.interval = setInterval(() => {
-      if (this.state.sellerCatText === sellerCatText.length - 1) {
-        this.setState({ sellerCatText: 0 })
-      } else {
-        this.setState({ sellerCatText: this.state.sellerCatText + 1 })
+      const sellerCatText =
+        this.state.sellerCatText === sellerCatText.length - 1 ?
+          0 :
+          this.state.sellerCatText + 1
+
+      this.setState({sellerCatText})
+
       }
     }, 10000)
   }
@@ -55,9 +59,9 @@ class ShopModal extends React.Component {
     clearInterval(this.interval)
   }
 
-  boughtNotification = () => toast.success("Asset purchased!");
-  noMoneyNotification = () => toast.error("Not enough money!");
-  noElectricityNotification = () => toast.warning("Not enough electricity available!");
+  boughtNotification = () => toast.success('Asset purchased!')
+  noMoneyNotification = () => toast.error('Not enough money!')
+  noElectricityNotification = () => toast.warning('Not enough electricity available!')
 
   buyAsset(asset) {
     return () => {
@@ -105,6 +109,7 @@ class ShopModal extends React.Component {
   }
 
   renderAsset(asset) {
+    const electricityCost = asset.type === 'power' ? 'Electricity' : 'Electricity Cost'
     return (
       <Col md={4} key={asset.title}>
         <div className="shop-item">
@@ -118,7 +123,7 @@ class ShopModal extends React.Component {
             </p>
           }
           <p className="item-details">
-            {asset.type === 'power' ? 'Electricity' : 'Electricity Cost'}: <span className="shop-highlight">{asset.electricity.toFixed(0)} w</span>
+            {electricityCost}: <span className="shop-highlight">{asset.electricity.toFixed(0)} w</span>
           </p>
           <img src={asset.img} alt={asset.title} className="shop-item-icon-pc" />
           <p>

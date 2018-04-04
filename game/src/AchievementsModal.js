@@ -8,7 +8,7 @@ import './AchievementsModal.css'
 import advisorCat from './svg_assets/cat1.png'
 
 const customStyles = {
-  content : {
+  content: {
     backgroundColor: '#292929'
   }
 }
@@ -58,15 +58,15 @@ class AchievementsModal extends React.Component {
 
   componentDidMount() {
     this.interval = setInterval(() => {
-      if (this.state.achievementCatText === achievementCatText.length - 1) {
-        this.setState({ achievementCatText: 0 });
-      } else {
-        this.setState({ achievementCatText: this.state.achievementCatText + 1 });
-      }
-    }, 10000);
+      const achievementCatText =
+        this.state.achievementCatText === achievementCatText.length - 1 ?
+          0 :
+          this.state.achievementCatText + 1
+      this.setState({achievementCatText})
+    }, 10000)
   }
   componentWillUnmount() {
-    clearInterval(this.interval);
+    clearInterval(this.interval)
   }
 
   renderCatText() {

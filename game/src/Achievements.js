@@ -9,7 +9,7 @@ export default class Achievements extends Component {
     super()
 
     this.state = {
-      modalIsOpen: false,
+      modalIsOpen: false
     }
 
     this.toggleModal = this.toggleModal.bind(this)

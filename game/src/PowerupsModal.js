@@ -1,11 +1,12 @@
 import React from 'react'
 import Modal from 'react-modal'
 import {connect} from 'react-redux'
-import { Grid, Row, Col } from 'react-flexbox-grid'
-import {loadElectricity, saveElectricity} from './Util'
+import {Grid, Row, Col} from 'react-flexbox-grid'
+import {ToastContainer, toas } from 'react-toastify'
+
+import {loadElectricity, saveElectricity, loadPowerUps, savePowerUps} from './Util'
 import {shop_price_up, shop_hashingRate_up, shop_electricity_up} from './Config'
-import {loadPowerUps, savePowerUps} from './Util'
-import { ToastContainer, toast } from 'react-toastify';
+
 
 import './ShopModal.css'
 import './PowerupsModal.css'
@@ -46,31 +47,32 @@ class PowerUpsModal extends React.Component {
   unlockAssets() {
     assets.forEach((asset) => {
       if (this.props.achievements.length >= asset.unlocklvl) {
-        asset.locked = false;
+        asset.locked = false
       }
-    });
+    })
   }
 
   componentDidMount() {
     this.interval = setInterval(() => {
-      if (this.state.sellerCatText === sellerCatText.length - 1) {
-        this.setState({ sellerCatText: 0 });
-      } else {
-        this.setState({ sellerCatText: this.state.sellerCatText + 1 });
-      }
-    }, 10000);
-    this.unlockAssets();
+      const sellerCatText =
+        this.state.sellerCatText === sellerCatText.length - 1 ?
+          0 :
+          this.state.sellerCatText + 1
+      this.setState({sellerCatText})
+    }, 10000)
+
+    this.unlockAssets()
   }
 
   componentWillUnmount() {
-    clearInterval(this.interval);
+    clearInterval(this.interval)
   }
 
-  boughtNotification = () => toast.success("Asset purchased!");
-  noMoneyNotification = () => toast.error("Not enough money!");
-  noElectricityNotification = () => toast.error("Not enough electricity available!");
-  itemLockedNotification = () => toast.warning("Item is locked!");
-  assetMaxeddNotification = () => toast.error("PowerUp on maximum level!");
+  boughtNotification = () => toast.success('Asset purchased!')
+  noMoneyNotification = () => toast.error('Not enough money!')
+  noElectricityNotification = () => toast.error('Not enough electricity available!')
+  itemLockedNotification = () => toast.warning('Item is locked!')
+  assetMaxeddNotification = () => toast.error('PowerUp on maximum level!')
 
   buyAsset(asset) {
     return () => {
@@ -129,26 +131,26 @@ class PowerUpsModal extends React.Component {
     return (
       <Col md={4} key={asset.title}>
         <div className="powerup-item">
-        <div className={itemLockedText}>Unlock at LVL {2 * index + 2}</div>
-        <div className={itemLockedStyle}>
-          <div className="powerup-item-heading">
-            <strong>{asset.title}</strong>
-            <p className="shop-highlight">{asset.lvl === asset.maxlvl ? 'Maximum level' : `Level ${asset.lvl}`}</p>
-            <p className="item-details">{asset.details}</p>
-          </div>
-          <p className="item-details">
-            Hashing Rate: <span className="shop-highlight">{asset.hashingRate.toFixed(3)}</span>
-          </p>
-          <p className="item-details">
-            {electricityText}: <span className="shop-highlight">{asset.electricity.toFixed(0)} w</span>
-          </p>
-          <img src={asset.img} alt={asset.title} className="img-responsive powerup-icon" />
-          <p>
-            <strong>${asset.price.toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1,')}</strong>
-          </p>
-          <button className="buy-item-button" onClick={this.buyAsset(asset)}>
-            Buy
-          </button>
+          <div className={itemLockedText}>Unlock at LVL {2 * index + 2}</div>
+          <div className={itemLockedStyle}>
+            <div className="powerup-item-heading">
+              <strong>{asset.title}</strong>
+              <p className="shop-highlight">{asset.lvl === asset.maxlvl ? 'Maximum level' : `Level ${asset.lvl}`}</p>
+              <p className="item-details">{asset.details}</p>
+            </div>
+            <p className="item-details">
+              Hashing Rate: <span className="shop-highlight">{asset.hashingRate.toFixed(3)}</span>
+            </p>
+            <p className="item-details">
+              {electricityText}: <span className="shop-highlight">{asset.electricity.toFixed(0)} w</span>
+            </p>
+            <img src={asset.img} alt={asset.title} className="img-responsive powerup-icon" />
+            <p>
+              <strong>${asset.price.toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1,')}</strong>
+            </p>
+            <button className="buy-item-button" onClick={this.buyAsset(asset)}>
+              Buy
+            </button>
           </div>
         </div>
       </Col>
@@ -169,7 +171,7 @@ class PowerUpsModal extends React.Component {
 
           <Grid fluid className="shop-grid">
             <Row>
-            <div className="player-stats-container">
+              <div className="player-stats-container">
                 <div className="player-electricity player-shop-stats">
                   <strong>{this.state.electricity.toFixed(0)}</strong>
                   <i className="fa fa-bolt status-icons" aria-hidden="true"></i>

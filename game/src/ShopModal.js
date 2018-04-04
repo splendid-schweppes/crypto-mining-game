@@ -3,6 +3,7 @@ import Modal from 'react-modal'
 import {connect} from 'react-redux'
 import {Grid, Row, Col} from 'react-flexbox-grid'
 import {ToastContainer, toast} from 'react-toastify'
+import {sample} from 'lodash'
 
 import {shop_price_up, shop_hashingRate_up, shop_electricity_up} from './Config'
 import {loadElectricity, saveElectricity, loadShopAssets, saveShopAssets} from './Util'
@@ -20,7 +21,7 @@ Modal.setAppElement('#root')
 
 const assets = loadShopAssets()
 
-const sellerCatText = [
+const sellerCatTexts = [
   {heading: 'Welcome to the KittyCat PC Store!', text: 'We offer the finest selection of computers, components and of course a special price, just for you my friend!'},
   {heading: 'Super deals today!', text: 'Today we have extra fine computer equipment for sale. If you have any questions, I will not answer!'},
   {heading: 'Oh it\'s you, welcome!', text: 'I hope you find something suitable for what ever you are doing.'},
@@ -33,7 +34,7 @@ class ShopModal extends React.Component {
     super(props)
     this.state = {
       coins: props.coins,
-      sellerCatText: Math.floor(Math.random() * sellerCatText.length),
+      sellerCatText: sample(sellerCatTexts),
       electricity: loadElectricity()
     }
 
@@ -44,14 +45,7 @@ class ShopModal extends React.Component {
 
   componentDidMount() {
     this.interval = setInterval(() => {
-      const sellerCatText =
-        this.state.sellerCatText === sellerCatText.length - 1 ?
-          0 :
-          this.state.sellerCatText + 1
-
-      this.setState({sellerCatText})
-
-      }
+      this.setState({sellerCatText: sample(sellerCatTexts)})
     }, 10000)
   }
 
@@ -99,10 +93,10 @@ class ShopModal extends React.Component {
     return (
       <div className="talktext">
         <h2>
-          {sellerCatText[this.state.sellerCatText].heading}
+          {this.state.sellerCatText.heading}
         </h2>
         <p>
-          {sellerCatText[this.state.sellerCatText].text}
+          {this.state.sellerCatText.text}
         </p>
       </div>
     )

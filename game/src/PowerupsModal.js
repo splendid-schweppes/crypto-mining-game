@@ -2,7 +2,8 @@ import React from 'react'
 import Modal from 'react-modal'
 import {connect} from 'react-redux'
 import {Grid, Row, Col} from 'react-flexbox-grid'
-import {ToastContainer, toas } from 'react-toastify'
+import {ToastContainer, toast} from 'react-toastify'
+import {sample} from 'lodash'
 
 import {loadElectricity, saveElectricity, loadPowerUps, savePowerUps} from './Util'
 import {shop_price_up, shop_hashingRate_up, shop_electricity_up} from './Config'
@@ -22,7 +23,7 @@ const customStyles = {
 
 Modal.setAppElement('#root')
 
-const sellerCatText = [
+const sellerCatTexts = [
   {heading: 'Looking for power ups?', text: 'I would piss on you if you were on fire. If I could piss gasoline.'},
   {heading: 'I only hate days that begin', text: '....'},
   {heading: 'You have to get some achievements to buy my power ups', text: 'By the way, I only like people that don\'t breathe.'},
@@ -36,7 +37,7 @@ class PowerUpsModal extends React.Component {
     super(props)
     this.state = {
       coins: props.coins,
-      sellerCatText: Math.floor(Math.random() * sellerCatText.length),
+      sellerCatText: sample(sellerCatTexts),
       electricity: loadElectricity()
     }
     this.renderAsset = this.renderAsset.bind(this)
@@ -54,11 +55,7 @@ class PowerUpsModal extends React.Component {
 
   componentDidMount() {
     this.interval = setInterval(() => {
-      const sellerCatText =
-        this.state.sellerCatText === sellerCatText.length - 1 ?
-          0 :
-          this.state.sellerCatText + 1
-      this.setState({sellerCatText})
+      this.setState({sellerCatText: sample(sellerCatTexts)})
     }, 10000)
 
     this.unlockAssets()
@@ -114,10 +111,10 @@ class PowerUpsModal extends React.Component {
     return (
       <div className="talktext">
         <h2>
-          {sellerCatText[this.state.sellerCatText].heading}
+          {this.state.sellerCatText.heading}
         </h2>
         <p>
-          {sellerCatText[this.state.sellerCatText].text}
+          {this.state.sellerCatText.text}
         </p>
       </div>
     )

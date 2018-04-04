@@ -2,7 +2,7 @@ import React from 'react'
 import Modal from 'react-modal'
 import {connect} from 'react-redux'
 import {Grid, Row, Col} from 'react-flexbox-grid'
-import {find} from 'lodash'
+import {find, sample} from 'lodash'
 
 import './AchievementsModal.css'
 import advisorCat from './svg_assets/cat1.png'
@@ -39,7 +39,7 @@ const achievements = [
   {id: 20, name: 'You did it! 1 000 000 coins hashed. This is the end game. Nice job.'}
 ]
 
-const achievementCatText = [
+const achievementCatTexts = [
   {heading: 'Whats up!', text: 'My name is Pertti, the advisor cat. I shall guide you towards the game goal. GET ALL THE COINS AND TO THE MOON!'},
   {heading: 'Hurrr a Purrr', text: 'Cattastic day for you! Looks like there are couple of achievements to do.'},
   {heading: 'Meaow', text: 'I am not helping much? Am I? Well, it\'s not my fault if you cant click any faster.'},
@@ -51,18 +51,14 @@ class AchievementsModal extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      achievementCatText: Math.floor(Math.random() * achievementCatText.length)
+      achievementCatText: sample(achievementCatTexts)
     }
     this.renderAchievement = this.renderAchievement.bind(this)
   }
 
   componentDidMount() {
     this.interval = setInterval(() => {
-      const achievementCatText =
-        this.state.achievementCatText === achievementCatText.length - 1 ?
-          0 :
-          this.state.achievementCatText + 1
-      this.setState({achievementCatText})
+      this.setState({achievementCatText: sample(achievementCatTexts)})
     }, 10000)
   }
   componentWillUnmount() {
@@ -73,10 +69,10 @@ class AchievementsModal extends React.Component {
     return (
       <div className="talktext">
         <h2>
-          {achievementCatText[this.state.achievementCatText].heading}
+          {this.state.achievementCatText.heading}
         </h2>
         <p>
-          {achievementCatText[this.state.achievementCatText].text}
+          {this.state.achievementCatText.text}
         </p>
       </div>
     )

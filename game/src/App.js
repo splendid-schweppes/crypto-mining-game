@@ -36,8 +36,8 @@ export default class App extends Component {
           <Col md={3} lg={3}>
             <BackgroundMusic />
             <RightSideStats />
-            <Replay />
-            <StringAnimation />
+            {/*<Replay />*/}
+            {/*<StringAnimation />*/}
           </Col>
         </Row>
       </Grid>

@@ -1,6 +1,7 @@
 import {createStore, combineReducers, applyMiddleware} from 'redux'
 import ClickReducer from './reducers/Click'
 import CoinsReducer from './reducers/Coins'
+import CoinlogReducer from './reducers/Coinlog'
 import HashingRateReducer from './reducers/HashingRate'
 import BlocksReducer from './reducers/Blocks'
 import MoneyReducer from './reducers/Money'
@@ -11,6 +12,7 @@ import ElectricityReducer from './reducers/Electricity'
 
 import ClickMiddleware from './middleware/Click'
 import CoinsMiddleware from './middleware/Coins'
+import CoinlogMiddleware from './middleware/Coinlog'
 import HashingRateMiddleware from './middleware/HashingRate'
 import BlocksMiddleware from './middleware/Blocks'
 import MoneyMiddleware from './middleware/Money'
@@ -22,6 +24,7 @@ import ElectricityMiddleware from './middleware/Electricity'
 const appReducer = combineReducers({
   clicks: ClickReducer,
   coins: CoinsReducer,
+  coinlog: CoinlogReducer,
   hashingRate: HashingRateReducer,
   blocks: BlocksReducer,
   money: MoneyReducer,
@@ -34,6 +37,7 @@ const appReducer = combineReducers({
 const middleware = applyMiddleware(
   ClickMiddleware,
   CoinsMiddleware,
+  CoinlogMiddleware,
   HashingRateMiddleware,
   BlocksMiddleware,
   MoneyMiddleware,

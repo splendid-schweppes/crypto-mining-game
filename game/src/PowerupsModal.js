@@ -3,9 +3,10 @@ import Modal from 'react-modal'
 import {connect} from 'react-redux'
 import {Grid, Row, Col} from 'react-flexbox-grid'
 import {ToastContainer, toast} from 'react-toastify'
-import {sample, map, extend} from 'lodash'
+import {sample, map, extend, filter, isEqual} from 'lodash'
 
-import {shop_price_up, shop_hashingRate_up, shop_electricity_up} from './Config'
+import {shop_price_up} from './Config'
+import {powerUps as powerUpsList} from './powerUpAssets'
 
 import './ShopModal.css'
 import './PowerupsModal.css'
@@ -33,7 +34,8 @@ class PowerupsModal extends React.Component {
     this.state = {
       sellerCatText: sample(sellerCatTexts),
       electricity: props.electricity,
-      powerUps: props.powerUps
+      powerUps: powerUpsList,
+      ownedPowerups: props.ownedPowerups
     }
 
     this.renderPowerup = this.renderPowerup.bind(this)
@@ -41,12 +43,12 @@ class PowerupsModal extends React.Component {
     this.renderCatText = this.renderCatText.bind(this)
   }
 
-  unlockpowerUps() {
-    this.setState({powerUps:
-      map(this.state.powerUps, asset =>
-        extend({}, asset, {locked: this.props.achievements.length < asset.unlocklvl})
-      )
-    })
+  componentWillReceiveProps(nextProps) {
+    this.setState({ownedPowerups: nextProps.ownedPowerups})
+
+    if (nextProps.ownedPowerups && !isEqual(this.props.ownedPowerups, nextProps.ownedPowerups)) {
+      this.setPowerUpStats(nextProps.ownedPowerups)
+    }
   }
 
   componentDidMount() {
@@ -54,33 +56,55 @@ class PowerupsModal extends React.Component {
       this.setState({sellerCatText: sample(sellerCatTexts)})
     }, 10000)
 
-    this.unlockpowerUps()
+    this.setPowerUpStats()
   }
 
   componentWillUnmount() {
     clearInterval(this.interval)
   }
 
-  boughtNotification = () => toast.success('Asset purchased!')
+  boughtNotification = () => toast.success('powerUp purchased!')
   noMoneyNotification = () => toast.error('Not enough money!')
   noElectricityNotification = () => toast.error('Not enough electricity available!')
   itemLockedNotification = () => toast.warning('Item is locked!')
-  assetMaxeddNotification = () => toast.error('PowerUp on maximum level!')
+  powerUpMaxeddNotification = () => toast.error('PowerUp on maximum level!')
 
-  buyPowerUp(asset) {
+  setPowerUpStats(ownedPowerups) {
+    this.setState((state) => ({
+      powerUps: map(state.powerUps, powerUp => {
+        const matches = filter(ownedPowerups || this.props.ownedPowerups, {title: powerUp.title})
+        const locked = this.props.achievements.length < powerUp.unlocklvl
+
+        if (!matches.length) {
+          return extend({}, powerUp, {locked})
+        }
+
+        const original_price = powerUp.original_price || powerUp.price
+
+        return extend({}, powerUp, {
+          locked,
+          original_price,
+          price: original_price * (shop_price_up * matches.length),
+          lvl: matches.length
+        })
+      })
+    }))
+  }
+
+  buyPowerUp(powerUp) {
     return () => {
       let doshit = false
       let electricity = 0
-      if (asset.locked) {
+      if (powerUp.locked) {
         this.itemLockedNotification()
-      } else if (asset.lvl === asset.maxlvl) {
-        this.assetMaxeddNotification()
-      } else if (this.props.money > 0 && this.props.money >= asset.price) {
-        if (asset.type === 'addPower') {
-          electricity = this.state.electricity + asset.electricity
+      } else if (powerUp.lvl === powerUp.maxlvl) {
+        this.powerUpMaxeddNotification()
+      } else if (this.props.money > 0 && this.props.money >= powerUp.price) {
+        if (powerUp.type === 'addPower') {
+          electricity = this.state.electricity + powerUp.electricity
           doshit = true
-        } else if (this.state.electricity - asset.electricity >= 0) {
-          electricity = this.state.electricity - asset.electricity // miksi sähköä vähennetään statesta?
+        } else if (this.state.electricity - powerUp.electricity >= 0) {
+          electricity = this.state.electricity - powerUp.electricity
           doshit = true
         } else {
           this.noElectricityNotification()
@@ -91,18 +115,8 @@ class PowerupsModal extends React.Component {
 
       if (doshit) {
         this.setState({electricity})
-        this.props.buyPowerUp(asset)
-
+        this.props.buyPowerUp(powerUp)
         this.props.addElectricity(electricity)
-
-
-        // TODO: edit to state
-        // TODO: separate into their own method
-        // asset.price = asset.price * shop_price_up
-        // asset.hashingRate = asset.hashingRate * shop_hashingRate_up
-        // asset.lvl = asset.lvl + 1
-        // asset.electricity = asset.electricity * shop_electricity_up
-
         this.boughtNotification()
       }
     }
@@ -121,33 +135,33 @@ class PowerupsModal extends React.Component {
     )
   }
 
-  renderPowerup(asset, index) {
-    const itemLockedStyle = `${asset.locked ? 'locked' : 'unlocked'}`
-    const itemLockedText = `${asset.locked ? 'locked-text' : 'unlocked-text'}`
-    const electricityText = asset.type === 'addPower' ? 'Electricity added' : 'Electricity Cost'
-    const assetLevel = asset.lvl === asset.maxlvl ? 'Maximum level' : `Level ${asset.lvl}`
+  renderPowerup(powerUp, index) {
+    const itemLockedStyle = powerUp.locked ? 'locked' : 'unlocked'
+    const itemLockedText = powerUp.locked ? 'locked-text' : 'unlocked-text'
+    const electricityText = powerUp.type === 'addPower' ? 'Electricity added' : 'Electricity Cost'
+    const powerUpLevel = powerUp.lvl === powerUp.maxlvl ? 'Maximum level' : `Level ${powerUp.lvl}`
 
     return (
-      <Col md={4} key={asset.title}>
+      <Col md={4} key={powerUp.title}>
         <div className="powerup-item">
           <div className={itemLockedText}>Unlock at LVL {2 * index + 2}</div>
           <div className={itemLockedStyle}>
             <div className="powerup-item-heading">
-              <strong>{asset.title}</strong>
-              <p className="shop-highlight">{assetLevel}</p>
-              <p className="item-details">{asset.details}</p>
+              <strong>{powerUp.title}</strong>
+              <p className="shop-highlight">{powerUpLevel}</p>
+              <p className="item-details">{powerUp.details}</p>
             </div>
             <p className="item-details">
-              Hashing Rate: <span className="shop-highlight">{asset.hashingRate.toFixed(3)}</span>
+              Hashing Rate: <span className="shop-highlight">{powerUp.hashingRate.toFixed(3)}</span>
             </p>
             <p className="item-details">
-              {electricityText}: <span className="shop-highlight">{asset.electricity.toFixed(0)} w</span>
+              {electricityText}: <span className="shop-highlight">{powerUp.electricity.toFixed(0)} w</span>
             </p>
-            <img src={asset.img} alt={asset.title} className="img-responsive powerup-icon" />
+            <img src={powerUp.img} alt={powerUp.title} className="img-responsive powerup-icon" />
             <p>
-              <strong>${asset.price.toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1,')}</strong>
+              <strong>${powerUp.price.toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1,')}</strong>
             </p>
-            <button className="buy-item-button" onClick={this.buyPowerUp(asset)}>
+            <button className="buy-item-button" onClick={this.buyPowerUp(powerUp)}>
               Buy
             </button>
           </div>
@@ -159,7 +173,6 @@ class PowerupsModal extends React.Component {
   render() {
     return (
       <div>
-      <h1 style={{color: '#fff', fontSize: '20rem'}}>Korjaa powerupsit</h1>
         <Modal isOpen={this.props.modalIsOpen} style={customStyles}>
           <h2 className="centered">
             Grumpy Cat's Power Ups
@@ -222,7 +235,7 @@ const mapDispatchToProps = (dispatch, props) => ({
 const mapStateToProps = state => {
   return {
     money: state.money,
-    powerUps: state.powerUps, // tämä lataa vaan omistetut powerupsit, mistä saadaan kaikki powerupsit?
+    ownedPowerups: state.powerUps,
     electricity: state.electricity,
     achievements: state.achievements
   }

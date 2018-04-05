@@ -97,7 +97,7 @@ class PowerupsModal extends React.Component {
       let electricity = 0
       if (powerUp.locked) {
         this.itemLockedNotification()
-      } else if (powerUp.lvl === powerUp.maxlvl) {
+      } else if (powerUp.lvl >= powerUp.maxlvl) {
         this.powerUpMaxeddNotification()
       } else if (this.props.money > 0 && this.props.money >= powerUp.price) {
         if (powerUp.type === 'addPower') {
@@ -139,7 +139,7 @@ class PowerupsModal extends React.Component {
     const itemLockedStyle = powerUp.locked ? 'locked' : 'unlocked'
     const itemLockedText = powerUp.locked ? 'locked-text' : 'unlocked-text'
     const electricityText = powerUp.type === 'addPower' ? 'Electricity added' : 'Electricity Cost'
-    const powerUpLevel = powerUp.lvl === powerUp.maxlvl ? 'Maximum level' : `Level ${powerUp.lvl}`
+    const powerUpLevel = powerUp.lvl >= powerUp.maxlvl ? 'Maximum level' : `Level ${powerUp.lvl}`
 
     return (
       <Col md={4} key={powerUp.title}>

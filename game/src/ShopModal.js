@@ -3,7 +3,7 @@ import Modal from 'react-modal'
 import {connect} from 'react-redux'
 import {Grid, Row, Col} from 'react-flexbox-grid'
 import {ToastContainer, toast} from 'react-toastify'
-import {sample} from 'lodash'
+import {sample, map, extend, filter, isEqual} from 'lodash'
 
 import {shopAssets} from './shopAssets'
 import {shop_price_up, shop_hashingRate_up, shop_electricity_up} from './Config'
@@ -37,7 +37,8 @@ class ShopModal extends React.Component {
       coins: props.coins,
       sellerCatText: sample(sellerCatTexts),
       electricity: props.electricity,
-      assets
+      assets,
+      ownedAssets: props.ownedAssets
     }
 
     this.renderAsset = this.renderAsset.bind(this)
@@ -45,10 +46,20 @@ class ShopModal extends React.Component {
     this.renderCatText = this.renderCatText.bind(this)
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({ownedAssets: nextProps.ownedAssets})
+
+    if (nextProps.ownedAssets && !isEqual(this.props.ownedAssets, nextProps.ownedAssets)) {
+      this.setAssetStats(nextProps.ownedAssets)
+    }
+  }
+
   componentDidMount() {
     this.interval = setInterval(() => {
       this.setState({sellerCatText: sample(sellerCatTexts)})
     }, 10000)
+
+    this.setAssetStats()
   }
 
   componentWillUnmount() {
@@ -58,6 +69,26 @@ class ShopModal extends React.Component {
   boughtNotification = () => toast.success('Asset purchased!')
   noMoneyNotification = () => toast.error('Not enough money!')
   noElectricityNotification = () => toast.warning('Not enough electricity available!')
+
+  setAssetStats(ownedAssets) {
+    this.setState((state) => ({
+      assets: map(state.assets, asset => {
+        const matches = filter(ownedAssets || this.props.ownedAssets, {title: asset.title})
+
+        if (!matches.length) {
+          return asset
+        }
+
+        const original_price = asset.original_price || asset.price
+
+        return extend({}, asset, {
+          original_price,
+          price: original_price * (shop_price_up * matches.length),
+          lvl: matches.length
+        })
+      })
+    }))
+  }
 
   buyAsset(asset) {
     return () => {
@@ -78,24 +109,8 @@ class ShopModal extends React.Component {
       }
 
       if (doshit) {
-        // this.setState({electricity})
         this.props.buyAsset(asset)
-
         this.props.addElectricity(electricity)
-
-
-
-        // TODO: edit to state
-        // TODO: separate into their own method
-        // asset.price = asset.price * shop_price_up
-        // asset.hashingRate = asset.hashingRate * shop_hashingRate_up
-        // asset.lvl = asset.lvl + 1
-        // asset.electricity = asset.electricity * shop_electricity_up
-
-        // TODO: do this with redux
-        // saveShopAssets(assets)
-
-
         this.boughtNotification()
       }
     }
@@ -185,7 +200,7 @@ class ShopModal extends React.Component {
               </Col>
             </Row>
             <Row className="centered">
-              {assets.map(this.renderAsset)}
+              {this.state.assets.map(this.renderAsset)}
             </Row>
           </Grid>
           <ToastContainer autoClose={2000} position="bottom-right"/>
@@ -218,7 +233,7 @@ const mapStateToProps = state => {
   return {
     coins: state.coins,
     money: state.money,
-    assets: state.assets,
+    ownedAssets: state.assets,
     electricity: state.electricity,
     achievements: state.achievements
   }

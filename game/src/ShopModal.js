@@ -5,8 +5,8 @@ import {Grid, Row, Col} from 'react-flexbox-grid'
 import {ToastContainer, toast} from 'react-toastify'
 import {sample} from 'lodash'
 
+import {shopAssets} from './shopAssets'
 import {shop_price_up, shop_hashingRate_up, shop_electricity_up} from './Config'
-import {loadElectricity, saveElectricity, loadShopAssets, saveShopAssets} from './Util'
 
 import './ShopModal.css'
 import sellerCat from './svg_assets/cat2.png'
@@ -19,7 +19,8 @@ const customStyles = {
 
 Modal.setAppElement('#root')
 
-const assets = loadShopAssets()
+
+const assets = shopAssets
 
 const sellerCatTexts = [
   {heading: 'Welcome to the KittyCat PC Store!', text: 'We offer the finest selection of computers, components and of course a special price, just for you my friend!'},
@@ -35,7 +36,8 @@ class ShopModal extends React.Component {
     this.state = {
       coins: props.coins,
       sellerCatText: sample(sellerCatTexts),
-      electricity: props.electricity
+      electricity: props.electricity,
+      assets
     }
 
     this.renderAsset = this.renderAsset.bind(this)
@@ -63,10 +65,10 @@ class ShopModal extends React.Component {
       let electricity = 0
       if (this.props.money > 0 && this.props.money >= asset.price) {
         if (asset.type === 'power') {
-          electricity = this.state.electricity + asset.electricity
+          electricity = this.props.electricity + asset.electricity
           doshit = true
-        } else if ((this.state.electricity - asset.electricity) >= 0) {
-          electricity = this.state.electricity - asset.electricity
+        } else if (this.props.electricity - asset.electricity >= 0) {
+          electricity = this.props.electricity - asset.electricity
           doshit = true
         } else {
           this.noElectricityNotification()
@@ -76,14 +78,24 @@ class ShopModal extends React.Component {
       }
 
       if (doshit) {
-        this.setState({electricity})
+        // this.setState({electricity})
         this.props.buyAsset(asset)
-        saveElectricity(electricity)
-        asset.price = asset.price * shop_price_up
-        asset.hashingRate = asset.hashingRate * shop_hashingRate_up
-        asset.lvl = asset.lvl + 1
-        asset.electricity = asset.electricity * shop_electricity_up
-        saveShopAssets(assets)
+
+        this.props.addElectricity(electricity)
+
+
+
+        // TODO: edit to state
+        // TODO: separate into their own method
+        // asset.price = asset.price * shop_price_up
+        // asset.hashingRate = asset.hashingRate * shop_hashingRate_up
+        // asset.lvl = asset.lvl + 1
+        // asset.electricity = asset.electricity * shop_electricity_up
+
+        // TODO: do this with redux
+        // saveShopAssets(assets)
+
+
         this.boughtNotification()
       }
     }
@@ -147,7 +159,7 @@ class ShopModal extends React.Component {
             <Row>
               <div className="player-stats-container">
                 <div className="player-electricity player-shop-stats">
-                  <strong>{this.state.electricity.toFixed(0)}</strong>
+                  <strong>{this.props.electricity.toFixed(0)}</strong>
                   <i className="fa fa-bolt status-icons" aria-hidden="true"></i>
                 </div>
                 <div className="player-wallet player-shop-stats">
@@ -196,6 +208,9 @@ const mapDispatchToProps = (dispatch, props) => ({
     if (asset.type === 'pc') {
       dispatch({type: 'ACHIEVEMENT_FIRST_COMPUTER'})
     }
+  },
+  addElectricity: electricity => {
+    dispatch({type: 'ADD_ELECTRICITY', electricity})
   }
 })
 

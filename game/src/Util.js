@@ -33,7 +33,7 @@ export const saveSellingRate = sellingrate =>
   window.localStorage.setItem('sellingrate', JSON.stringify(sellingrate))
 
 export const loadElectricity = () =>
-  JSON.parse(window.localStorage.getItem('electricity') || 0)
+  Number(JSON.parse(window.localStorage.getItem('electricity') || 0))
 
 export const saveElectricity = electricity =>
   window.localStorage.setItem('electricity', JSON.stringify(electricity))

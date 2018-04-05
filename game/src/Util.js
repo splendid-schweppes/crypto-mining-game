@@ -45,13 +45,13 @@ export const loadShopAssets = () =>
   JSON.parse(window.localStorage.getItem('shopAssets'))  || shopAssets
 
 export const savePowerUps = powerUps =>
-  window.localStorage.setItem('powerUps', JSON.stringify(powerUps))
+  window.localStorage.setItem('powerUps---fix', JSON.stringify(powerUps))
 
 export const loadPowerUps = () =>
-  JSON.parse(window.localStorage.getItem('powerUps'))  || powerUps
+  JSON.parse(window.localStorage.getItem('powerUps---fix'))  || powerUps
 
 export const loadPowerUpsOwned = () =>
-  JSON.parse(window.localStorage.getItem('powerUpsOwned') || '[]')
+  JSON.parse(window.localStorage.getItem('powerUpsOwned---fix') || '[]')
 
 export const savePowerUpsOwned = powerUps =>
-  window.localStorage.setItem('powerUpsOwned', JSON.stringify(powerUps))
+  window.localStorage.setItem('powerUpsOwned---fix', JSON.stringify(powerUps))

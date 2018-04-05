@@ -34,10 +34,10 @@ export default class App extends Component {
             <GetCoins />
           </Col>
           <Col md={3} lg={3}>
-            <BackgroundMusic />
             <RightSideStats />
+            <BackgroundMusic />
             {/*<Replay />*/}
-            {/*<StringAnimation />*/}
+            <StringAnimation />
           </Col>
         </Row>
       </Grid>

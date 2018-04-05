@@ -3,20 +3,16 @@ import Modal from 'react-modal'
 import {connect} from 'react-redux'
 import {Grid, Row, Col} from 'react-flexbox-grid'
 import {ToastContainer, toast} from 'react-toastify'
-import {sample} from 'lodash'
+import {sample, map, extend} from 'lodash'
 
-import {loadElectricity, saveElectricity, loadPowerUps, savePowerUps} from './Util'
 import {shop_price_up, shop_hashingRate_up, shop_electricity_up} from './Config'
-
 
 import './ShopModal.css'
 import './PowerupsModal.css'
 import grumpyCat from './svg_assets/grumpycat.png'
 
-const assets = loadPowerUps()
-
 const customStyles = {
-  content : {
+  content: {
     backgroundColor: '#292929'
   }
 }
@@ -31,25 +27,25 @@ const sellerCatTexts = [
   {heading: 'They said post a selfie', text: 'So I posted one of my middle finger.'}
 ]
 
-// incorrect classname
-class PowerUpsModal extends React.Component {
+class PowerupsModal extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      coins: props.coins,
       sellerCatText: sample(sellerCatTexts),
-      electricity: loadElectricity()
+      electricity: props.electricity,
+      powerUps: props.powerUps
     }
-    this.renderAsset = this.renderAsset.bind(this)
-    this.buyAsset = this.buyAsset.bind(this)
+
+    this.renderPowerup = this.renderPowerup.bind(this)
+    this.buyPowerUp = this.buyPowerUp.bind(this)
     this.renderCatText = this.renderCatText.bind(this)
   }
 
-  unlockAssets() {
-    assets.forEach((asset) => {
-      if (this.props.achievements.length >= asset.unlocklvl) {
-        asset.locked = false
-      }
+  unlockpowerUps() {
+    this.setState({powerUps:
+      map(this.state.powerUps, asset =>
+        extend({}, asset, {locked: this.props.achievements.length < asset.unlocklvl})
+      )
     })
   }
 
@@ -58,7 +54,7 @@ class PowerUpsModal extends React.Component {
       this.setState({sellerCatText: sample(sellerCatTexts)})
     }, 10000)
 
-    this.unlockAssets()
+    this.unlockpowerUps()
   }
 
   componentWillUnmount() {
@@ -71,7 +67,7 @@ class PowerUpsModal extends React.Component {
   itemLockedNotification = () => toast.warning('Item is locked!')
   assetMaxeddNotification = () => toast.error('PowerUp on maximum level!')
 
-  buyAsset(asset) {
+  buyPowerUp(asset) {
     return () => {
       let doshit = false
       let electricity = 0
@@ -83,8 +79,8 @@ class PowerUpsModal extends React.Component {
         if (asset.type === 'addPower') {
           electricity = this.state.electricity + asset.electricity
           doshit = true
-        } else if ((this.state.electricity - asset.electricity) >= 0) {
-          electricity = this.state.electricity - asset.electricity
+        } else if (this.state.electricity - asset.electricity >= 0) {
+          electricity = this.state.electricity - asset.electricity // miksi sähköä vähennetään statesta?
           doshit = true
         } else {
           this.noElectricityNotification()
@@ -96,12 +92,17 @@ class PowerUpsModal extends React.Component {
       if (doshit) {
         this.setState({electricity})
         this.props.buyPowerUp(asset)
-        saveElectricity(electricity)
-        asset.price = asset.price * shop_price_up
-        asset.hashingRate = asset.hashingRate * shop_hashingRate_up
-        asset.lvl = asset.lvl + 1
-        asset.electricity = asset.electricity * shop_electricity_up
-        savePowerUps(assets)
+
+        this.props.addElectricity(electricity)
+
+
+        // TODO: edit to state
+        // TODO: separate into their own method
+        // asset.price = asset.price * shop_price_up
+        // asset.hashingRate = asset.hashingRate * shop_hashingRate_up
+        // asset.lvl = asset.lvl + 1
+        // asset.electricity = asset.electricity * shop_electricity_up
+
         this.boughtNotification()
       }
     }
@@ -120,10 +121,11 @@ class PowerUpsModal extends React.Component {
     )
   }
 
-  renderAsset(asset, index) {
+  renderPowerup(asset, index) {
     const itemLockedStyle = `${asset.locked ? 'locked' : 'unlocked'}`
     const itemLockedText = `${asset.locked ? 'locked-text' : 'unlocked-text'}`
     const electricityText = asset.type === 'addPower' ? 'Electricity added' : 'Electricity Cost'
+    const assetLevel = asset.lvl === asset.maxlvl ? 'Maximum level' : `Level ${asset.lvl}`
 
     return (
       <Col md={4} key={asset.title}>
@@ -132,7 +134,7 @@ class PowerUpsModal extends React.Component {
           <div className={itemLockedStyle}>
             <div className="powerup-item-heading">
               <strong>{asset.title}</strong>
-              <p className="shop-highlight">{asset.lvl === asset.maxlvl ? 'Maximum level' : `Level ${asset.lvl}`}</p>
+              <p className="shop-highlight">{assetLevel}</p>
               <p className="item-details">{asset.details}</p>
             </div>
             <p className="item-details">
@@ -145,7 +147,7 @@ class PowerUpsModal extends React.Component {
             <p>
               <strong>${asset.price.toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1,')}</strong>
             </p>
-            <button className="buy-item-button" onClick={this.buyAsset(asset)}>
+            <button className="buy-item-button" onClick={this.buyPowerUp(asset)}>
               Buy
             </button>
           </div>
@@ -157,6 +159,7 @@ class PowerUpsModal extends React.Component {
   render() {
     return (
       <div>
+      <h1 style={{color: '#fff', fontSize: '20rem'}}>Korjaa powerupsit</h1>
         <Modal isOpen={this.props.modalIsOpen} style={customStyles}>
           <h2 className="centered">
             Grumpy Cat's Power Ups
@@ -196,7 +199,7 @@ class PowerUpsModal extends React.Component {
               </Col>
             </Row>
             <Row className="centered">
-              {assets.map(this.renderAsset)}
+              {this.state.powerUps.map(this.renderPowerup)}
             </Row>
           </Grid>
           <ToastContainer autoClose={2000} position="bottom-right"/>
@@ -210,17 +213,19 @@ const mapDispatchToProps = (dispatch, props) => ({
   buyPowerUp: powerUp => {
     dispatch({type: 'ADD_POWERUP', powerUp})
     dispatch({type: 'REMOVE_MONEY', amount: powerUp.price})
+  },
+  addElectricity: electricity => {
+    dispatch({type: 'ADD_ELECTRICITY', electricity})
   }
 })
 
 const mapStateToProps = state => {
   return {
-    coins: state.coins,
     money: state.money,
-    assets: state.assets,
-    electricity: loadElectricity(),
+    powerUps: state.powerUps, // tämä lataa vaan omistetut powerupsit, mistä saadaan kaikki powerupsit?
+    electricity: state.electricity,
     achievements: state.achievements
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PowerUpsModal)
+export default connect(mapStateToProps, mapDispatchToProps)(PowerupsModal)

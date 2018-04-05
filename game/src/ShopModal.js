@@ -35,7 +35,7 @@ class ShopModal extends React.Component {
     this.state = {
       coins: props.coins,
       sellerCatText: sample(sellerCatTexts),
-      electricity: loadElectricity()
+      electricity: props.electricity
     }
 
     this.renderAsset = this.renderAsset.bind(this)

@@ -7,6 +7,7 @@ import MoneyReducer from './reducers/Money'
 import AssetsReducer from './reducers/Assets'
 import AchievementsReducer from './reducers/Achievements'
 import PowerUpsReducer from './reducers/PowerUps'
+import ElectricityReducer from './reducers/Electricity'
 
 import ClickMiddleware from './middleware/Click'
 import CoinsMiddleware from './middleware/Coins'
@@ -16,6 +17,7 @@ import MoneyMiddleware from './middleware/Money'
 import AssetsMiddleware from './middleware/Assets'
 import AchievementsMiddleware from './middleware/Achievements'
 import PowerUpsMiddleware from './middleware/PowerUps'
+import ElectricityMiddleware from './middleware/Electricity'
 
 const appReducer = combineReducers({
   clicks: ClickReducer,
@@ -25,7 +27,8 @@ const appReducer = combineReducers({
   money: MoneyReducer,
   assets: AssetsReducer,
   achievements: AchievementsReducer,
-  powerUps: PowerUpsReducer
+  powerUps: PowerUpsReducer,
+  electricity: ElectricityReducer
 })
 
 const middleware = applyMiddleware(
@@ -36,7 +39,8 @@ const middleware = applyMiddleware(
   MoneyMiddleware,
   AssetsMiddleware,
   AchievementsMiddleware,
-  PowerUpsMiddleware
+  PowerUpsMiddleware,
+  ElectricityMiddleware,
 )
 
 export default createStore(appReducer, middleware)

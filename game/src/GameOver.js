@@ -33,21 +33,9 @@ class GameOver extends Component {
     const gameover = isGameOver(nextProps.achievements)
     this.setState({gameover})
 
-    // setGameOverShown()
-    console.log('gameOverShown', gameOverShown())
-
-    console.log('gameover', gameover)
-
-    // if (gameover && !gameOverShown()) {
-    if (gameover) {
-      console.log('gameover not yet shown, display winning modal')
+    if (gameover && !gameOverShown()) {
       setGameOverShown()
       this.setState({modalIsOpen: true})
-    }
-
-    if (gameover) {
-      console.log('gameover, setGameOverShown')
-      // setGameOverShown()
     }
   }
 
@@ -57,17 +45,20 @@ class GameOver extends Component {
 
   render() {
     return (
-      <Modal isOpen={this.state.modalIsOpen} style={modal_styles}>
+      <Modal
+        isOpen={this.state.gameover && this.state.modalIsOpen}
+        style={modal_styles}
+      >
         <div>
+          <div className="modal-close-button" onClick={this.toggleModal}>
+            <span id="x">X</span>
+          </div>
           <p>Game over man, you won!</p>
           <img
             src={gameOverPicture}
             alt="gameover"
             className="img-responsive game-over"
           />
-          <div className="modal-close-button" onClick={this.toggleModal}>
-            <span id="x">X</span>
-          </div>
         </div>
       </Modal>
     )

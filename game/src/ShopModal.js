@@ -121,7 +121,7 @@ class ShopModal extends Component {
   }
 
   renderAsset(asset) {
-    const electricityCost = asset.type === 'power' ? 'Electricity' : 'Electricity Cost'
+    const cost = asset.type === 'power' ? '' : 'Cost'
     return (
       <Col md={4} key={asset.title}>
         <div className="shop-item">
@@ -135,7 +135,7 @@ class ShopModal extends Component {
             </p>
           }
           <p className="item-details">
-            {electricityCost}: <span className="shop-highlight">{asset.electricity.toFixed(0)} w</span>
+            Electricity {cost}: <span className="shop-highlight">{asset.electricity.toFixed(0)} w</span>
           </p>
           <img src={asset.img} alt={asset.title} className="shop-item-icon-pc" />
           <p>
@@ -217,6 +217,24 @@ const mapDispatchToProps = (dispatch, props) => ({
   },
   addElectricity: electricity => {
     dispatch({type: 'ADD_ELECTRICITY', electricity})
+  },
+  tenComputersAchievement: () => {
+    dispatch({type: 'ACHIEVEMENT_TEN_COMPUTERS'})
+  },
+  tenGpuAchievement: () => {
+    dispatch({type: 'ACHIEVEMENT_TEN_GPUS'})
+  },
+  tenMotherboardAchievement: () => {
+    dispatch({type: 'ACHIEVEMENT_TEN_MOTHERBOARDS'})
+  },
+  tenPowersupplyAchievement: () => {
+    dispatch({type: 'ACHIEVEMENT_TEN_POWERSUPPLYS'})
+  },
+  fiftyAssetsAchievement: () => {
+    dispatch({type: 'ACHIEVEMENT_FIFTY_ASSETS'})
+  },
+  hundredAssetsAchievement: () => {
+    dispatch({type: 'ACHIEVEMENT_HUNDRED_ASSETS'})
   }
 })
 

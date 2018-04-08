@@ -1,9 +1,11 @@
 import {extend} from 'lodash'
 
-import {loadElectricity, saveElectricity} from '../Util'
+import {loadElectricity} from '../Util'
+
+export const saveElectricity = electricity =>
+  window.localStorage.setItem('electricity', JSON.stringify(electricity))
 
 const save = ({action, next}) => {
-  console.log('save electricity', action)
   saveElectricity([...loadElectricity(), action.electricity])
   return next(extend({}, action, {powerUp: loadElectricity()}))
 }

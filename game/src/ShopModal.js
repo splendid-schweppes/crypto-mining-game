@@ -1,26 +1,17 @@
-import React from 'react'
-import Modal from 'react-modal'
+import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Grid, Row, Col} from 'react-flexbox-grid'
 import {ToastContainer, toast} from 'react-toastify'
+import Modal from 'react-modal'
 import {sample, map, extend, filter, isEqual} from 'lodash'
 
 import {shopAssets} from './shopAssets'
-import {shop_price_up, shop_hashingRate_up, shop_electricity_up} from './Config'
+import {shop_price_up, modal_styles} from './Config'
 
 import './ShopModal.css'
 import sellerCat from './svg_assets/cat2.png'
 
-const customStyles = {
-  content: {
-    backgroundColor: '#292929'
-  }
-}
-
 Modal.setAppElement('#root')
-
-
-const assets = shopAssets
 
 const sellerCatTexts = [
   {heading: 'Welcome to the KittyCat PC Store!', text: 'We offer the finest selection of computers, components and of course a special price, just for you my friend!'},
@@ -30,14 +21,14 @@ const sellerCatTexts = [
   {heading: 'Looking for something?', text: 'I might have a couple of special items just for your needs, please have a look at my inventory.'}
 ]
 
-class ShopModal extends React.Component {
+class ShopModal extends Component {
   constructor(props) {
     super(props)
     this.state = {
       coins: props.coins,
       sellerCatText: sample(sellerCatTexts),
       electricity: props.electricity,
-      assets,
+      assets: shopAssets,
       ownedAssets: props.ownedAssets
     }
 
@@ -161,7 +152,7 @@ class ShopModal extends React.Component {
   render() {
     return (
       <div>
-        <Modal isOpen={this.props.modalIsOpen} style={customStyles}>
+        <Modal isOpen={this.props.modalIsOpen} style={modal_styles}>
           <h2 className="centered">
             KittyCat PC STORE
           </h2>

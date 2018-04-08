@@ -1,17 +1,13 @@
-import React from 'react'
-import Modal from 'react-modal'
+import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Grid, Row, Col} from 'react-flexbox-grid'
 import {find, sample} from 'lodash'
+import Modal from 'react-modal'
+
+import {modal_styles} from './Config'
 
 import './AchievementsModal.css'
 import advisorCat from './svg_assets/cat1.png'
-
-const customStyles = {
-  content: {
-    backgroundColor: '#292929'
-  }
-}
 
 Modal.setAppElement('#root')
 
@@ -47,7 +43,7 @@ const achievementCatTexts = [
   {heading: 'What should we do today?', text: 'Maybe you should click faster to get more assets from the KittyCat PC store?'}
 ]
 
-class AchievementsModal extends React.Component {
+class AchievementsModal extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -102,7 +98,7 @@ class AchievementsModal extends React.Component {
 
   render() {
     return (
-      <Modal isOpen={this.props.isOpen} style={customStyles}>
+      <Modal isOpen={this.props.isOpen} style={modal_styles}>
         <h2 className="centered">
           Achievements
         </h2>

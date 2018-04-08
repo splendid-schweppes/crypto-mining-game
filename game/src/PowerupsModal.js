@@ -1,22 +1,16 @@
-import React from 'react'
-import Modal from 'react-modal'
+import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Grid, Row, Col} from 'react-flexbox-grid'
 import {ToastContainer, toast} from 'react-toastify'
+import Modal from 'react-modal'
 import {sample, map, extend, filter, isEqual} from 'lodash'
 
-import {shop_price_up} from './Config'
+import {shop_price_up, modal_styles} from './Config'
 import {powerUps as powerUpsList} from './powerUpAssets'
 
 import './ShopModal.css'
 import './PowerupsModal.css'
 import grumpyCat from './svg_assets/grumpycat.png'
-
-const customStyles = {
-  content: {
-    backgroundColor: '#292929'
-  }
-}
 
 Modal.setAppElement('#root')
 
@@ -28,7 +22,7 @@ const sellerCatTexts = [
   {heading: 'They said post a selfie', text: 'So I posted one of my middle finger.'}
 ]
 
-class PowerupsModal extends React.Component {
+class PowerupsModal extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -173,7 +167,7 @@ class PowerupsModal extends React.Component {
   render() {
     return (
       <div>
-        <Modal isOpen={this.props.modalIsOpen} style={customStyles}>
+        <Modal isOpen={this.props.modalIsOpen} style={modal_styles}>
           <h2 className="centered">
             Grumpy Cat's Power Ups
           </h2>
@@ -215,7 +209,7 @@ class PowerupsModal extends React.Component {
               {this.state.powerUps.map(this.renderPowerup)}
             </Row>
           </Grid>
-          <ToastContainer autoClose={2000} position="bottom-right"/>
+          <ToastContainer autoClose={2000} position="bottom-right" />
         </Modal>
       </div>
     )

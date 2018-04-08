@@ -5,56 +5,51 @@ import {powerUps} from './powerUpAssets'
 
 const getRandomConversionRate = () => random(10, 1100, true)
 
+const getStorage = (name, defaultValue) =>
+  JSON.parse(window.localStorage.getItem(name) || defaultValue)
+
 export const loadBlocks = () =>
-  Number(JSON.parse(window.localStorage.getItem('blocks') || defaultBlocks))
+  Number(getStorage('blocks', defaultBlocks))
 
 export const loadClicks = () =>
-  JSON.parse(window.localStorage.getItem('clicks') || '[]')
+  getStorage('clicks', '[]')
 
 export const loadHashingRate = () =>
-  Number(JSON.parse(window.localStorage.getItem('hashingRate') || initialHashingRate))
+  Number(getStorage('hashingRate', initialHashingRate))
 
 export const loadCoins = () =>
-  Number(JSON.parse(window.localStorage.getItem('coins') || 0))
+  Number(getStorage('coins', 0))
 
 export const loadCoinLog = () =>
-  Number(JSON.parse(window.localStorage.getItem('coinlog') || 0))
+  Number(getStorage('coinlog', 0))
 
 export const loadMoney = () =>
-  Number(JSON.parse(window.localStorage.getItem('money') || 0))
+  Number(getStorage('money', 0))
 
 export const loadAssets = () =>
-  JSON.parse(window.localStorage.getItem('assets') || '[]')
+  getStorage('assets', '[]')
 
 export const loadAchievements = () =>
-  JSON.parse(window.localStorage.getItem('achievements') || '[]')
+  getStorage('achievements', '[]')
 
 export const loadSellingRate = () =>
-  JSON.parse(window.localStorage.getItem('sellingrate') || getRandomConversionRate())
-
-export const saveSellingRate = sellingrate =>
-  window.localStorage.setItem('sellingrate', JSON.stringify(sellingrate))
+  getStorage('sellingrate', getRandomConversionRate())
 
 export const loadElectricity = () =>
-  Number(JSON.parse(window.localStorage.getItem('electricity') || 0))
-
-export const saveElectricity = electricity =>
-  window.localStorage.setItem('electricity', JSON.stringify(electricity))
-
-export const saveShopAssets = shopAssets =>
-  window.localStorage.setItem('shopAssets', JSON.stringify(shopAssets))
+  Number(getStorage('electricity', 0))
 
 export const loadShopAssets = () =>
-  JSON.parse(window.localStorage.getItem('shopAssets'))  || shopAssets
-
-export const savePowerUps = powerUps =>
-  window.localStorage.setItem('powerUps---fix', JSON.stringify(powerUps))
+  getStorage('shopAssets') || shopAssets
 
 export const loadPowerUps = () =>
-  JSON.parse(window.localStorage.getItem('powerUps---fix'))  || powerUps
+  getStorage('powerUps') || powerUps
 
 export const loadPowerUpsOwned = () =>
-  JSON.parse(window.localStorage.getItem('powerUpsOwned---fix') || '[]')
+  getStorage('powerUpsOwned', '[]')
 
-export const savePowerUpsOwned = powerUps =>
-  window.localStorage.setItem('powerUpsOwned---fix', JSON.stringify(powerUps))
+export const gameOverShown = () =>
+  getStorage('gameOverShown', false)
+
+// TODO: this should be in redux middleware
+export const saveSellingRate = sellingrate =>
+  window.localStorage.setItem('sellingrate', JSON.stringify(sellingrate))

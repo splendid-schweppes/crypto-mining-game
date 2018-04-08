@@ -6,6 +6,12 @@
   width: 100%;
 }
 
+.game-over {
+  max-width: 50%;
+  margin: 0 auto;
+  display: block;
+}
+
 .margin-t-10 {
   margin-top: 10px;
 }

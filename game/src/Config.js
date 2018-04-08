@@ -17,3 +17,9 @@ export const shop_price_up = 1.1
 export const shop_hashingRate_up = 1.1
 
 export const shop_electricity_up = 1.1
+
+export const modal_styles = {
+  content: {
+    backgroundColor: '#292929'
+  }
+}

@@ -22,24 +22,19 @@ class Market extends Component {
     const changeCryptoMarkets = () => {
       const coin_conversion_rate = getRandomSellingRate()
       this.setState({coin_conversion_rate})
+
+      // TODO: this should use redux
       saveSellingRate(coin_conversion_rate)
 
-      // settimeout without time will call this function immediately
       setTimeout(changeCryptoMarkets, getRandomInterval())
     }
 
     setTimeout(changeCryptoMarkets, getRandomInterval())
-
-    // this.interval = setInterval(() => {
-    //   const rate = getRandomConversionRate()
-    //   this.setState({ coin_conversion_rate: rate })
-    //   saveSellingRate(rate)
-    // }, 30000)
   }
 
-  // componentWillUnmount() {
-  //   // clearInterval(this.interval)
-  // }
+  componentWillReceiveProps(nextProps) {
+    this.setState({coins: nextProps.coins})
+  }
 
   changeCoinCount({target}) {
     if (target.value >= 0 && target.value <= this.props.coins) {

@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {sumBy} from 'lodash'
+
 import './RightSideStats.css'
-import {loadElectricity} from './Util'
 
 class RightSideStats extends Component {
   render() {
@@ -40,7 +40,7 @@ const mapStateToProps = state => {
     hashingRate: state.hashingRate,
     assets: state.assets,
     hashingRateFromAssets: sumBy(state.assets, 'hashingRate'),
-    electricity: loadElectricity(),
+    electricity: state.electricity,
     money: state.money,
     achievements: state.achievements
   }

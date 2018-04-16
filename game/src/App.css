@@ -6,6 +6,12 @@
   width: 100%;
 }
 
+.game-over {
+  max-width: 50%;
+  margin: 0 auto;
+  display: block;
+}
+
 .margin-t-10 {
   margin-top: 10px;
 }
@@ -14,41 +20,34 @@
   margin-top: 20px;
 }
 
-.player-wallet {
-  background-color: #00c253;
-  padding: 20px 20px 20px 35px;
+.player-wallet,
+.player-level,
+.player-electricity,
+.player-coins,
+.player-assets {
+  padding: 15px 15px 15px 35px;
   border-radius: 50px;
   font-size: 22px;
   margin-top: 20px;
+}
+
+.player-wallet {
+  background-color: #00c253;
 }
 
 .player-level {
   background-color: #13a8b1;
-  padding: 20px 20px 20px 35px;
-  border-radius: 50px;
-  font-size: 22px;
-  margin-top: 20px;
 }
 
 .player-electricity {
   background-color: #c24549;
-  padding: 20px 20px 20px 35px;
   border-radius: 50px;
-  font-size: 22px;
 }
 
 .player-coins  {
   background-color: #55d52f;
-  padding: 20px 20px 20px 35px;
-  border-radius: 50px;
-  font-size: 22px;
-  margin-top: 20px;
 }
 
 .player-assets {
   background-color: #4bc9b4;
-  padding: 20px 20px 20px 35px;
-  border-radius: 50px;
-  font-size: 22px;
-  margin-top: 20px;
 }

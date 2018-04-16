@@ -12,6 +12,7 @@ import StringAnimation from './StringAnimation'
 import InvisibleElement from './InvisibleElement'
 import Menu from './Menu'
 import RightSideStats from './RightSideStats'
+import GameOver from './GameOver'
 
 import 'font-awesome/css/font-awesome.min.css'
 import './App.css'
@@ -32,12 +33,13 @@ export default class App extends Component {
             <SolveBlocks />
             <DecreaseHashingRate />
             <GetCoins />
+            <GameOver />
           </Col>
           <Col md={3} lg={3}>
-            <BackgroundMusic />
             <RightSideStats />
+            <BackgroundMusic />
             {/*<Replay />*/}
-            {/*<StringAnimation />*/}
+            <StringAnimation />
           </Col>
         </Row>
       </Grid>

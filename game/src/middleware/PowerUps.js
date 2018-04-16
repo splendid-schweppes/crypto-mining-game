@@ -1,6 +1,9 @@
 import {extend} from 'lodash'
 
-import {loadPowerUpsOwned, savePowerUpsOwned} from '../Util'
+import {loadPowerUpsOwned} from '../Util'
+
+export const savePowerUpsOwned = powerUps =>
+  window.localStorage.setItem('powerUpsOwned', JSON.stringify(powerUps))
 
 const save = ({action, next}) => {
   savePowerUpsOwned([...loadPowerUpsOwned(), action.powerUp])

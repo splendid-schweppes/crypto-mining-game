@@ -25,6 +25,14 @@ export default () => next => action => {
       return save({action, next, id: 3})
     case 'ACHIEVEMENT_FIRST_COMPUTER':
       return save({action, next, id: 4})
+    case 'ACHIEVEMENT_FIFTY_COINS':
+      return save({action, next, id: 5})
+    case 'ACHIEVEMENT_HUNDRED_COINS':
+      return save({action, next, id: 10})
+    case 'ACHIEVEMENT_THOUSAND_COINS':
+      return save({action, next, id: 15})
+    case 'ACHIEVEMENT_MILLION_COINS':
+      return save({action, next, id: 20})
     default:
       return next(action)
   }

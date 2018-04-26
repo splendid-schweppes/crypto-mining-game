@@ -74,7 +74,7 @@ class ShopModal extends Component {
 
         return extend({}, asset, {
           original_price,
-          price: original_price * (shop_price_up * matches.length),
+          price: original_price * shop_price_up ** matches.length,
           lvl: matches.length
         })
       })

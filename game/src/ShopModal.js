@@ -6,7 +6,7 @@ import Modal from 'react-modal'
 import {sample, map, extend, filter, isEqual} from 'lodash'
 
 import {shopAssets} from './shopAssets'
-import {shop_price_up, modal_styles} from './Config'
+import {shop_price_up, shop_electricity_up, shop_hashingRate_up, modal_styles} from './Config'
 
 import './ShopModal.css'
 import sellerCat from './svg_assets/cat2.png'
@@ -71,10 +71,16 @@ class ShopModal extends Component {
         }
 
         const original_price = asset.original_price || asset.price
+        const original_electricity = asset.original_electricity || asset.electricity
+        const original_hashingRate = asset.original_hashingRate || asset.hashingRate
 
         return extend({}, asset, {
           original_price,
           price: original_price * shop_price_up ** matches.length,
+          original_electricity,
+          electricity: original_electricity * shop_electricity_up ** matches.length,
+          original_hashingRate,
+          hashingRate: original_hashingRate * shop_hashingRate_up ** matches.length,
           lvl: matches.length
         })
       })

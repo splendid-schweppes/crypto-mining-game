@@ -23,3 +23,5 @@ export const modal_styles = {
     backgroundColor: '#292929'
   }
 }
+
+export const specialBonus = 10;

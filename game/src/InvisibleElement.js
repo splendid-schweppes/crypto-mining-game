@@ -10,32 +10,39 @@ class InvisibleElement extends Component {
     this.state = {
     }
 
-    this.hiddenBonustNotification = this.hiddenBonustNotification.bind(this)
-    this.hiddenElementBonus = this.hiddenElementBonus.bind(this)
+    this.getHiddenElementBonus = this.getHiddenElementBonus.bind(this)
   }
 
-  hiddenBonustNotification = () => toast.success('HIDDEN BONUS ACQUIRED!')
 
-  hiddenElementBonus () {
-    this.props.getSpecialBonus()
-    this.hiddenBonustNotification()
+  getHiddenElementBonus () {
+    this.props.getSpecialBonus(this.props.achievements.length)
+    toast('HIDDEN BONUS ACQUIRED!', {
+      type: toast.TYPE.SUCCESS,
+      autoClose: 5000
+    });
   }
 
 
   render() {
     return (
-      <div className="traveler" onClick={this.hiddenElementBonus}>
+      <div className="traveler" onClick={this.getHiddenElementBonus}>
         <div className="bouncer"></div>
-        <ToastContainer autoClose={5000} position="bottom-right" />
+        <ToastContainer position="bottom-right" />
       </div>
     )
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    achievements: state.achievements
+  }
+}
+
 const mapDispatchToProps = (dispatch, props) => ({
-  getSpecialBonus: () => {
-    dispatch({type: 'GET_SPECIALBONUS'})
+  getSpecialBonus: (level) => {
+    dispatch({type: 'GET_SPECIALBONUS', level})
   }
 })
 
-export default connect(null, mapDispatchToProps)(InvisibleElement)
+export default connect(mapStateToProps, mapDispatchToProps)(InvisibleElement)

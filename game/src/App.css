@@ -7,8 +7,9 @@
 }
 
 .game-over {
-  max-width: 50%;
+  max-width: 85%;
   margin: 0 auto;
+  margin-top: 55px;
   display: block;
 }
 

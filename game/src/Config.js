@@ -25,3 +25,9 @@ export const modal_styles = {
 }
 
 export const specialBonus = 10;
+
+export const powerup_price_up = 1.2
+
+export const powerup_electricity_up = 1.2
+
+export const powerup_hashingRate_up = 1.2

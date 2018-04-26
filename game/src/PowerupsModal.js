@@ -5,7 +5,7 @@ import {ToastContainer, toast} from 'react-toastify'
 import Modal from 'react-modal'
 import {sample, map, extend, filter, isEqual} from 'lodash'
 
-import {shop_price_up, modal_styles} from './Config'
+import {powerup_price_up, powerup_electricity_up, powerup_hashingRate_up, modal_styles} from './Config'
 import {powerUps as powerUpsList} from './powerUpAssets'
 
 import './ShopModal.css'
@@ -74,11 +74,17 @@ class PowerupsModal extends Component {
         }
 
         const original_price = powerUp.original_price || powerUp.price
+        const original_electricity = powerUp.original_electricity || powerUp.electricity
+        const original_hashingRate = powerUp.original_hashingRate || powerUp.hashingRate
 
         return extend({}, powerUp, {
           locked,
           original_price,
-          price: original_price * (shop_price_up * matches.length),
+          price: original_price * powerup_price_up ** matches.length,
+          original_electricity,
+          electricity: original_electricity * powerup_electricity_up ** matches.length,
+          original_hashingRate,
+          hashingRate: original_hashingRate * powerup_hashingRate_up ** matches.length,
           lvl: matches.length
         })
       })

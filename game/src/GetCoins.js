@@ -6,7 +6,9 @@ import {blocksToCoin} from './Config'
 class GetCoins extends Component {
   componentDidUpdate() {
     if (this.props.blocks >= blocksToCoin) {
-      this.props.getCoin()
+      const howManyBlocks = Math.floor(this.props.blocks / blocksToCoin);
+      const howManyCoins = howManyBlocks > 1 ? howManyBlocks : 1;
+      this.props.getCoin(howManyCoins)
 
       if (this.props.coinlog >= 10) {
         this.props.tenCoinAchievement()
@@ -36,8 +38,8 @@ class GetCoins extends Component {
 }
 
 const mapDispatchToProps = (dispatch, props) => ({
-  getCoin: () => {
-    dispatch({type: 'GET_COIN'})
+  getCoin: (howManyCoins) => {
+    dispatch({type: 'GET_COIN', howManyCoins})
     dispatch({type: 'COINLOG_ADD'})
     dispatch({type: 'RESET_BLOCK'})
     dispatch({type: 'ACHIEVEMENT_FIRST_COIN'})

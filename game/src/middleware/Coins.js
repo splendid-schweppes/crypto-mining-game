@@ -11,6 +11,8 @@ const saveCoin = count => {
 const save = ({action, next}) => {
   const level = action.level > 0 ? action.level : 1
   action.type === 'GET_SPECIALBONUS' ? saveCoin(loadCoins() + specialBonus * level) : saveCoin(loadCoins() + 1)
+  // WATTAFAK
+  action.howManyCoins > 1 ? saveCoin(loadCoins() + action.howManyCoins - 1) : saveCoin(loadCoins())
   return next(extend({}, action, {coins: loadCoins()}))
 }
 

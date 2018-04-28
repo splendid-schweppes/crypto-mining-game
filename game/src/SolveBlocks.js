@@ -25,7 +25,7 @@ const mapDispatchToProps = (dispatch, props) => ({
 const mapStateToProps = state => {
   return {
     hashingRate: state.hashingRate,
-    hashingRateFromAssets: sumBy(state.assets, 'hashingRate'),
+    hashingRateFromAssets: sumBy(state.assets, 'hashingRate') + sumBy(state.powerUps, 'hashingRate'),
   }
 }
 

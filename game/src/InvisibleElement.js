@@ -25,8 +25,10 @@ class InvisibleElement extends Component {
 
   render() {
     return (
-      <div className="traveler" onClick={this.getHiddenElementBonus}>
-        <div className="bouncer"></div>
+      <div>
+        <div className="traveler" onClick={this.getHiddenElementBonus}>
+          <div className="bouncer"></div>
+        </div>
         <ToastContainer position="bottom-right" />
       </div>
     )
